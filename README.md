@@ -1,7 +1,12 @@
-# Project
+# Project CSA
 
-"Project" is a yet-to-be-named project for integrating with the Plaid API
-more easily than was previously possible.
+
+Project Consumer-Side Auth is a new way for our clients to easily integrate with Plaid. Our API allows developers to connect user bank accounts using only bank login credentials. The problem is that logging into a bank is not an easy process. Multi-factor authentications, loads of errors, forgotten passwords, all this leads to trouble for the developer and a miserable experience for the end user.
+
+The goal here was to simplify and secure this process for both our clients and their users. What we've produced is a drop-in module, which quickly allows our clients to integrate a login experience for all of the institutions that we support.
+
+
+##Getting Started
 
 In addition to your `CLIENT_ID` and `SECRET` you'll need your `PUBLIC_KEY`
 which is available from the [Plaid dashboard][1].
@@ -13,19 +18,6 @@ her bank account credentials they'll be sent to Plaid along with your
 will then be posted to your server at an endpoint you specify. You'll then send
 this along with your private `CLIENT_ID` and `SECRET` to the Plaid API to
 connect the user's account.
-
-### Browser support
-
-:warning: __Currently only desktop browsers are supported.__
-
-| Browser                                                                                                                                                                     | Supported?        |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
-| <img width="32" height="32" alt="Google Chrome" src="https://raw.githubusercontent.com/alrra/browser-logos/master/chrome/chrome_64x64.png" />                               | Fully supported   |
-| <img width="32" height="32" alt="Firefox" src="https://raw.githubusercontent.com/alrra/browser-logos/master/firefox/firefox_64x64.png" />                                   | Fully supported   |
-| <img width="32" height="32" alt="Safari" src="https://raw.githubusercontent.com/alrra/browser-logos/master/safari/safari_64x64.png" />                                      | Fully supported   |
-| <img width="32" height="32" alt="Internet Explorer" src="https://raw.githubusercontent.com/alrra/browser-logos/master/internet-explorer/internet-explorer_64x64.png" /> 10  | Fully supported   |
-| <img width="32" height="32" alt="Internet Explorer" src="https://raw.githubusercontent.com/alrra/browser-logos/master/internet-explorer/internet-explorer_64x64.png" /> 9   | Not yet supported |
-| <img width="32" height="32" alt="Internet Explorer" src="https://raw.githubusercontent.com/alrra/browser-logos/master/internet-explorer/internet-explorer_64x64.png" /> 8   | Not supported     |
 
 ### Client-side script
 
@@ -98,3 +90,21 @@ app.post('/authenticate', function(req, res) {
 
 
 [1]: https://plaid.com/account/
+
+### Browser support
+
+:warning: __Currently only desktop browsers are supported.__
+
+| Browser                                                                                                                                                                     | Supported?        |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
+| <img width="32" height="32" alt="Google Chrome" src="https://raw.githubusercontent.com/alrra/browser-logos/master/chrome/chrome_64x64.png" />                               | Fully supported   |
+| <img width="32" height="32" alt="Firefox" src="https://raw.githubusercontent.com/alrra/browser-logos/master/firefox/firefox_64x64.png" />                                   | Fully supported   |
+| <img width="32" height="32" alt="Safari" src="https://raw.githubusercontent.com/alrra/browser-logos/master/safari/safari_64x64.png" />                                      | Fully supported   |
+| <img width="32" height="32" alt="Internet Explorer" src="https://raw.githubusercontent.com/alrra/browser-logos/master/internet-explorer/internet-explorer_64x64.png" /> 10  | Fully supported   |
+| <img width="32" height="32" alt="Internet Explorer" src="https://raw.githubusercontent.com/alrra/browser-logos/master/internet-explorer/internet-explorer_64x64.png" /> 9   | Not yet supported |
+| <img width="32" height="32" alt="Internet Explorer" src="https://raw.githubusercontent.com/alrra/browser-logos/master/internet-explorer/internet-explorer_64x64.png" /> 8   | Not supported     |
+
+
+### Expansion
+
+In the near term, we'll be rolling out support for Internet Explorer 9 and including support for the mobile web. In future iterations, the CSA team will release native modules for both iOS and Andriod, as well as Vanilla un-styled versions for clients who would like to make CSA their own.
