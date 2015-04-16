@@ -22,9 +22,8 @@ keys have been distributed on an invitation-only basis while CSA is in beta
 
 If you received an invitation, view your account on the [Plaid dashboard][4],
 under the 'Your keys' section you will find a `public_key`. You'll include
-this `public_key` as a `data-` attribute in your HTML file (`data-key`,
-specifically, while the `client_id` and `secret` are kept private on your
-server.
+this `public_key` as the value for the `data-key` attribute in your HTML file,
+while the `client_id` and `secret` are kept private on your server.
 
 *Bank account credentials are sent securely to Plaid via an HTTPS connection
 along with your `public_key`. If this succeeds, Plaid will return a public
@@ -141,7 +140,7 @@ app.post('/authenticate', function(req, res) {
       res.send('Oh no!');
     } else {
       // Use res.body.plaid_access_token to make a Plaid
-      // API request to retrieve bank acccount data
+      // API request to retrieve bank account data
       request({
         method: 'POST',
         uri: 'https://tartan.plaid.com/auth/get',
