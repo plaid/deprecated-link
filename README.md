@@ -44,7 +44,7 @@ Include the following markup in your site or web application:
 <form id="some-id" method="POST" action="/authenticate"></form>
 
 <!--
-  data-client: a string shown to users upon successfully linking their account
+  data-client-name: a string shown to users upon successfully linking their account
   data-form-id: the DOM id of the CSA form
   data-key: your public_key, available from the dashboard
   data-product: connect or auth
