@@ -52,7 +52,7 @@ Include the following markup in your site or web application:
   data-webhook: webhook URI when using connect
 -->
 <script
-  src="https://cdn.plaid.com/connect/latest/connect-initialize.js"
+  src="https://cdn.plaid.com/connect/stable/connect-initialize.js"
   data-client-name="Client Name"
   data-form-id="some-id"
   data-key="your-public-key-here"
@@ -174,7 +174,7 @@ authentication process when applicable.
 <form id="some-id" method="POST" action="/authenticate"></form>
 
 <script
-  src="https://cdn.plaid.com/connect/latest/connect-initialize.js"
+  src="https://cdn.plaid.com/connect/stable/connect-initialize.js"
   data-client-name="Client Name"
   data-form-id="some-id"
   data-key="test_key"
