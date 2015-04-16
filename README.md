@@ -7,7 +7,7 @@ authentication flow for each institution that we support. The module handles
 input validation, error handling, and multi-factor authentication flows.
 
 View the [sandbox demo][1] (use Plaid [sandbox credentials][2] &ndash;
-username: `plaid_test`, password: `plaid_test`) or the [live demo][3]
+username: `plaid_test`, password: `plaid_good`) or the [live demo][3]
 (use live bank account credentials) to familiarize yourself with this module.
 
 ![Flow](http://i.imgur.com/cRts1NM.png)
