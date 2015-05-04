@@ -89,9 +89,9 @@ h1 {
 .dual-button span.radio-button {
   float: left;
   text-align: center;
-  width: 160px;
+  width: 301px;
   position: relative;
-  padding: 14px 56px;
+  padding: 14px 0;
   margin: 1px 0px 0px -0.7px;
   cursor: pointer;
   background: #f2f2f2;
@@ -99,7 +99,6 @@ h1 {
   font-weight: 800;
   color: #999;
   background: #F7F7F7;
-
 }
 
 .dual-button span.radio-button:hover {
