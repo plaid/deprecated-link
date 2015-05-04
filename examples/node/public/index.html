@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>SUM</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <div class="container">
+    <div class="logo">Sum</div>
+    <h2>Sum is a simple web app that gives you access to all your bank accounts</h2>
+    <div class="dual-button">
+      <div>
+        <span class="radio-button radio-left" id="sandboxCsaButton">Sandbox Mode</span>
+      </div>
+      <div>
+        <span class="radio-button radio-right" id="liveCsaButton">Regular Mode</span>
+      </div>
+    </div>
+    <script src="https://cdn.plaid.com/connect/beta/connect-initialize.js"></script>
+    <script>
+    // This demo uses two custom initializers so that we can provide
+    // both a sandbox and live demo on the same page.
+    // See: https://github.com/plaid/project-csa/blob/master/README.md#step-2-custom-integration
+
+    var sandboxHandler = Plaid.create({
+      clientName: 'SUM',
+      env: 'tartan',
+      product: 'auth',
+      key: 'test_key',
+      onSuccess: function(token) {
+        window.location = '/accounts.html?public_token=' + token;
+      },
+    });
+
+    var liveHandler = Plaid.create({
+      clientName: 'SUM',
+      env: 'tartan',
+      product: 'auth',
+      key: '{YOUR_PUBLIC_KEY}',
+      onSuccess: function(token) {
+        window.location = '/accounts.html?public_token=' + token;
+      },
+    });
+
+    // Open the "Institution Select" view using the sandbox CSA handler.
+    document.getElementById('sandboxCsaButton').onclick = function() {
+      sandboxHandler.open();
+    };
+
+    // Open the "Institution Select" view using the live CSA handler.
+    document.getElementById('liveCsaButton').onclick = function() {
+      liveHandler.open();
+    };
+    </script>
+  </div>
+</body>
+</html>
