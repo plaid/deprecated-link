@@ -1,27 +1,27 @@
-# Project CSA
+# Plaid Link - Web Bindings
 
-Project CSA is a new way to integrate with the [Plaid API][1]. It is a drop-in
+Plaid Link is a new way to integrate with the [Plaid API][1]. It is a drop-in
 module that offers a secure, elegant authentication flow for each institution
 that Plaid supports. The module handles input validation, error handling, and
 multi-factor authentication flows.
 
-Project CSA supports most modern desktop and mobile browsers - detailed
+Plaid Link supports most modern desktop and mobile browsers - detailed
 information can be found in the [browser support](#browser-support) section.
 
 Check out the [**demo**][2] to see it in action! You can test out [sandbox
 credentials][3] (username: `plaid_test`, password: `plaid_good`) or your own
 bank account credentials. Source code for the demo app can be found
-[here](https://github.com/plaid/project-csa/tree/master/examples/node).
+[here](https://github.com/plaid/link/tree/master/examples/node).
 
 Read on for a complete getting started guide or jump straight to either the
 [API reference](#reference) or explore some
-[sample apps](https://github.com/plaid/project-csa/tree/master/examples).
+[sample apps](https://github.com/plaid/link/tree/master/examples).
 
 ![Flow](https://cloud.githubusercontent.com/assets/1531185/7447378/fcad19de-f1ad-11e4-9943-c2ceb6d91107.jpg)
 
 ## Table of contents
 
-- [Project CSA](#project-csa)
+- [Plaid Link](#plaid-link)
   * [Table of contents](#table-of-contents)
   * [Glossary](#glossary)
   * [Getting started](#getting-started)
@@ -48,17 +48,17 @@ Read on for a complete getting started guide or jump straight to either the
 Most Plaid API calls involve three pieces of information: a `client_id`,
 `secret`, and an `access_token`. All three of these are considered private
 information - they are not meant to be shared or hard coded directly into an
-app or site. This poses a problem for Project CSA, as a user will be
+app or site. This poses a problem for Plaid Link, as a user will be
 onboarding directly in the browser.
 
 To address this, Plaid client accounts now have an additional identifier:
 a `public_key`.
-- the `public_key` simply associates users that onboard through Project CSA
+- the `public_key` simply associates users that onboard through Plaid Link
   with your `client_id` and `secret`
 - the `public_key` **cannot** be used to make authenticated Plaid API calls
   (i.e. retrieving account and routing numbers for a user)
 
-Once a user has successfully onboarded via Project CSA, the module will
+Once a user has successfully onboarded via Plaid Link, the module will
 provide a `public_token`. This is in contrast to typical Plaid API requests,
 which return an `access_token`.
 
@@ -70,7 +70,7 @@ The `public_token`:
   endpoint.
 
 The [getting started](#getting-started) guide below covers illustrates how to
-use your `public_key` to get up and running with Project CSA. The guide also
+use your `public_key` to get up and running with Plaid Link. The guide also
 covers how to exchange a `public_token` for a `access_token`.
 
 ## Getting started
@@ -81,7 +81,7 @@ There are two different integrations:
   customizable "Link your Bank Account" button and handles submitting a Plaid
   `public_token` to a server endpoint that you specify.
 - [**Custom:**](#step-2-custom-integration) The custom integration lets you
-  trigger the CSA module via client-side Javascript. You specify your own
+  trigger the Plaid Link module via client-side Javascript. You specify your own
   callback function to be called with the `public_token` once a user has
   authenticated.
 
@@ -91,11 +91,11 @@ Your `public_key` is available from the [Plaid dashboard][4]:
 
 ![Plaid Dashboard](http://i.imgur.com/ypo3l26.png)
 
-Project CSA is currently in beta. If you do not see a `public_key` on your
+Plaid Link is currently in beta. If you do not see a `public_key` on your
 account dashboard, contact <info@plaid.com> to be assigned one.
 
 Your `public_key` is a less privileged version of your `client_id` and
-`secret`. It simply associates accounts you create using Project CSA with
+`secret`. It simply associates accounts you create using Plaid Link with
 your `client_id`. All Plaid API requests **must** be made using your private
 `client_id` and `secret`.
 
@@ -139,7 +139,7 @@ Select" view or trigger a particular institution's credentials form. See below:
 ```html
 <script src="https://cdn.plaid.com/connect/beta/connect-initialize.js"></script>
 <script>
-var csaHandler = Plaid.create({
+var linkHandler = Plaid.create({
   env: 'tartan',
   clientName: 'Plaid',
   key: 'test_key',
@@ -148,18 +148,18 @@ var csaHandler = Plaid.create({
     // send your public_token to your app server here
   },
   onExit: function() {
-    // The user exited the CSA flow
+    // The user exited the Plaid Link flow
   },
 });
 
 // Trigger the Chase login view
 document.getElementById('chaseButton').onclick = function() {
-  csaHandler.open('chase');
+  linkHandler.open('chase');
 };
 
 // Trigger the standard institution select view
 document.getElementById('button').onclick = function() {
-  csaHandler.open();
+  linkHandler.open();
 };
 </script>
 ```
@@ -169,15 +169,15 @@ documentation on possible configurations.
 
 ### Step 3: Write server-side handler
 
-The CSA module handles the entire onboarding flow securely and quickly but does
-not actually retrieve account or transaction data for a user. Instead, the CSA
+The Link module handles the entire onboarding flow securely and quickly but does
+not actually retrieve account or transaction data for a user. Instead, the Link
 module returns a `public_token` that is safe to expose in the browser.
 
 This `public_token` must be exchanged for a Plaid `access_token` using the
 [`/exchange_token`](#exchange_token-endpoint) API endpoint. To do so, you must
 add a server side handler. A sample node.js server-side handler is provided
 below - full application samples can be found in the
-[/examples](https://github.com/plaid/project-csa/blob/master/examples/node)
+[/examples](https://github.com/plaid/link/blob/master/examples/node)
 directory of this repository.
 
 With the [simple integration](#step-2-simple-integration), the `public_token`
@@ -242,7 +242,7 @@ app.post('/authenticate', function(req, res) {
 
 ### Step 4: Test with sandbox credentials
 
-The CSA module has a sandbox mode that works with the [Plaid API sandbox][3].
+The Link module has a sandbox mode that works with the [Plaid API sandbox][3].
 To enable the sandbox, set `data-key` or `key` to `test_key` (for simple and
 custom integrations, respectively). This lets you see the flow for each
 individual institution Plaid supports, including the multi-factor
@@ -310,7 +310,7 @@ If you are working with a library that does not yet support the
 $ curl -X POST https://tartan.plaid.com/exchange_token \
 >   -d client_id="$plaid_client_id" \
 >   -d secret="$plaid_secret" \
->   -d public_token="$public_token_from_csa_module"
+>   -d public_token="$public_token_from_plaid_link_module"
 ```
 
 For a valid request, the API will return a JSON response similar to:
@@ -331,7 +331,7 @@ For possible error codes, see the full listing of
 | Parameter          | Required? | Description                                                                                                                                                                                             |
 |--------------------|-----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `data-client-name` | required  | Displayed once a user has successfully linked their account.                                                                                                                    |
-| `data-form-id`     | required  | The DOM ID associated with form that the CSA module will append the `public_key` to as a hidden input and submit when a user completes the onboarding flow.                                             |
+| `data-form-id`     | required  | The DOM ID associated with form that the Link module will append the `public_key` to as a hidden input and submit when a user completes the onboarding flow.                                             |
 | `data-product`     | required  | The Plaid product you wish to use, either "auth" or "connect".                                                                                                                                          |
 | `data-key`         | required  | The `public_key` associated with your account; available form the [dashboard][4].                                                                                                                       |
 | `data-env`         | required  | The Plaid API environment on which to create user accounts.,For development and testing, use "tartan". For production use, use "production".<br /><br />**Note:** all "production" requests are billed. |
@@ -346,7 +346,7 @@ For possible error codes, see the full listing of
 | `key`        | required  | The `public_key` associated with your account; available form the [dashboard][4].                                                                                                                       |
 | `env`        | required  | The Plaid API environment on which to create user accounts.,For development and testing, use "tartan". For production use, use "production".<br /><br />**Note:** all "production" requests are billed. |
 | `onSuccess`  | required  | A function that is called when a user has successfully onboarded their account. The function should expect one argument, the `public_key`.                                                              |
-| `onExit`     | optional  | A function that is called when a user has specifically exited the CSA flow.                                                                                                                             |
+| `onExit`     | optional  | A function that is called when a user has specifically exited the Link flow.                                                                                                                             |
 | `webhook`    | optional  | Specify a [webhook](https://plaid.com/docs#webhook) to associate with a user.                                                                                                                           |
 
 ## Security
@@ -369,7 +369,7 @@ on our [website][5].
 | <img width="32" height="32" alt="Firefox" src="https://raw.githubusercontent.com/alrra/browser-logos/master/firefox/firefox_64x64.png" />                                   | Fully supported           |
 | <img width="32" height="32" alt="Safari" src="https://raw.githubusercontent.com/alrra/browser-logos/master/safari/safari_64x64.png" />                                      | Fully supported           |
 | <img width="32" height="32" alt="Internet Explorer" src="https://raw.githubusercontent.com/alrra/browser-logos/master/internet-explorer/internet-explorer_64x64.png" /> 10  | Fully supported           |
-| <img width="32" height="32" alt="Internet Explorer" src="https://raw.githubusercontent.com/alrra/browser-logos/master/internet-explorer/internet-explorer_64x64.png" /> 9   | Fully supported<br /><br />**Note**: You must host the CSA module on a HTTPS site for compatability due to IE9 security restrictions. |
+| <img width="32" height="32" alt="Internet Explorer" src="https://raw.githubusercontent.com/alrra/browser-logos/master/internet-explorer/internet-explorer_64x64.png" /> 9   | Fully supported<br /><br />**Note**: You must host the Link module on a HTTPS site for compatability due to IE9 security restrictions. |
 | <img width="32" height="32" alt="Internet Explorer" src="https://raw.githubusercontent.com/alrra/browser-logos/master/internet-explorer/internet-explorer_64x64.png" /> 8   | Not supported             |
 
 ### Mobile
@@ -383,7 +383,7 @@ Modern mobile browsers are supported, including most iPhone and Android devices.
 
 ## Breaking changes
 
-Breaking changes will be avoided if at all possible. Current Project CSA
+Breaking changes will be avoided if at all possible. Current Plaid Link
 releases all use the **beta** channel. That is, the snippet references:
 
 ```
@@ -407,8 +407,8 @@ If you would rather keep the request private, please contact
 support request. :)
 
 [1]: https://plaid.com/docs
-[2]: https://csa-demo.plaid.com
+[2]: https://link-demo.plaid.com
 [3]: https://plaid.com/docs#sandbox
 [4]: https://plaid.com/account/
 [5]: https://plaid.com/security
-[6]: https://github.com/plaid/project-csa/issues/new
+[6]: https://github.com/plaid/link/issues/new

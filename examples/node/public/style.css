@@ -41,23 +41,6 @@ hr {
   border-style: solid;
 }
 
-#plaid-csa button {
-  float: right;
-  text-align: center;
-  display: inline;
-  width: 450px;
-  cursor: pointer;
-  padding: 20px 10px;
-  border: 1px solid rgba(26, 53, 71, .11);
-  border-radius: 50px;
-  font-weight: 400;
-  font-size: 24px;
-  color: rgb(69, 69, 69);
-  margin-top: 90px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
-  background: linear-gradient(#FCE894, #FFE36D);
-}
-
 h1 {
   font-size: 61px;
   position: relative;
