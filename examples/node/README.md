@@ -1,19 +1,19 @@
-# project-csa node.js sample app
+# plaid-link node.js sample app
 
-This is a simple web app that uses [Express][1] and [plaid-node][2] to demonstrate a client and server-side integration of [Project CSA][3].
+This is a simple web app that uses [Express][1] and [plaid-node][2] to demonstrate a client and server-side integration of [Plaid Link][3].
 
 ## Getting Started
 
 Clone the repository:
 
 ```console
-$ git clone git@github.com:plaid/project-csa.git
+$ git clone git@github.com:plaid/link.git
 ```
 
 Then:
 
 ```console
-$ cd project-csa/examples/node
+$ cd link/examples/node
 ```
 
 Install dependencies:
@@ -24,7 +24,7 @@ $ npm install
 
 ## Set your `public_key`
 
-The Project CSA integration lives in `/public/index.html`.  You **must** edit this file to replace `{YOUR_PUBLIC_KEY}` with your actual `public_key` from the [Plaid dashboard][4] if you wish to test with real accounts.
+The Plaid Link integration lives in `/public/index.html`.  You **must** edit this file to replace `{YOUR_PUBLIC_KEY}` with your actual `public_key` from the [Plaid dashboard][4] if you wish to test with real accounts.
 
 If you only wish to test with Plaid [sandbox accounts][5], you may skip this step.
 
@@ -49,6 +49,6 @@ And that's it!
 
 [1]: http://expressjs.com
 [2]: https://github.com/plaid/plaid-node
-[3]: https://plaid.github.io/project-csa
+[3]: https://github.com/plaid/link
 [4]: https://plaid.com/account/
 [5]: https://plaid.com/docs#sandbox

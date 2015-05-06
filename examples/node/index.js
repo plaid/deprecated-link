@@ -16,7 +16,7 @@ var plaidClient =
 var app = express();
 app.use(express.static('public'));
 
-// AJAX endpoint that first exchanges a public_token from the Project CSA
+// AJAX endpoint that first exchanges a public_token from the Plaid Link
 // module for a Plaid access token and then uses that access_token to
 // retrieve account data and balances for a user.
 //
@@ -48,5 +48,5 @@ app.get('/accounts', function(req, res, next) {
 });
 
 var server = app.listen(APP_PORT, function () {
-  console.log('project-csa-demo server listening on port ' + String(APP_PORT));
+  console.log('plaid-link-demo server listening on port ' + String(APP_PORT));
 });
