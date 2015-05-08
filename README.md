@@ -1,4 +1,4 @@
-# Plaid Link - Web Bindings
+# Plaid Link
 
 Plaid Link is a new way to integrate with the [Plaid API][1]. It is a drop-in
 module that offers a secure, elegant authentication flow for each institution
@@ -105,14 +105,16 @@ Include the following markup (the `<form>` and `<script>` tags) in your site
 or web application:
 
 ```html
-<!-- The form will be submitted and data sent to /authenticate when a user onboards their account - you can customize this! -->
-<form id="some-id" method="POST" action="/authenticate"></form>
+<!-- A hidden input named public_token will be appended to this form
+once the user has completed the Link flow. Link will then submit the
+form, sending the public_token to your server. -->
+<form id="some-id" method="GET" action="?"></form>
 
 <script
   src="https://cdn.plaid.com/connect/beta/connect-initialize.js"
   data-client-name="Client Name"
   data-form-id="some-id"
-  data-key="your-public-key-here"
+  data-key="test_key"
   data-product="auth"
   data-env="tartan">
 </script>
@@ -141,24 +143,27 @@ Select" view or trigger a particular institution's credentials form. See below:
 <script>
 var linkHandler = Plaid.create({
   env: 'tartan',
-  clientName: 'Plaid',
+  clientName: 'Client Name',
   key: 'test_key',
   product: 'auth',
+  onLoad: function() {
+    // The Link module finished loading.
+  },
   onSuccess: function(public_token) {
-    // send your public_token to your app server here
+    // Send your public_token to your app server here.
   },
   onExit: function() {
-    // The user exited the Plaid Link flow
+    // The user exited the Link flow.
   },
 });
 
-// Trigger the Chase login view
-document.getElementById('chaseButton').onclick = function() {
-  linkHandler.open('chase');
+// Trigger the BofA login view
+document.getElementById('bofaButton').onclick = function() {
+  linkHandler.open('bofa');
 };
 
 // Trigger the standard institution select view
-document.getElementById('button').onclick = function() {
+document.getElementById('linkButton').onclick = function() {
   linkHandler.open();
 };
 </script>
@@ -166,6 +171,11 @@ document.getElementById('button').onclick = function() {
 
 See the [**parameter reference**](#custom-integration) for complete
 documentation on possible configurations.
+
+`Plaid.create` accepts one argument, a configuration `Object`, and returns an `Object` with
+one function, `open`. `open` accepts either no arguments or an optional [institution type][7].
+If no argument is provided, the "Institution Select" view is opened. If a valid institution type
+is provided, the login form for that particular institution is opened.
 
 ### Step 3: Write server-side handler
 
@@ -206,7 +216,8 @@ var plaid = require('plaid');
 
 var app = express();
 
-var plaidClient = new plaid.Client(process.env.PLAID_CLIENT_ID, process.env.PLAID_SECRET, plaid.environments.tartan);
+var plaidClient =
+  new plaid.Client(process.env.PLAID_CLIENT_ID, process.env.PLAID_SECRET, plaid.environments.tartan);
 
 app.post('/authenticate', function(req, res) {
   var public_token = req.body.public_token;
@@ -266,6 +277,8 @@ For simple integrations:
 For custom integrations:
 
 ```html
+<button id="plaidLinkButton">Open Plaid Link</button>
+
 <script src="https://cdn.plaid.com/connect/beta/connect-initialize.js"></script>
 <script>
 var sandboxHandler = Plaid.create({
@@ -278,7 +291,8 @@ var sandboxHandler = Plaid.create({
   },
 });
 
-document.getElementById('someButton').onClick = function() {
+document.getElementById('plaidLinkButton').onclick = function() {
+  // Trigger the "Institution Select" view
   sandboxHandler.open();
 };
 </script>
@@ -346,7 +360,8 @@ For possible error codes, see the full listing of
 | `key`        | required  | The `public_key` associated with your account; available form the [dashboard][4].                                                                                                                       |
 | `env`        | required  | The Plaid API environment on which to create user accounts.,For development and testing, use "tartan". For production use, use "production".<br /><br />**Note:** all "production" requests are billed. |
 | `onSuccess`  | required  | A function that is called when a user has successfully onboarded their account. The function should expect one argument, the `public_key`.                                                              |
-| `onExit`     | optional  | A function that is called when a user has specifically exited the Link flow.                                                                                                                             |
+| `onExit`     | optional  | A function that is called when a user has specifically exited the Link flow.                                                                                                                            |
+| `onLoad`     | optional  | A function that is called when the Link module has finished loading. Calls to `plaidLinkHandler.open()` prior to the onLoad callback will be delayed until the module is fully loaded.                                                                                                                            |
 | `webhook`    | optional  | Specify a [webhook](https://plaid.com/docs#webhook) to associate with a user.                                                                                                                           |
 
 ## Security
@@ -378,8 +393,7 @@ Modern mobile browsers are supported, including most iPhone and Android devices.
 
 ## Expansion
 
-- Additional customization options
-- Support for PNC and SVB
+Plaid Link is currently a web-only integration.  Plaid Link will offer native iOS and Android bindings in the coming months.
 
 ## Breaking changes
 
@@ -412,3 +426,4 @@ support request. :)
 [4]: https://plaid.com/account/
 [5]: https://plaid.com/security
 [6]: https://github.com/plaid/link/issues/new
+[7]: https://plaid.com/docs#institutions
