@@ -91,9 +91,6 @@ Your `public_key` is available from the [Plaid dashboard][4]:
 
 ![Plaid Dashboard](http://i.imgur.com/ypo3l26.png)
 
-Plaid Link is currently in beta. If you do not see a `public_key` on your
-account dashboard, contact <info@plaid.com> to be assigned one.
-
 Your `public_key` is a less privileged version of your `client_id` and
 `secret`. It simply associates accounts you create using Plaid Link with
 your `client_id`. All Plaid API requests **must** be made using your private
