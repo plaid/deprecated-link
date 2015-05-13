@@ -17,7 +17,7 @@ Read on for a complete getting started guide or jump straight to either the
 [API reference](#reference) or explore some
 [sample apps](https://github.com/plaid/link/tree/master/examples).
 
-![Flow](https://cloud.githubusercontent.com/assets/1531185/7447378/fcad19de-f1ad-11e4-9943-c2ceb6d91107.jpg)
+![Flow](https://cloud.githubusercontent.com/assets/1531185/7601474/6da17012-f8cb-11e4-8d25-05e829c4861c.jpg)
 
 ## Table of contents
 
