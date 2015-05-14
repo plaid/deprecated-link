@@ -40,7 +40,6 @@ Read on for a complete getting started guide or jump straight to either the
     + [Desktop](#desktop)
     + [Mobile](#mobile)
   * [Expansion](#expansion)
-  * [Breaking changes](#breaking-changes)
   * [Support](#support)
 
 ## Glossary
@@ -108,7 +107,7 @@ form, sending the public_token to your server. -->
 <form id="some-id" method="GET" action="?"></form>
 
 <script
-  src="https://cdn.plaid.com/connect/beta/connect-initialize.js"
+  src="https://cdn.plaid.com/link/stable/link-initialize.js"
   data-client-name="Client Name"
   data-form-id="some-id"
   data-key="test_key"
@@ -120,11 +119,11 @@ form, sending the public_token to your server. -->
 See the [**parameter reference**](#simple-integration) for complete
 documentation on possible configurations.
 
-The injected "Link your Bank Account" button has the ID `plaid-connect-button`
+The injected "Link your Bank Account" button has the ID `plaid-link-button`
 and can be styled with CSS:
 
 ```css
-#plaid-connect-button {
+#plaid-link-button {
   border: 10px solid pink;
 }
 ```
@@ -136,7 +135,7 @@ Javascript, when the module is triggered. You can trigger the "Institution
 Select" view or trigger a particular institution's credentials form. See below:
 
 ```html
-<script src="https://cdn.plaid.com/connect/beta/connect-initialize.js"></script>
+<script src="https://cdn.plaid.com/link/stable/link-initialize.js"></script>
 <script>
 var linkHandler = Plaid.create({
   env: 'tartan',
@@ -262,7 +261,7 @@ For simple integrations:
 <form id="some-id" method="POST" action="/authenticate"></form>
 
 <script
-  src="https://cdn.plaid.com/connect/beta/connect-initialize.js"
+  src="https://cdn.plaid.com/link/stable/link-initialize.js"
   data-client-name="Client Name"
   data-form-id="some-id"
   data-key="test_key"
@@ -276,7 +275,7 @@ For custom integrations:
 ```html
 <button id="plaidLinkButton">Open Plaid Link</button>
 
-<script src="https://cdn.plaid.com/connect/beta/connect-initialize.js"></script>
+<script src="https://cdn.plaid.com/link/stable/link-initialize.js"></script>
 <script>
 var sandboxHandler = Plaid.create({
   env: 'tartan',
@@ -391,21 +390,6 @@ Modern mobile browsers are supported, including most iPhone and Android devices.
 ## Expansion
 
 Plaid Link is currently a web-only integration.  Plaid Link will offer native iOS and Android bindings in the coming months.
-
-## Breaking changes
-
-Breaking changes will be avoided if at all possible. Current Plaid Link
-releases all use the **beta** channel. That is, the snippet references:
-
-```
-https://cdn.plaid.com/connect/beta/connect-initialize.js
-```
-
-The beta channel will be more frequently updated than the **stable** channel:
-
-```
-https://cdn.plaid.com/connect/stable/connect-initialize.js
-```
 
 ## Support
 
