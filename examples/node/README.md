@@ -41,7 +41,7 @@ For example, the command below starts the server with the sandbox client_id and 
 $ APP_PORT=8000 PLAID_CLIENT_ID=test_id PLAID_SECRET=test_secret node index.js
 ```
 
-**Note:** To test with non-sanbdox accounts, simply replace `test_id` and `test_secret` with your `client_id` and `secret`, which can be found on the [Plaid dashboard][4].
+**Note:** To test with non-sandbox accounts, simply replace `test_id` and `test_secret` with your `client_id` and `secret`, which can be found on the [Plaid dashboard][4].
 
 Then load up <http://localhost:8000>!
 
