@@ -4,18 +4,18 @@ This is a simple web app that uses [Negroni][1] and [plaid-go][2] to demonstrate
 
 ## Getting Started
 
-go get the repository:
+`go get` the repository:
 
 ```console
 $ go get -u github.com/plaid/link
 ```
 
-go get will complain about `no buildable Go source files`, but you can safely ignore this.
+`go get` will complain about `no buildable Go source files`, but you can safely ignore this.
 
 Then:
 
 ```console
-$ cd $GOPATH/github.com/plaid/link/examples/go
+$ cd $GOPATH/src/github.com/plaid/link/examples/go && go get
 ```
 
 Build the binary:
