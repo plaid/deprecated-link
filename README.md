@@ -169,9 +169,19 @@ See the [**parameter reference**](#custom-integration) for complete
 documentation on possible configurations.
 
 `Plaid.create` accepts one argument, a configuration `Object`, and returns an `Object` with
-one function, `open`. `open` accepts either no arguments or an optional [institution type][7].
+one function, `open`, and one property, `institutions`. `open` accepts either no arguments or an optional [institution type][7].
 If no argument is provided, the "Institution Select" view is opened. If a valid institution type
 is provided, the login form for that particular institution is opened.
+
+The exposed `institutions` property is an `Array` of `Object`s in the form:
+
+```javascript
+[{name: 'Bank of America', type: 'bofa', auth: true, connect: true}, ...]
+```
+
+The `institutions` property will be populated with all supported institutions for a given product. That is, the list of institutions
+will be different for `auth` and `connect`. Use the `institutions` property to dynamically generate a list of supported
+institutions for your Link integration - by doing so, your app will support new institutions and products automatically.
 
 ### Step 3: Write server-side handler
 
