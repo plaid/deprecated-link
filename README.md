@@ -319,9 +319,9 @@ The `/exchange_token` endpoint is available in both the tartan
 | POST   | `/exchange_token` | `client_id`, `secret`, `public_token` |
 
 The `/exchange_token` endpoint has already been integrated into the
-[plaid-node](https://github.com/plaid/plaid-node) and
-[plaid-go](https://github.com/plaid/plaid-go) client libraries. Full support
-for all Plaid client libraries will be rolled out soon.
+[plaid-node](https://github.com/plaid/plaid-node),
+[plaid-go](https://github.com/plaid/plaid-go), [plaid-ruby](https://github.com/plaid/plaid-ruby),
+and [plaid-python](https://github.com/plaid/plaid-python) client libraries. Support for [plaid-java](https://github.com/plaid/plaid-java) is coming soon.
 
 If you are working with a library that does not yet support the
 `/exchange_token` endpoint you can simply make a standard HTTP request:
