@@ -11,7 +11,7 @@ information can be found in the [browser support](#browser-support) section.
 Check out the [**demo**][2] to see it in action! You can test out [sandbox
 credentials][3] (username: `plaid_test`, password: `plaid_good`) or your own
 bank account credentials. Source code for the demo app can be found
-[here](https://github.com/plaid/link/tree/master/examples/node).
+[here](https://github.com/plaid/link/tree/master/examples).
 
 Read on for a complete getting started guide or jump straight to either the
 [API reference](#reference) or explore some
@@ -193,7 +193,7 @@ This `public_token` must be exchanged for a Plaid `access_token` using the
 [`/exchange_token`](#exchange_token-endpoint) API endpoint. To do so, you must
 add a server side handler. A sample node.js server-side handler is provided
 below - full application samples can be found in the
-[/examples](https://github.com/plaid/link/blob/master/examples/node)
+[/examples](https://github.com/plaid/link/blob/master/examples)
 directory of this repository.
 
 With the [simple integration](#step-2-simple-integration), the `public_token`
