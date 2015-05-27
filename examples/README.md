@@ -19,7 +19,7 @@ We're working quickly to integrate this endpoint into all of our API client libr
 We built [Sum][1] to demonstrate a sample Link client and server-side integration using our [client libraries](#client-libraries). Check out the source code in the language of your choice:
 - [node.js][3]
 - [go][4]
-- ruby (coming soon!)
+- [ruby][11]
 - python (coming soon!)
 
 Each implementation has a complete README with instructions for running the app locally!
@@ -38,3 +38,4 @@ Each implementation has a complete README with instructions for running the app 
 [8]: https://github.com/plaid/plaid-ruby#exchanging-a-link-public_token-for-a-plaid-access_token
 [9]: https://github.com/plaid/plaid-python
 [10]: https://github.com/plaid/link#exchange_token-endpoint
+[11]: https://github.com/plaid/link/tree/master/examples/ruby
