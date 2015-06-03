@@ -6,13 +6,13 @@ Check out our code samples and community-contributed resources to kickstart your
 
 Link provides a drop-in HTML snippet for the client-side integration but does requires a server-side handler to coordinate exchanging a Link `public_token` for a Plaid `access_token` via the [`/exchange_token` endpoint][10].
 
-We're working quickly to integrate this endpoint into all of our API client libraries. Check out an example in your preferred client library:
+The `/exchange_token` endpoint is integrated into each of our client libraries. Check out some examples:
 
 - [plaid-node][6]
 - [plaid-go][7]
 - [plaid-ruby][8]
 - [plaid-python][9]
-- plaid-java (coming soon!)
+- [plaid-java][12]
 
 ## Sum App
 
@@ -39,3 +39,4 @@ Each implementation has a complete README with instructions for running the app 
 [9]: https://github.com/plaid/plaid-python
 [10]: https://github.com/plaid/link#exchange_token-endpoint
 [11]: https://github.com/plaid/link/tree/master/examples/ruby
+[12]: https://github.com/plaid/plaid-java#exchange-a-plaid-link-public_token-for-an-api-access_token
