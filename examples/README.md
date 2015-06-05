@@ -36,7 +36,7 @@ Each implementation has a complete README with instructions for running the app 
 [6]: https://github.com/plaid/plaid-node#examples
 [7]: https://github.com/plaid/plaid-go#exchange-a-plaid-link-public_token-for-an-access_token
 [8]: https://github.com/plaid/plaid-ruby#exchanging-a-link-public_token-for-a-plaid-access_token
-[9]: https://github.com/plaid/plaid-python
+[9]: https://github.com/plaid/plaid-python#exchange
 [10]: https://github.com/plaid/link#exchange_token-endpoint
 [11]: https://github.com/plaid/link/tree/master/examples/ruby
 [12]: https://github.com/plaid/plaid-java#exchange-a-plaid-link-public_token-for-an-api-access_token
