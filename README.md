@@ -21,26 +21,26 @@ Read on for a complete getting started guide or jump straight to either the
 
 ## Table of contents
 
-- [Plaid Link](#plaid-link)
-  * [Table of contents](#table-of-contents)
-  * [Glossary](#glossary)
-  * [Getting started](#getting-started)
-    + [Step 1: Get your `public_key`](#step-1-get-your-public_key)
-    + [Step 2: Simple integration](#step-2-simple-integration)
-    + [Step 2: Custom integration](#step-2-custom-integration)
-    + [Step 3: Write server-side handler](#step-3-write-server-side-handler)
-    + [Step 4: Test with sandbox credentials](#step-4-test-with-sandbox-credentials)
-  * [Reference](#reference)
-    + [`/exchange_token` endpoint](#exchange_token-endpoint)
-    + [Parameter reference](#parameter-reference)
-      + [Simple integration](#simple-integration)
-      + [Custom integration](#custom-integration)
-  * [Security](#security)
-  * [Browser support](#browser-support)
-    + [Desktop](#desktop)
-    + [Mobile](#mobile)
-  * [Expansion](#expansion)
-  * [Support](#support)
+* [Table of contents](#table-of-contents)
+* [Glossary](#glossary)
+* [Getting started](#getting-started)
+  + [Step 1: Get your `public_key`](#step-1-get-your-public_key)
+  + [Step 2: Simple integration](#step-2-simple-integration)
+  + [Step 2: Custom integration](#step-2-custom-integration)
+  + [Step 3: Write server-side handler](#step-3-write-server-side-handler)
+  + [Step 4: Test with sandbox credentials](#step-4-test-with-sandbox-credentials)
+* [Updating existing user accounts](#updating-existing-user-accounts)
+* [Reference](#reference)
+  + [`/exchange_token` endpoint](#exchange_token-endpoint)
+  + [Parameter reference](#parameter-reference)
+    + [Simple integration](#simple-integration)
+    + [Custom integration](#custom-integration)
+* [Security](#security)
+* [Browser support](#browser-support)
+  + [Desktop](#desktop)
+  + [Mobile](#mobile)
+* [Expansion](#expansion)
+* [Support](#support)
 
 ## Glossary
 
@@ -76,13 +76,14 @@ covers how to exchange a `public_token` for a `access_token`.
 
 There are two different integrations:
 
-- [**Simple:**](#step-2-simple-integration) The simple integrations provides a
+- [**Simple:**](#step-2-simple-integration) The simple integration provides a
   customizable "Link your Bank Account" button and handles submitting a Plaid
   `public_token` to a server endpoint that you specify.
 - [**Custom:**](#step-2-custom-integration) The custom integration lets you
   trigger the Plaid Link module via client-side Javascript. You specify your own
   callback function to be called with the `public_token` once a user has
   authenticated.
+
 
 ### Step 1: Get your `public_key`
 
@@ -307,6 +308,93 @@ document.getElementById('plaidLinkButton').onclick = function() {
 If you are having trouble using the module in sandbox mode, check the
 developer console in your browser for error messages.
 
+
+## Updating existing user accounts
+
+When a user changes their username, password, or MFA credentials with a
+financial institution or is locked out of their account, they must update their
+credentials with Plaid as well.
+
+Link's **update mode** makes this process secure and painless and is available in
+both the simple and custom integrations.
+
+To use **update mode**, initialize Link with the `public_token` for the user
+you wish to update.
+
+For the simple integration add the `data-token` attribute as follows:
+```html
+<!-- A hidden input named public_token will be appended to this form
+once the user has completed the Link flow. Link will then submit the
+form, sending the new public_token to your server. -->
+<form id="some-id" method="GET" action="?"></form>
+
+<script
+  src="https://cdn.plaid.com/link/stable/link-initialize.js"
+  data-client-name="Client Name"
+  data-form-id="some-id"
+  data-key="test_key"
+  data-product="auth"
+  data-env="tartan"
+  data-token="test,chase,connected">
+</script>
+```
+
+The custom initalizer takes a similarly-named `token` added to the parameter hash:
+```html
+<script src="https://cdn.plaid.com/link/stable/link-initialize.js"></script>
+<script>
+var linkHandler = Plaid.create({
+  env: 'tartan',
+  clientName: 'Client Name',
+  key: 'test_key',
+  product: 'auth',
+  token: 'test,chase,connected',
+  onLoad: function() {
+    // The Link module finished loading.
+  },
+  onSuccess: function(public_token) {
+    // Send the newly updated public_token to your app server here.
+  },
+  onExit: function() {
+    // The user exited the Link flow.
+  },
+});
+
+// Trigger the authentication view
+document.getElementById('linkButton').onclick = function() {
+  linkHandler.open();
+};
+</script>
+```
+
+Link will jump directly to the login view for the appropriate institution when in
+update mode.
+
+Note that for custom integrations calling Link with an institution will not work
+as usual:
+```
+linkHandler.open('chase');
+```
+Instead it will function identically to:
+```
+linkHandler.open();
+```
+This is because the user's public token is associated with a particular
+institution and it does not make sense to open another institution's authentication.
+
+### Test update mode with sandbox tokens
+
+For update mode a suitable sandbox public token can be generated by inserting
+the desired [institution type](https://plaid.com/docs/#institutions) into the string
+`test,{institution_type},connected`.
+
+For example:
+```
+test,chase,connected
+test,usaa,connected
+test,wells,connected
+```
+
 ## Reference
 
 ### `/exchange_token` endpoint
@@ -350,25 +438,27 @@ For possible error codes, see the full listing of
 
 | Parameter          | Required? | Description                                                                                                                                                                                             |
 |--------------------|-----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `data-client-name` | required  | Displayed once a user has successfully linked their account.                                                                                                                    |
-| `data-form-id`     | required  | The DOM ID associated with form that the Link module will append the `public_key` to as a hidden input and submit when a user completes the onboarding flow.                                             |
+| `data-client-name` | required  | Displayed once a user has successfully linked their account.                                                                                                                                            |
+| `data-form-id`     | required  | The DOM ID associated with form that the Link module will append the `public_key` to as a hidden input and submit when a user completes the onboarding flow.                                            |
 | `data-product`     | required  | The Plaid product you wish to use, either "auth" or "connect".                                                                                                                                          |
 | `data-key`         | required  | The `public_key` associated with your account; available form the [dashboard][4].                                                                                                                       |
 | `data-env`         | required  | The Plaid API environment on which to create user accounts.,For development and testing, use "tartan". For production use, use "production".<br /><br />**Note:** all "production" requests are billed. |
 | `data-webhook`     | optional  | Specify a [webhook](https://plaid.com/docs#webhook) to associate with a user.                                                                                                                           |
+| `data-token`       | optional  | Specify an existing user's public token to launch Link in update mode. This will cause Link to open directly to the authentication step for that user's institutiton.                                   |
 
 #### Custom integration
 
 | Parameter    | Required? | Description                                                                                                                                                                                             |
 |--------------|-----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `clientName` | required  | Displayed once a user has successfully linked their account.                                                                                                                    |
+| `clientName` | required  | Displayed once a user has successfully linked their account.                                                                                                                                            |
 | `product`    | required  | The Plaid product you wish to use, either "auth" or "connect".                                                                                                                                          |
 | `key`        | required  | The `public_key` associated with your account; available form the [dashboard][4].                                                                                                                       |
 | `env`        | required  | The Plaid API environment on which to create user accounts.,For development and testing, use "tartan". For production use, use "production".<br /><br />**Note:** all "production" requests are billed. |
 | `onSuccess`  | required  | A function that is called when a user has successfully onboarded their account. The function should expect one argument, the `public_key`.                                                              |
 | `onExit`     | optional  | A function that is called when a user has specifically exited the Link flow.                                                                                                                            |
-| `onLoad`     | optional  | A function that is called when the Link module has finished loading. Calls to `plaidLinkHandler.open()` prior to the onLoad callback will be delayed until the module is fully loaded.                                                                                                                            |
+| `onLoad`     | optional  | A function that is called when the Link module has finished loading. Calls to `plaidLinkHandler.open()` prior to the onLoad callback will be delayed until the module is fully loaded.                  |
 | `webhook`    | optional  | Specify a [webhook](https://plaid.com/docs#webhook) to associate with a user.                                                                                                                           |
+| `token`      | optional  | Specify an existing user's public token to launch Link in update mode. This will cause Link to open directly to the authentication step for that user's institutiton.                                   |
 
 ## Security
 
