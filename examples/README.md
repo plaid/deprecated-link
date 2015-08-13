@@ -41,4 +41,4 @@ Each implementation has a complete README with instructions for running the app 
 [10]: https://github.com/plaid/link#exchange_token-endpoint
 [11]: https://github.com/plaid/link/tree/master/examples/ruby
 [12]: https://github.com/plaid/plaid-java#exchange-a-plaid-link-public_token-for-an-api-access_token
-[13] : https://github.com/pbernasconi/plaid-link-ionic-example
+[13]: https://github.com/pbernasconi/plaid-link-ionic-example
