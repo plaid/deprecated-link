@@ -8,3 +8,10 @@ node_modules
 *.o
 *.a
 *.so
+
+
+## UIWebView ##
+*.xcworkspace
+!default.xcworkspace
+*.xcuserdata
+xcuserdata
