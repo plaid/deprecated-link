@@ -502,7 +502,7 @@ If you would rather keep the request private, please contact
 support request. :)
 
 [1]: https://plaid.com/docs
-[2]: https://link-demo.plaid.com
+[2]: https://demo.plaid.com
 [3]: https://plaid.com/docs#sandbox
 [4]: https://plaid.com/account/
 [5]: https://plaid.com/security
