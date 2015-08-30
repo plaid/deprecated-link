@@ -28,6 +28,7 @@ Each implementation has a complete README with instructions for running the app 
 
 - [Ember component][5], by [@jasonkriss](https://github.com/jasonkriss)
 - [Example Angular/Ionic app][13], by [@pbernasconi](https://github.com/pbernasconi)
+- [Angular component][14], by [@csbarnes](https://github.com/csbarnes)
 
 [1]: https://link-demo.plaid.com
 [2]: https://plaid.com/docs/#resources
@@ -42,3 +43,4 @@ Each implementation has a complete README with instructions for running the app 
 [11]: https://github.com/plaid/link/tree/master/examples/ruby
 [12]: https://github.com/plaid/plaid-java#exchange-a-plaid-link-public_token-for-an-api-access_token
 [13]: https://github.com/pbernasconi/plaid-link-ionic-example
+[14]: https://github.com/csbarnes/angular-plaid-link
