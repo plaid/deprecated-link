@@ -107,6 +107,9 @@ once the user has completed the Link flow. Link will then submit the
 form, sending the public_token to your server. -->
 <form id="some-id" method="GET" action="?"></form>
 
+<!-- To use Link with longtail institutions on Connect, set the
+data-long-tail attribute to 'true'. See the Parameter Reference for additional
+documentation. -->
 <script
   src="https://cdn.plaid.com/link/stable/link-initialize.js"
   data-client-name="Client Name"
@@ -118,7 +121,8 @@ form, sending the public_token to your server. -->
 ```
 
 See the [**parameter reference**](#simple-integration) for complete
-documentation on possible configurations.
+documentation on possible configurations and instructions for enabling longtail
+institutions on Connect.
 
 The injected "Link your Bank Account" button has the ID `plaid-link-button`
 and can be styled with CSS:
@@ -143,6 +147,9 @@ var linkHandler = Plaid.create({
   clientName: 'Client Name',
   key: 'test_key',
   product: 'auth',
+  // To use Link with longtail institutions on Connect, set the
+  // 'longTail' option to true:
+  // longTail: true,
   onLoad: function() {
     // The Link module finished loading.
   },
@@ -167,7 +174,8 @@ document.getElementById('linkButton').onclick = function() {
 ```
 
 See the [**parameter reference**](#custom-integration) for complete
-documentation on possible configurations.
+documentation on possible configurations and instructions for enabling longtail
+institutions on Connect.
 
 `Plaid.create` accepts one argument, a configuration `Object`, and returns an `Object` with
 one function, `open`, and one property, `institutions`. `open` accepts either no arguments or an optional [institution type][7].
