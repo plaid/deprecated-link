@@ -445,6 +445,7 @@ For possible error codes, see the full listing of
 | `data-env`         | required  | The Plaid API environment on which to create user accounts.,For development and testing, use "tartan". For production use, use "production".<br /><br />**Note:** all "production" requests are billed. |
 | `data-webhook`     | optional  | Specify a [webhook](https://plaid.com/docs#webhook) to associate with a user.                                                                                                                           |
 | `data-token`       | optional  | Specify an existing user's public token to launch Link in update mode. This will cause Link to open directly to the authentication step for that user's institutiton.                                   |
+| `data-long-tail`   | optional  |  Set to `true` to launch Link with [longtail institution support][8] enabled. Longtail institutions are only available with Connect (`data-product` is `connect`).<br /><br />**Note:** Your account **must** be enabled for longtail usage - contact signups@plaid.com to gain access.
 
 #### Custom integration
 
@@ -459,6 +460,7 @@ For possible error codes, see the full listing of
 | `onLoad`     | optional  | A function that is called when the Link module has finished loading. Calls to `plaidLinkHandler.open()` prior to the onLoad callback will be delayed until the module is fully loaded.                  |
 | `webhook`    | optional  | Specify a [webhook](https://plaid.com/docs#webhook) to associate with a user.                                                                                                                           |
 | `token`      | optional  | Specify an existing user's public token to launch Link in update mode. This will cause Link to open directly to the authentication step for that user's institutiton.                                   |
+| `longTail`   | optional  |  Set to `true` to launch Link with [longtail institution support][8] enabled. Longtail institutions are only available with Connect (`product` is `connect`).<br /><br />**Note:** Your account **must** be enabled for longtail usage - contact signups@plaid.com to gain access.
 
 ## Security
 
@@ -508,3 +510,4 @@ support request. :)
 [5]: https://plaid.com/security
 [6]: https://github.com/plaid/link/issues/new
 [7]: https://plaid.com/docs#institutions
+[8]: https://plaid.com/docs/#long-tail-institutions
