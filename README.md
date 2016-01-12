@@ -1,5 +1,8 @@
 # Plaid Link
 
+**Looking to get started with the Plaid Link + Stripe ACH Integration?** Head over
+to the [docs][9].
+
 Plaid Link is a new way to integrate with the [Plaid API][1]. It is a drop-in
 module that offers a secure, elegant authentication flow for each institution
 that Plaid supports. The module handles input validation, error handling, and
@@ -519,3 +522,4 @@ support request. :)
 [6]: https://github.com/plaid/link/issues/new
 [7]: https://plaid.com/docs#institutions
 [8]: https://plaid.com/docs/#long-tail-institutions
+[9]: https://plaid.com/docs/link/stripe
