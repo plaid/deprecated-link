@@ -15,3 +15,7 @@ node_modules
 !default.xcworkspace
 *.xcuserdata
 xcuserdata
+
+
+## requirejs ##
+/examples/requirejs/public/vendor/*
