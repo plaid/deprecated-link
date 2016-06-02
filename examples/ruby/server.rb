@@ -8,12 +8,11 @@ set :port, ENV['APP_PORT'] || 8000
 
 # Initialize the Plaid client with your client_id and secret
 Plaid.config do |p|
-  p.customer_id = ENV['PLAID_CLIENT_ID']
+  p.client_id = ENV['PLAID_CLIENT_ID']
   p.secret = ENV['PLAID_SECRET']
-  p.environment_location = 'https://tartan.plaid.com'
+  p.env = :tartan
 end
 
-#
 get '/' do
   send_file File.join(settings.public_folder, 'index.html')
 end
@@ -26,13 +25,13 @@ get '/accounts' do
   public_token = params[:public_token]
 
   # Exchange the Link public_token for a Plaid API access token
-  exchange_token_response = Plaid.exchange_token(public_token)
+  exchange_token_response = Plaid::User.exchange_token(public_token)
 
   # Initialize a Plaid user
-  user = Plaid.set_user(exchange_token_response.access_token, ['auth'])
+  user = Plaid::User.load(:auth, exchange_token_response.access_token)
 
   # Retrieve information about the user's accounts
-  user.get('auth')
+  user.auth
 
   # Transform each account object to a simple hash
   transformed_accounts = user.accounts.map do |account|
