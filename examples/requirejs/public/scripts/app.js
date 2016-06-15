@@ -9,7 +9,8 @@ require(['Plaid'], function(Plaid) {
    env: 'tartan', // change this variable to 'production' for production use
    product: 'auth',
    key: 'test_key', // add you own public_key here
-   onSuccess: function(token) {
+   onSuccess: function(token, metadata) {
+     console.log('account_id is', metadata.account_id);
      window.location = '/accounts.html?public_token=' + token;
    }
   });
