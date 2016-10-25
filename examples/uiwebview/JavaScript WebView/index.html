@@ -29,19 +29,20 @@
 	</head>
 	<body>
 		<h3>Plaid Link - UIWebView</h3>
-        
+
         <button id="plaidLinkButton">Open Plaid Link</button>
 
         <script src="https://cdn.plaid.com/link/stable/link-initialize.js"></script>
         <script>
             var appScheme = 'linkApp';
-            
+
             var sandboxHandler = Plaid.create({
               env: 'tartan',
               clientName: 'Client Name',
               key: 'test_key',
               product: 'auth',
-              onSuccess: function(public_token) {
+              onSuccess: function(public_token, metadata) {
+								console.log('account_id is', metadata.account_id);
                 var action = 'handlePublicToken';
                 var url = appScheme + '://' + action + '#' + public_token;
                 window.location.href = url; // send public_token back to the ViewController delegate
@@ -57,7 +58,7 @@
                 window.location.href = url;
               }
             });
-        
+
             document.getElementById('plaidLinkButton').onclick = function() {
                 // Trigger the "Institution Select" view
                 sandboxHandler.open();
@@ -65,4 +66,3 @@
         </script>
 	</body>
 </html>
-

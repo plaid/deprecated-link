@@ -32,7 +32,8 @@
       env: 'tartan',
       product: 'auth',
       key: 'test_key',
-      onSuccess: function(token) {
+      onSuccess: function(token, metadata) {
+        console.log('account_id is', metadata.account_id);
         window.location = '/accounts.html?public_token=' + token;
       },
     });
@@ -42,7 +43,8 @@
       env: 'tartan',
       product: 'auth',
       key: '{YOUR_PUBLIC_KEY}',
-      onSuccess: function(token) {
+      onSuccess: function(token, metadata) {
+        console.log('account_id is', metadata.account_id);
         window.location = '/accounts.html?public_token=' + token;
       },
     });
