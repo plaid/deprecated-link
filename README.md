@@ -1,6 +1,6 @@
 # Plaid Link
 
-The Link documentation has moved:
+The Link documentation has moved permanently:
 
 - [Link Docs][1]
 - [Link + Stripe ACH Docs][2]
