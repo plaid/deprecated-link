@@ -13,7 +13,7 @@ The current beta release is located in the `/beta` directory.
 - When integrating Link on the web, use `https://cdn.plaid.com/link/beta/link-initialize.js`
 - When integrating Link within a WebView, use `https://cdn.plaid.com/link/beta/link.html`
 
-Stay tuned for updates to the [`CHANGELOG.md`](/CHANGELOG.md) throughout the
+Stay tuned for updates to the [`CHANGELOG.md`](CHANGELOG.md) throughout the
 development of the beta candidate.
 
 > **NOTE** - please open any beta issues inside of the [Issues section of this
@@ -57,9 +57,9 @@ Find examples of a mobile Link integration within an iOS and Android WebView
 below. The sample integrations include example code to initialize Link and
 receive data from Link (analogous to `onSuccess` and `onExit`).
 
-- [iOS UIWebView](/uiwebview)
+- [iOS UIWebView](uiwebview)
 - iOS WKWebView (coming soon)
-- [Android WebView](/android)
+- [Android WebView](android)
 
 [link-docs]: https://plaid.com/docs/quickstart
 [scheme-protocol]: https://en.wikipedia.org/wiki/Uniform_Resource_Identifier
