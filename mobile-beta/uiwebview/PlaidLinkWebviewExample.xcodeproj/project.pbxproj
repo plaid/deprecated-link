@@ -138,6 +138,11 @@
 			attributes = {
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "Plaid LLC.";
+				TargetAttributes = {
+					7581830F1685069B004F890C = {
+						DevelopmentTeam = Z2P2MSMY87;
+					};
+				};
 			};
 			buildConfigurationList = 7581830A1685069A004F890C /* Build configuration list for PBXProject "PlaidLinkWebviewExample" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -239,6 +244,7 @@
 		758183351685069C004F890C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = Z2P2MSMY87;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JavaScript WebView/PlaidLinkWebviewExample-Prefix.pch";
 				INFOPLIST_FILE = "JavaScript WebView/PlaidLinkWebviewExample-Info.plist";
@@ -250,6 +256,7 @@
 		758183361685069C004F890C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = Z2P2MSMY87;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JavaScript WebView/PlaidLinkWebviewExample-Prefix.pch";
 				INFOPLIST_FILE = "JavaScript WebView/PlaidLinkWebviewExample-Info.plist";
