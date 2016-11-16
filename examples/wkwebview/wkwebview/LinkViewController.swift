@@ -63,7 +63,7 @@ class LinkViewController: UIViewController, WKNavigationDelegate {
         let components = NSURLComponents()
         components.scheme = "https"
         components.host = "cdn.plaid.com"
-        components.path = "/link/beta/link.html"
+        components.path = "/link/v2/stable/link.html"
         components.queryItems = config.map { (NSURLQueryItem(name: $0, value: $1) as URLQueryItem) }
         return components.string!
     }

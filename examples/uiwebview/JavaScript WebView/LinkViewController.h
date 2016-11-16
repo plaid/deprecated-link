@@ -1,9 +1,8 @@
 //
 //  ViewController.h
-//  Plaid Link UIWebView
+//  PlaidLinkWebviewExample
 //
-//  Created by Paolo Bernasconi.
-//  Copyright (c) 2015 Plaid LLC. All rights reserved.
+//  Copyright (c) 2016 Plaid Technologies, Inc. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -14,5 +13,10 @@
 @property (strong, nonatomic) IBOutlet UIToolbar *toolBar;
 
 - (IBAction)exitButton:(id)sender;
+
+// Example Plaid Link helper methods
+-(NSMutableDictionary*)dictionaryFromLinkUrl:(NSURL*)linkURL;
+-(NSURL*)generateLinkInitializationURLWithOptions:(NSDictionary*)options;
+
 
 @end

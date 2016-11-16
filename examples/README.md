@@ -1,46 +1,69 @@
 # Link Examples
 
-Check out our code samples and community-contributed resources to kickstart your Plaid Link integration!
+Check out our code samples and community-contributed resources to kickstart your
+Plaid Link integration!
 
 ## Client Libraries
 
-Link provides a drop-in HTML snippet for the client-side integration but does requires a server-side handler to coordinate exchanging a Link `public_token` for a Plaid `access_token` via the [`/exchange_token` endpoint][10].
+Link provides a drop-in HTML snippet for the client-side integration but does
+requires a server-side handler to coordinate exchanging a Link `public_token`
+for a Plaid `access_token` via the [`/exchange_token` endpoint][exchange-token].
 
-The `/exchange_token` endpoint is integrated into each of our client libraries. Check out some examples:
+The `/exchange_token` endpoint is integrated into each of our client libraries.
+Check out some examples:
 
-- [plaid-node][6]
-- [plaid-go][7]
-- [plaid-ruby][8]
-- [plaid-python][9]
-- [plaid-java][12]
+- [plaid-node][plaid-node]
+- [plaid-go][plaid-go]
+- [plaid-ruby][plaid-ruby]
+- [plaid-python][plaid-python]
+- [plaid-java][plaid-java]
 
 ## Sum App
 
-We built [Sum][1] to demonstrate a sample Link client and server-side integration using our [client libraries](#client-libraries). Check out the source code in the language of your choice:
-- [node.js][3]
-- [go][4]
-- [ruby][11]
+We built [Sum][link-demo] to demonstrate a sample Link client and server-side
+integration using our [client libraries](#client-libraries). Check out the
+source code in the language of your choice:
+
+- [node.js](node)
+- [go](go)
+- [ruby](ruby)
+- [requirejs](requirejs)
 - python (coming soon!)
 
 Each implementation has a complete README with instructions for running the app locally!
 
+## WebViews
+
+![mobile-web-beta](https://cloud.githubusercontent.com/assets/1716394/19668683/4b6e5b82-9a0e-11e6-89ad-e362f34e0e31.jpg)
+
+WebViews open Link directly, rather than via an embedded iFrame.
+Communication is standardized too for WebViews, employing the common
+[URI scheme protocol][scheme-protocol] with query parameters to pass data
+between your native app and the WebView. See the sample apps below for an
+example integration, and checkout the [WebView docs][link-docs-webview] for more
+information:
+
+- [iOS WKWebView in Swift](wkwebview)
+- [iOS UIWebView in Objective C](uiwebview)
+- [Android WebView](android)
+
 ## Community Resources
 
-- [Ember component][5], by [@jasonkriss](https://github.com/jasonkriss)
-- [Example Angular/Ionic app][13], by [@pbernasconi](https://github.com/pbernasconi)
-- [Angular component][14], by [@csbarnes](https://github.com/csbarnes)
+- [Ember component][ember-plaid], by [@jasonkriss](https://github.com/jasonkriss)
+- [Example Angular/Ionic app][plaid-link-ionic-example], by [@pbernasconi](https://github.com/pbernasconi)
+- [Angular component][angular-plaid-link], by [@csbarnes](https://github.com/csbarnes)
+- [React component][react-plaid-link], by [@pbernasconi](https://github.com/pbernasconi)
 
-[1]: https://link-demo.plaid.com
-[2]: https://plaid.com/docs/#resources
-[3]: https://github.com/plaid/link/tree/master/examples/node
-[4]: https://github.com/plaid/link/tree/master/examples/go
-[5]: https://github.com/jasonkriss/ember-plaid
-[6]: https://github.com/plaid/plaid-node#examples
-[7]: https://github.com/plaid/plaid-go#exchange-a-plaid-link-public_token-for-an-access_token
-[8]: https://github.com/plaid/plaid-ruby#exchanging-a-link-public_token-for-a-plaid-access_token
-[9]: https://github.com/plaid/plaid-python#exchange
-[10]: https://github.com/plaid/link#exchange_token-endpoint
-[11]: https://github.com/plaid/link/tree/master/examples/ruby
-[12]: https://github.com/plaid/plaid-java#exchange-a-plaid-link-public_token-for-an-api-access_token
-[13]: https://github.com/pbernasconi/plaid-link-ionic-example
-[14]: https://github.com/csbarnes/angular-plaid-link
+[angular-plaid-link]: https://github.com/csbarnes/angular-plaid-link
+[ember-plaid]: https://github.com/jasonkriss/ember-plaid
+[exchange-token]: https://github.com/plaid/link#exchange_token-endpoint
+[link-demo]: https://demo.plaid.com
+[link-docs-webview]: https://plaid.com/docs/quickstart#webview-integration
+[plaid-go]: https://github.com/plaid/plaid-go#exchange-a-plaid-link-public_token-for-an-access_token
+[plaid-java]: https://github.com/plaid/plaid-java#exchange-a-plaid-link-public_token-for-an-api-access_token
+[plaid-link-ionic-example]: https://github.com/pbernasconi/plaid-link-ionic-example
+[plaid-node]: https://github.com/plaid/plaid-node#examples
+[plaid-python]: https://github.com/plaid/plaid-python#exchange
+[plaid-ruby]: https://github.com/plaid/plaid-ruby#exchanging-a-link-public_token-for-a-plaid-access_token
+[react-plaid-link]: https://github.com/pbernasconi/react-plaid-link
+[scheme-protocol]: https://en.wikipedia.org/wiki/Uniform_Resource_Identifier
