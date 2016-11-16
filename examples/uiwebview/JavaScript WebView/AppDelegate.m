@@ -1,9 +1,8 @@
 //
 //  AppDelegate.m
-//  Plaid Link UIWebView
+//  PlaidLinkWebviewExample
 //
-//  Created by Paolo Bernasconi.
-//  Copyright (c) 2015 Plaid LLC. All rights reserved.
+//  Copyright (c) 2016 Plaid Technologies, Inc. All rights reserved.
 //
 
 #import "AppDelegate.h"
