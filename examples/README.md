@@ -34,7 +34,7 @@ Each implementation has a complete README with instructions for running the app 
 
 ## WebViews
 
-![mobile-web-beta](https://cloud.githubusercontent.com/assets/1716394/19668683/4b6e5b82-9a0e-11e6-89ad-e362f34e0e31.jpg)
+![mobile-web-beta](https://plaid.com/images/docs/link-docs-image-2.jpg)
 
 WebViews open Link directly, rather than via an embedded iFrame.
 Communication is standardized too for WebViews, employing the common
