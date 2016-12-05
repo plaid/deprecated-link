@@ -10,8 +10,6 @@ import WebKit
 
 class LinkViewController: UIViewController, WKNavigationDelegate {
     
-    /// URLs matching this scheme will be intercepted & handled by this view controller
-    private static let linkScheme = "plaidlink"
     
     var webView: WKWebView!
     
@@ -22,6 +20,7 @@ class LinkViewController: UIViewController, WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // load the link url
         loadLinkModuleInWebview()
     }
     
@@ -39,6 +38,7 @@ class LinkViewController: UIViewController, WKNavigationDelegate {
         webView.load(request as URLRequest)
     }
     
+    // parseQueryParams :: parse query parameters into a Dictionary
     private func parseQueryParams(fromURL url: URL) -> Dictionary<String, String> {
         var paramsDictionary = [String: String]()
         let queryItems = NSURLComponents(string: (url.absoluteString))?.queryItems
@@ -71,81 +71,60 @@ class LinkViewController: UIViewController, WKNavigationDelegate {
     }
     
     func webView(_ webView: WKWebView,
-                 decidePolicyFor navigationAction: WKNavigationAction,
-                 decisionHandler: @escaping ((WKNavigationActionPolicy) -> Void)) {
+                 decidePolicyForNavigationAction navigationAction: WKNavigationAction,
+                 decisionHandler: ((WKNavigationActionPolicy) -> Void)) {
         
-        guard let url = navigationAction.request.url else {
-            assertionFailure("Expected navigationAction to have non-nil URL")
-            decisionHandler(.allow)
-            return
-        }
+        let linkScheme = "plaidlink"
+        let actionScheme = navigationAction.request.url?.scheme
+        let actionType = navigationAction.request.url?.host
+        let queryParams = parseQueryParams(fromURL: navigationAction.request.url!)
         
-        if matchesLinkScheme(url) {
-            interceptPlaidLinkURL(url: url)
+        if (actionScheme == linkScheme) {
+            switch actionType {
+                
+            case "connected"?:
+                // Close the webview
+                self.dismiss(animated: true, completion: nil)
+                
+                // Parse data passed from Link into a dictionary
+                // This includes the public_token as well as account and institution metadata
+                print("Public Token: \(queryParams["public_token"])")
+                print("Account ID: \(queryParams["account_id"])")
+                print("Institution type: \(queryParams["institution_type"])")
+                print("Institution name: \(queryParams["institution_name"])")
+                break
+            case "exit"?:
+                // Close the webview
+                self.dismiss(animated: true, completion: nil)
+                
+                // Parse data passed from Link into a dictionary
+                // This includes information about where the user was in the Link flow
+                // any errors that occurred, and request IDs
+                print("URL: \(navigationAction.request.url?.absoluteString)")
+                // Output data from Link
+                print("User status in flow: \(queryParams["status"])")
+                // The requet ID keys may or may not exist depending on when the user exited
+                // the Link flow.
+                print("Link request ID: \(queryParams["link_request_id"])")
+                print("Plaid API request ID: \(queryParams["link_request_id"])")
+                break
+                
+            default:
+                print("Link action detected: \(actionType)")
+                break
+            }
+            
             decisionHandler(.cancel)
-        }
-        else if shouldOpenInSafari(navigationAction: navigationAction) {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else if (navigationAction.navigationType == WKNavigationType.linkActivated &&
+            (actionScheme == "http" || actionScheme == "https")) {
+            // Handle http:// and https:// links inside of Plaid Link,
+            // and open them in a new Safari page. This is necessary for links
+            // such as "forgot-password" and "locked-account"
+            UIApplication.shared.openURL(navigationAction.request.url!)
             decisionHandler(.cancel)
-        }
-        else {
-            print("Unrecognized URL scheme detected that is neither HTTP, HTTPS, or related to Plaid Link: \(navigationAction.request.url?.absoluteString)");
+        } else {
+            print("Unrecognized URL scheme detected that is neither HTTP, HTTPS, or related to Plaid Link: \(navigationAction.request.url?.absoluteString)")
             decisionHandler(.allow)
         }
-    }
-    
-    private func interceptPlaidLinkURL(url: URL) {
-        let params = parseQueryParams(fromURL: url)
-        let actionType = url.host
-        
-        switch actionType {
-        case "connected"?:
-            handleUserLinkedAccount(withParameters: params)
-        case "exit"?:
-            handleUserCancelledLink(atURL: url, withParameters: params)
-        default:
-            print("Link action detected: \(actionType)")
-        }
-    }
-    
-    private func handleUserLinkedAccount(withParameters params: [String: String]) {
-        // Close the webview
-        dismiss(animated: true, completion: nil)
-        
-        // You should store & process this data, usually by alerting a helper or delegate
-        print("Public Token: \(params["public_token"])")
-        print("Account ID: \(params["account_id"])")
-        print("Institution type: \(params["institution_type"])")
-        print("Institution name: \(params["institution_name"])")
-    }
-    
-    private func handleUserCancelledLink(atURL url: URL, withParameters params: [String: String]) {
-        // Close the webview
-        dismiss(animated: true, completion: nil)
-        
-        // Available information includes information about where the user was in the Link flow
-        // any errors that occurred, and request IDs
-        print("URL: \(url.absoluteString)")
-        // Output data from Link
-        print("User status in flow: \(params["status"])");
-        // The requet ID keys may or may not exist depending on when the user exited
-        // the Link flow.
-        print("Link request ID: \(params["link_request_id"])");
-        print("Plaid API request ID: \(params["link_request_id"])");
-    }
-    
-    private func matchesLinkScheme(_ url: URL) -> Bool {
-        return url.scheme == LinkViewController.linkScheme
-    }
-    
-    // Handle http:// and https:// links inside of Plaid Link
-    // by opening them in a new Safari page. This is necessary for links
-    // such as "forgot-password" and "locked-account"
-    private func shouldOpenInSafari(navigationAction: WKNavigationAction) -> Bool {
-        guard let scheme = navigationAction.request.url?.scheme else {
-            return false
-        }
-        return navigationAction.navigationType == WKNavigationType.linkActivated &&
-            (scheme == "http" || scheme == "https")
     }
 }
