@@ -60,9 +60,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <connections>
-                        <outlet property="containerView" destination="CmV-rY-urh" id="zAp-9Y-TTC"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xvk-J3-jpy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
