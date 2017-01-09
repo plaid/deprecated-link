@@ -19,7 +19,7 @@
         <span class="radio-button radio-right" id="liveLinkButton">Regular Mode</span>
       </div>
     </div>
-    
+
      <!-- The link-initialize script is loaded from the <body>, not <head> -->
     <script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"></script>
     <script>
@@ -36,6 +36,24 @@
         console.log('account_id is', metadata.account_id);
         window.location = '/accounts.html?public_token=' + token;
       },
+      onLoad: function() {
+        console.log('Plaid Link loaded');
+      }
+      onExit: function(error, metadata) {
+        // if the user encountered a Plaid error, this will not be null
+        if (error != null) {
+          console.log('error code: '    + error.code);
+          console.log('error message: ' + error.message);
+        }
+
+        // log information about the selected institution – note: may be null
+        console.log('institution name: ' + metadata.institution.name);
+        console.log('institution type: ' + metadata.institution.type);
+
+        console.log('link_request_id: '      + metadata.link_request_id);
+        console.log('plaid_api_request_id: ' + metadata.plaid_api_request_id);
+        console.log('status: '               + metadata.status);
+      }
     });
 
     var liveHandler = Plaid.create({
