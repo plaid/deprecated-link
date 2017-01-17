@@ -18,16 +18,15 @@
     NSDictionary* linkInitializationOptions = [[NSMutableDictionary alloc] init];
     [linkInitializationOptions setValue:@"test_key" forKey:@"key"];
     [linkInitializationOptions setValue:@"connect" forKey:@"product"];
-    [linkInitializationOptions setValue:@"true" forKey:@"longtail"];
     [linkInitializationOptions setValue:@"true" forKey:@"selectAccount"];
     [linkInitializationOptions setValue:@"tartan" forKey:@"env"];
     [linkInitializationOptions setValue:@"Test App" forKey:@"clientName"];
     [linkInitializationOptions setValue:@"https://requestb.in" forKey:@"webhook"];
     [linkInitializationOptions setValue:@"https://cdn.plaid.com/link/v2/stable/link.html" forKey:@"baseUrl"];
-    
+
     // Generate the Link initialization URL based off of the configuration settings
     NSURL* linkInitializationUrl = [self generateLinkInitializationURLWithOptions:linkInitializationOptions];
-    
+
     // Load the Link initialization URL in the webview.
     // Link will start automatically
     [_webview loadRequest:[NSURLRequest requestWithURL:linkInitializationUrl]];
@@ -77,13 +76,13 @@
     NSString *linkScheme = @"plaidlink";
     NSString *actionScheme = request.URL.scheme;
     NSString *actionType = request.URL.host;
-    
+
     if ([actionScheme isEqualToString:linkScheme]) {
         NSLog(@"PLaid Link detected: %@", request.URL.absoluteString);
         if ([actionType isEqualToString:@"connected"]) {
             // Close the UIWebView
             [self dismissViewControllerAnimated:YES completion:nil];
-            
+
             // Parse data passed from Link into a dictionary
             // This includes the public_token as well as account and institution metadata
             NSDictionary* linkData = [self dictionaryFromLinkUrl:request.URL];
@@ -95,7 +94,7 @@
         } else if ([actionType isEqualToString:@"exit"]) {
             // Close the UIWebView
             [self dismissViewControllerAnimated:YES completion:nil];
-            
+
             // Parse data passed from Link into a dictionary
             // This includes information about where the user was in the Link flow,
             // any errors that occurred, and request IDs

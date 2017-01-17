@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
         HashMap<String, String> linkInitializeOptions = new HashMap<String,String>();
         linkInitializeOptions.put("key", "test_key");
         linkInitializeOptions.put("product", "connect");
-        linkInitializeOptions.put("longtail", "true");
         linkInitializeOptions.put("selectAccount", "true");
         linkInitializeOptions.put("env", "tartan");
         linkInitializeOptions.put("clientName", "Test App");
