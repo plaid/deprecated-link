@@ -9,20 +9,20 @@ import UIKit
 import WebKit
 
 class LinkViewController: UIViewController, WKNavigationDelegate {
-    
+
     @IBOutlet var containerView : UIView? = nil
-    
+
     var webView: WKWebView!
-    
+
     override func loadView() {
         self.webView = WKWebView()
         self.webView.navigationDelegate = self
         self.view = webView
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // load the link url
         let linkUrl = generateLinkInitializationURL()
         let url = NSURL(string: linkUrl)
@@ -30,12 +30,12 @@ class LinkViewController: UIViewController, WKNavigationDelegate {
         self.webView.load(request as URLRequest)
         self.webView.allowsBackForwardNavigationGestures = false
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     // getUrlParams :: parse query parameters into a Dictionary
     func getUrlParams(url: URL) -> Dictionary<String, String> {
         var paramsDictionary = [String: String]()
@@ -43,13 +43,12 @@ class LinkViewController: UIViewController, WKNavigationDelegate {
         queryItems?.forEach { paramsDictionary[$0.name] = $0.value }
         return paramsDictionary
     }
-    
+
     // generateLinkInitializationURL :: create the link.html url with query parameters
     func generateLinkInitializationURL() -> String {
         let config = [
             "key": "test_key",
             "product": "connect",
-            "longtail": "true",
             "selectAccount": "true",
             "env": "tartan",
             "clientName": "Test App",
@@ -57,7 +56,7 @@ class LinkViewController: UIViewController, WKNavigationDelegate {
             "isMobile": "true",
             "isWebview": "true"
         ]
-    
+
         // Build a dictionary with the Link configuration options
         // See the Link docs (https://plaid.com/docs/link) for full documentation.
         let components = NSURLComponents()
@@ -67,23 +66,23 @@ class LinkViewController: UIViewController, WKNavigationDelegate {
         components.queryItems = config.map { (NSURLQueryItem(name: $0, value: $1) as URLQueryItem) }
         return components.string!
     }
-    
+
     func webView(_ webView: WKWebView,
                  decidePolicyForNavigationAction navigationAction: WKNavigationAction,
                  decisionHandler: ((WKNavigationActionPolicy) -> Void)) {
-        
+
         let linkScheme = "plaidlink";
         let actionScheme = navigationAction.request.url?.scheme;
         let actionType = navigationAction.request.url?.host;
         let queryParams = getUrlParams(url: navigationAction.request.url!)
-        
+
         if (actionScheme == linkScheme) {
             switch actionType {
-                
+
             case "connected"?:
                 // Close the webview
                 self.dismiss(animated: true, completion: nil)
-                
+
                 // Parse data passed from Link into a dictionary
                 // This includes the public_token as well as account and institution metadata
                 print("Public Token: \(queryParams["public_token"])");
@@ -95,7 +94,7 @@ class LinkViewController: UIViewController, WKNavigationDelegate {
             case "exit"?:
                 // Close the webview
                 self.dismiss(animated: true, completion: nil)
-            
+
                 // Parse data passed from Link into a dictionary
                 // This includes information about where the user was in the Link flow
                 // any errors that occurred, and request IDs
@@ -107,12 +106,12 @@ class LinkViewController: UIViewController, WKNavigationDelegate {
                 print("Link request ID: \(queryParams["link_request_id"])");
                 print("Plaid API request ID: \(queryParams["link_request_id"])");
                 break
-                
+
             default:
                 print("Link action detected: \(actionType)")
                 break
             }
-            
+
             decisionHandler(.cancel)
         } else if (navigationAction.navigationType == WKNavigationType.linkActivated &&
             (actionScheme == "http" || actionScheme == "https")) {
@@ -127,4 +126,3 @@ class LinkViewController: UIViewController, WKNavigationDelegate {
         }
     }
 }
-
