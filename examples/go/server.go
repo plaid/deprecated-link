@@ -2,10 +2,16 @@ package main
 
 import (
 	"encoding/json"
+	"math/rand"
+	"mime"
 	"net/http"
 	"net/url"
 	"os"
+  "path"
+	"path/filepath"
 	"strconv"
+	"strings"
+	"time"
 
 	"github.com/plaid/plaid-go/plaid"
 
@@ -19,8 +25,16 @@ var PLAID_SECRET string
 
 var plaidClient *plaid.Client
 
-type AccountsJsonHolder struct {
-	Accounts []plaid.Account `json:"accounts"`
+var songsDirectory string
+var songsRelativeDirectory string = "/songs"
+
+type SongJsonHolder struct {
+	SongName string `json:"song_name"`
+  SongPath string `json:"song_path"`
+  SignalAX []float64 `json:"signal_ax"`
+  SignalAY []float64 `json:"signal_ay"`
+  SignalBX []float64 `json:"signal_bx"`
+  SignalBY []float64 `json:"signal_by"`
 }
 
 func init() {
@@ -51,20 +65,20 @@ func init() {
 func main() {
 	// Set routes
 	router := mux.NewRouter()
-	router.HandleFunc("/accounts", AccountsHandler).Queries("public_token", "{public_token}")
+	router.HandleFunc("/transactions", TransactionsHandler).Queries("public_token", "{public_token}")
+	router.HandleFunc("/songs", SongServer)
 	// Instantiate and start server
 	n := negroni.Classic()
 	n.UseHandler(router)
 	n.Run(":" + strconv.Itoa(APP_PORT))
 }
 
-// AccountsHandler handles endpoint /accounts that first exchanges a public_token from the Plaid
-// Link module for a Plaid access token and then uses that access_token to retrieve account data and
-// balances for a user.
+// TransactionsHandler handles endpoint /transactions that first exchanges a public_token from the Plaid
+// Link module for a Plaid access token and then uses that access_token to retrieve transaction data
 //
 // Input: a public_token
-// Output: an error or an array of accounts
-func AccountsHandler(w http.ResponseWriter, r *http.Request) {
+// Output: an error or a byte array containing transactions json
+func TransactionsHandler(w http.ResponseWriter, r *http.Request) {
 	// Get and URL decode public_token query param
 	vars := mux.Vars(r)
 	publicToken, err := url.QueryUnescape(vars["public_token"])
@@ -79,21 +93,82 @@ func AccountsHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	accessToken := res.AccessToken
-	// Auth Get user accounts with access token
-	res, err = plaidClient.AuthGet(accessToken)
+	// Connect Get user accounts with access token
+	res, _, err = plaidClient.ConnectGet(accessToken, nil)
 	if err != nil {
-		w.Write([]byte(err.Error()))
-		return
+		if strings.Contains(err.Error(), "code: 1110") {
+			plaidClient.Upgrade(accessToken, "connect", nil)
+			res, _, err = plaidClient.ConnectGet(accessToken, nil)
+		}
+		if err != nil {
+			w.Write([]byte(err.Error()))
+			return
+		}
 	}
+
+	//storeAllSignals(songsDirectory)
+	songName, rawSignalA, rawSignalB := findMostSimilar(transactionAmounts(res.Transactions, SAMPLE_LIMIT))
+  songPath := path.Join(songsRelativeDirectory, songName)
+
+  signalAX, signalAY := splitXY(rawSignalA)
+  signalBX, signalBY := splitXY(rawSignalB)
+
 	// Marshal and write response JSON
-	outputHolder := AccountsJsonHolder{
-		Accounts: res.Accounts,
+	outputHolder := SongJsonHolder{
+		SongName: songName,
+    SongPath: songPath,
+    SignalAX: signalAX,
+    SignalAY: signalAY,
+    SignalBX: signalBX,
+    SignalBY: signalBY,
 	}
 	outputJson, err := json.Marshal(outputHolder)
 	if err != nil {
 		w.Write([]byte(err.Error()))
 		return
 	}
+
 	w.Header().Set("Content-Type", "application/json")
 	w.Write(outputJson)
+}
+
+func SongServer(w http.ResponseWriter, r *http.Request) {
+    vars := mux.Vars(r)
+
+    // Assuming it's valid
+    file := vars["filename"]
+
+    // Super simple. Doesn't set any cache headers, check existence, avoid race conditions, etc.
+    w.Header().Set("Content-Type", mime.TypeByExtension(filepath.Ext(file)))
+    http.ServeFile(w, r, file)
+}
+
+func transactionAmounts(trans []plaid.Transaction, limit int) []float64 {
+	var amounts []float64
+	for i := 0; i < len(trans) && i < limit; i++ {
+		amounts = append(amounts, float64(trans[i].Amount))
+	}
+	return amounts
+}
+
+func randomFloats(size int) []float64 {
+	var result []float64
+	source := rand.NewSource(time.Now().UnixNano())
+	random := rand.New(source)
+	for i := 0; i < size; i++ {
+		result = append(result, random.Float64())
+	}
+	return result
+}
+
+func splitXY(signal [][]float64) ([]float64, []float64) {
+  var signalX []float64
+  var signalY []float64
+
+  for i := 0; i < len(signal); i++ {
+    signalX = append(signalX, signal[i][0])
+    signalY = append(signalY, signal[i][1])
+  }
+
+  return signalX, signalY
 }
