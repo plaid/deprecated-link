@@ -91,8 +91,8 @@ func listAllSignals() {
 }
 
 func findMostSimilar(a []float64) (string, [][]float64, [][]float64) {
-  var originalSignal [][]float64
-  var similarSignal [][]float64
+	var originalSignal [][]float64
+	var similarSignal [][]float64
 	var similarName string
 	similarDistance := float64(math.MaxUint32)
 
@@ -124,8 +124,8 @@ func findMostSimilar(a []float64) (string, [][]float64, [][]float64) {
 			if distance <= similarDistance {
 				similarDistance = distance
 				similarName = string(k)
-        originalSignal = tempA
-        similarSignal = tempB
+				originalSignal = tempA
+				similarSignal = tempB
 			}
 			return nil
 		})
@@ -146,25 +146,25 @@ func compareSignal(a [][]float64, b [][]float64) float64 {
 	return dist
 
 	/*
-	  // L-infinity in 4 dimensions
-	  frechet = fretchet.NewPolyhedralFretchetDistance(fretchet.LInfinity(2));
-	  dist = frechet.ComputeDistance(a, b);
-	  fmt.Printf("Distance 2 : %f\n\n\n\n\n", dist)
-	  return dist
+		  // L-infinity in 4 dimensions
+		  frechet = fretchet.NewPolyhedralFretchetDistance(fretchet.LInfinity(2));
+		  dist = frechet.ComputeDistance(a, b);
+		  fmt.Printf("Distance 2 : %f\n\n\n\n\n", dist)
+		  return dist
 
-		// L-1 in 3 dimensions
-		frechet = fretchet.NewPolyhedralFretchetDistance(fretchet.L1(2))
-		dist = frechet.ComputeDistance(a, b)
-		fmt.Printf("Distance 1 : %f\n\n\n\n\n", dist)
-		return dist
-		// two curves in 4D
+			// L-1 in 3 dimensions
+			frechet = fretchet.NewPolyhedralFretchetDistance(fretchet.L1(2))
+			dist = frechet.ComputeDistance(a, b)
+			fmt.Printf("Distance 1 : %f\n\n\n\n\n", dist)
+			return dist
+			// two curves in 4D
 
-	  // 6-regular polygon (in 2 dimensions)
-	  // implementation supports only symmetric polyhedra, so parameter must be even!
-	  frechet = fretchet.NewPolyhedralFretchetDistance(fretchet.KRegular2D(8));
-	  dist = frechet.ComputeDistance(a, b);
-	  fmt.Printf("Distance 4 : %f\n", dist)
-	  return dist
+		  // 6-regular polygon (in 2 dimensions)
+		  // implementation supports only symmetric polyhedra, so parameter must be even!
+		  frechet = fretchet.NewPolyhedralFretchetDistance(fretchet.KRegular2D(8));
+		  dist = frechet.ComputeDistance(a, b);
+		  fmt.Printf("Distance 4 : %f\n", dist)
+		  return dist
 	*/
 }
 

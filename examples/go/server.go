@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"net/url"
 	"os"
-  "path"
+	"path"
 	"path/filepath"
 	"strconv"
 	"strings"
@@ -29,12 +29,12 @@ var songsDirectory string
 var songsRelativeDirectory string = "/songs"
 
 type SongJsonHolder struct {
-	SongName string `json:"song_name"`
-  SongPath string `json:"song_path"`
-  SignalAX []float64 `json:"signal_ax"`
-  SignalAY []float64 `json:"signal_ay"`
-  SignalBX []float64 `json:"signal_bx"`
-  SignalBY []float64 `json:"signal_by"`
+	SongName string    `json:"song_name"`
+	SongPath string    `json:"song_path"`
+	SignalAX []float64 `json:"signal_ax"`
+	SignalAY []float64 `json:"signal_ay"`
+	SignalBX []float64 `json:"signal_bx"`
+	SignalBY []float64 `json:"signal_by"`
 }
 
 func init() {
@@ -108,19 +108,19 @@ func TransactionsHandler(w http.ResponseWriter, r *http.Request) {
 
 	//storeAllSignals(songsDirectory)
 	songName, rawSignalA, rawSignalB := findMostSimilar(transactionAmounts(res.Transactions, SAMPLE_LIMIT))
-  songPath := path.Join(songsRelativeDirectory, songName)
+	songPath := path.Join(songsRelativeDirectory, songName)
 
-  signalAX, signalAY := splitXY(rawSignalA)
-  signalBX, signalBY := splitXY(rawSignalB)
+	signalAX, signalAY := splitXY(rawSignalA)
+	signalBX, signalBY := splitXY(rawSignalB)
 
 	// Marshal and write response JSON
 	outputHolder := SongJsonHolder{
 		SongName: songName,
-    SongPath: songPath,
-    SignalAX: signalAX,
-    SignalAY: signalAY,
-    SignalBX: signalBX,
-    SignalBY: signalBY,
+		SongPath: songPath,
+		SignalAX: signalAX,
+		SignalAY: signalAY,
+		SignalBX: signalBX,
+		SignalBY: signalBY,
 	}
 	outputJson, err := json.Marshal(outputHolder)
 	if err != nil {
@@ -133,14 +133,14 @@ func TransactionsHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func SongServer(w http.ResponseWriter, r *http.Request) {
-    vars := mux.Vars(r)
+	vars := mux.Vars(r)
 
-    // Assuming it's valid
-    file := vars["filename"]
+	// Assuming it's valid
+	file := vars["filename"]
 
-    // Super simple. Doesn't set any cache headers, check existence, avoid race conditions, etc.
-    w.Header().Set("Content-Type", mime.TypeByExtension(filepath.Ext(file)))
-    http.ServeFile(w, r, file)
+	// Super simple. Doesn't set any cache headers, check existence, avoid race conditions, etc.
+	w.Header().Set("Content-Type", mime.TypeByExtension(filepath.Ext(file)))
+	http.ServeFile(w, r, file)
 }
 
 func transactionAmounts(trans []plaid.Transaction, limit int) []float64 {
@@ -162,13 +162,13 @@ func randomFloats(size int) []float64 {
 }
 
 func splitXY(signal [][]float64) ([]float64, []float64) {
-  var signalX []float64
-  var signalY []float64
+	var signalX []float64
+	var signalY []float64
 
-  for i := 0; i < len(signal); i++ {
-    signalX = append(signalX, signal[i][0])
-    signalY = append(signalY, signal[i][1])
-  }
+	for i := 0; i < len(signal); i++ {
+		signalX = append(signalX, signal[i][0])
+		signalY = append(signalY, signal[i][1])
+	}
 
-  return signalX, signalY
+	return signalX, signalY
 }

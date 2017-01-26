@@ -3,20 +3,20 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>SUM</title>
+  <title>SIGNALS</title>
   <link rel="stylesheet" type="text/css" href="style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
   <div class="container">
-    <div class="logo">Sum</div>
-    <h2>Sum is a simple web app that gives you access to all your bank accounts</h2>
+    <div class="logo">Signals</div>
+    <h2>Signals compares your transactions to songs on Edmund's Official High School Mixtape and shows you which song most accurately represents your spending habits.</h2>
     <div class="dual-button">
       <div>
-        <span class="radio-button radio-left" id="sandboxLinkButton">Sandbox Mode</span>
+      <span class="radio-button radio-left" id="sandboxLinkButton">Plaid Test Transactions</span>
       </div>
       <div>
-        <span class="radio-button radio-right" id="liveLinkButton">Regular Mode</span>
+        <span class="radio-button radio-right" id="liveLinkButton">Your Transactions</span>
       </div>
     </div>
 
@@ -28,13 +28,13 @@
     // See: https://github.com/plaid/link/blob/master/README.md#step-2-custom-integration
 
     var sandboxHandler = Plaid.create({
-      clientName: 'SUM',
+      clientName: 'SIGNALS',
       env: 'tartan',
       product: 'auth',
       key: 'test_key',
       onSuccess: function(token, metadata) {
-        console.log('account_id is', metadata.account_id);
-        window.location = '/accounts.html?public_token=' + token;
+        console.log('transaction_id is', metadata.transaction_id);
+        window.location = '/transactions.html?public_token=' + token;
       },
       onLoad: function() {
         console.log('Plaid Link loaded');
@@ -57,13 +57,13 @@
     });
 
     var liveHandler = Plaid.create({
-      clientName: 'SUM',
+      clientName: 'SIGNALS',
       env: 'tartan',
       product: 'auth',
-      key: '{YOUR_PUBLIC_KEY}',
+      key: 'c84fb18e8759d9a2db16ac5c9166c5',
       onSuccess: function(token, metadata) {
-        console.log('account_id is', metadata.account_id);
-        window.location = '/accounts.html?public_token=' + token;
+        console.log('transaction_id is', metadata.transaction_id);
+        window.location = '/transactions.html?public_token=' + token;
       },
     });
 

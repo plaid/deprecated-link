@@ -42,26 +42,32 @@ hr {
 }
 
 h1 {
-  font-size: 61px;
+  font-size: 46px;
   position: relative;
-  display: inline;
   color: rgb(108, 108, 108);
+  text-align: center;
 }
 
-.accounts span {
+audio {
+  width: 500px;
+  display: table;
+  margin: 0 auto;
+}
+
+.transactions span {
   float: right;
   position: relative;
   bottom: -32px;
-  font-size: 2em;
+  font-size: 1em;
   text-align: right;
   color: rgb(147, 147, 147);
 }
 
-.accounts .container {
+.transactions .container {
   height: inherit;
 }
 
-.account-item {
+.transaction-item {
   background: white;
   padding: 2em;
   margin-bottom: 21px;
