@@ -14,7 +14,7 @@ class LinkViewController: UIViewController, WKNavigationDelegate {
     var webView: WKWebView!
     
     override func loadView() {
-        createWebview()
+        view = createWebview(delegate: self)
     }
     
     override func viewDidLoad() {
@@ -24,11 +24,11 @@ class LinkViewController: UIViewController, WKNavigationDelegate {
         loadLinkModuleInWebview()
     }
     
-    private func createWebview() {
+    private func createWebview(delegate: WKNavigationDelegate) -> WKWebView {
         webView = WKWebView()
-        webView.navigationDelegate = self
+        webView.navigationDelegate = delegate
         webView.allowsBackForwardNavigationGestures = false
-        view = webView
+        return webView
     }
     
     private func loadLinkModuleInWebview() {
