@@ -1,0 +1,6 @@
+framework module LinkKit {
+  umbrella header "LinkKit.h"
+
+  export *
+  module * { export * }
+}
