@@ -19,7 +19,7 @@ Head to our [quickstart][quickstart] guide to get started with your Link integra
 [quickstart-github]: https://github.com/plaid/quickstart
 [quickstart-ruby]: https://github.com/plaid/quickstart/tree/master/ruby
 [quickstart-python]: https://github.com/plaid/quickstart/tree/master/python
-[quickstart-node]: https://github.com/plaid/quickstart/tree/python/node
+[quickstart-node]: https://github.com/plaid/quickstart/tree/master/node
 [angular-plaid-link]: https://github.com/csbarnes/angular-plaid-link
 [ember-plaid]: https://github.com/jasonkriss/ember-plaid
 [plaid-link-ionic-example]: https://github.com/pbernasconi/plaid-link-ionic-example
