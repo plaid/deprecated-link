@@ -2,13 +2,14 @@
 
 Welcome to the Plaid Link iOS!
 
-In this repository you find instructions and sample applications in Objective-C and Swift
+In this repository you find instructions and sample applications in
+[Objective-C](LinkDemo-ObjC), [Swift](LinkDemo-Swift) and [Swift 2](LinkDemo-Swift2) (requires Xcode 7)
 that demonstrate Plaid Link for iOS. At the center of it all lies [`LinkKit.framework`][linkkit]
 an embeddeable framework managing the details of linking an account with Plaid.
 
 Here are some screenshots of the user interface provided by Plaid Link iOS:
 
-[![Examples of Plaid Link iOS](docs/images/link-ios-citi.jpg)](ios)
+![Examples of Plaid Link iOS](docs/images/link-ios-citi.jpg)
 
 ## Table of Contents
 
@@ -29,7 +30,7 @@ Here are some screenshots of the user interface provided by Plaid Link iOS:
 
 You will need the following to integrate Plaid Link iOS:
 
-* Xcode 8
+* Xcode 7 or greater
 * A Plaid `public_key` (available from the [Plaid Dashboard][dashboard-keys]).
 * The latest version of the [`LinkKit.framework`][linkkit]
 
@@ -58,11 +59,11 @@ You will need the following to integrate Plaid Link iOS:
 
 ## Getting Started
 
-This repository contains one Xcode workspace named `LinkBeta.xcworkspace` with two sample projects,
-one for Objective-C (`LinkBeta-ObjC.xcodeproj`) and one for Swift (`LinkBeta-Swift.xcodeproj`).
+This repository contains one Xcode workspace named `LinkDemo.xcworkspace` with two sample projects,
+one for Objective-C (`LinkDemo-ObjC.xcodeproj`) and one for Swift (`LinkDemo-Swift.xcodeproj`).
 Both projects work very similar to illustrate the integration and use of Plaid Link iOS:
 
-After the LinkBeta application has finished launching it will [setup Plaid Link iOS](#setup-plaid-link)
+After the LinkDemo application has finished launching it will [setup Plaid Link iOS](#setup-plaid-link)
 and once setup has been successful the application will enable a UIButton, which when tapped presents
 the Plaid Link iOS user interface. When Plaid Link iOS is finished the application displays
 the result with a `UIAlertViewController` and logs the result to the console using `NSLog`.
@@ -75,7 +76,7 @@ the result with a `UIAlertViewController` and logs the result to the console usi
 * Depending on the location of the [`LinkKit.framework`][linkkit] on the filesystem
   you may need to change the **Framework Search Paths** build setting to avoid the
   `fatal error: 'LinkKit/LinkKit.h' file not found`.
-  The LinkBeta Xcode projects have it set to `FRAMEWORK_SEARCH_PATHS = $(PROJECT_DIR)/../`.
+  The LinkDemo Xcode projects have it set to `FRAMEWORK_SEARCH_PATHS = $(PROJECT_DIR)/../`.
   <br><img src='docs/images/setup/05-edit_framework_search_path.jpg' width='350' title='Editing the `FRAMEWORK_SEARCH_PATHS` build setting'>
 * Add a **Run Script Build Phase** (we recommend naming it `Prepare for Distribution`) with the
   [script below](#user-content-prepare-distribution-script).
@@ -112,14 +113,14 @@ There are two ways that Plaid Link iOS can be configured:
 | `clientName` | String          | —                                                                                       | Displayed to the user once they have successfully linked their account.                                                                                                                                          |
 | `key`        | String          | —                                                                                       | Your Plaid `public_key` available from the [Plaid dashboard][dashboard-keys]                                                                                                                                     |
 | `env`        | String          | `Development`, `Testing`, `Production`                                                  | Select the environment to use. For development use `Development`, for testing use `Testing` and for release builds choose `Production`. Depending on the `env` LinkKit will talk to different Plaid API servers. |
-| `product`    | String or Array | `auth`, `transactions`, `income`, or `identity`  | Select the Plaid products you would like to use (visit the [Plaid Products page](https://plaid.com/products/) to learn more)
+| `product`    | String or Array | `auth`, `transactions`, `income`, or `identity` | Select the Plaid products you would like to use (visit the [Plaid Products page](https://plaid.com/products/) to learn more)
 
 #### Optional `PLKPlaidLinkConfiguration` items:
 
 | Key                                                 | Type    | Values¹                                    | Description                                                                                                                                                                                               |
 | ---                                                 | ---     | :---:                                      | ---                                                                                                                                                                                                       |
 | `webhook`                                           | URL     | —                                          | The URL provided will receive notifications once a user's transactions have been processed and are ready for use. For details refer to the [Plaid API documentation](https://plaid.com/docs/api/#webhook). |
-| <a name='config-select-account'>`selectAccount`</a> | Boolean | `YES`, **`NO`**                            | Whether the user should select a specific account after successfully linking their bank account                                                                                                           
+| <a name='config-select-account'>`selectAccount`</a> | Boolean | `YES`, **`NO`**                            | Whether the user should select a specific account after successfully linking their bank account                                                                                                           |
 
 ¹ _Default values are shown in_ **bold**.
 
@@ -140,8 +141,8 @@ for `clientName`, `key`, and `env` will be set to the value of the Xcode build s
 and `LINK_ENV` need to be added manually in Xcode. This allows use of a different `key`
 and `env` for the different build configurations (e.g. Debug, Release).
 
-<img src='docs/images/setup/00a_edit_info_plist.jpg' width='350' title='Editing the Plaid Link configuration in Info.plist'>
-<img src='docs/images/setup/11b_add_build_setting.jpg' width='350' title='Adding build settings'>
+<img src='docs/images/setup/00a-edit_info_plist.jpg' width='350' title='Editing the Plaid Link configuration in Info.plist'>
+<img src='docs/images/setup/11b-add_build_setting.jpg' width='350' title='Adding build settings'>
 
 ### Implementation 
 
@@ -186,7 +187,7 @@ We recommend to setup Plaid Link early in the application's life cycle, possibly
     if (success) {
         // Handle success here, e.g. by posting a notification
         NSLog(@"Plaid Link setup was successful");
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"PLBPlaidLinkSetupFinished" object:self];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"PLDPlaidLinkSetupFinished" object:self];
     }
     else {
         NSLog(@"Unable to setup Plaid Link due to: %@", [error localizedDescription]);
@@ -204,12 +205,12 @@ PLKConfiguration* linkConfiguration;
     linkConfiguration = [[PLKConfiguration alloc] initWithKey:@"<#YOUR_PLAID_PUBLIC_KEY#>"
                                                           env:PLKEnvironmentDevelopment
                                                       product:PLKProductAuth];
-    linkConfiguration.clientName = @"Link Beta";
+    linkConfiguration.clientName = @"Link Demo";
     [PLKPlaidLink setupWithConfiguration:linkConfiguration completion:^(BOOL success, NSError * _Nullable error) {
         if (success) {
             // Handle success here, e.g. by posting a notification
             NSLog(@"Plaid Link setup was successful");
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"PLBPlaidLinkSetupFinished" object:self];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"PLDPlaidLinkSetupFinished" object:self];
         }
         else {
             NSLog(@"Unable to setup Plaid Link due to: %@", [error localizedDescription]);
@@ -331,7 +332,7 @@ PLKConfiguration* linkConfiguration;
     linkConfiguration = [[PLKConfiguration alloc] initWithKey:@"<#YOUR_PLAID_PUBLIC_KEY#>"
                                                            env:PLKEnvironmentDevelopment
                                                        product:PLKProductAuth];
-    linkConfiguration.clientName = @"Link Beta";
+    linkConfiguration.clientName = @"Link Demo";
     id<PLKPlaidLinkViewDelegate> linkViewDelegate  = self;
     PLKPlaidLinkViewController* linkViewController = [[PLKPlaidLinkViewController alloc] initWithConfiguration:linkConfiguration delegate:linkViewDelegate];
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
@@ -366,7 +367,7 @@ PLKPlaidLink.setup { (success, error) in
     if (success) {
         // Handle success here, e.g. by posting a notification
         NSLog("Plaid Link setup was successful")
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PLBPlaidLinkSetupFinished"), object: self)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PLDPlaidLinkSetupFinished"), object: self)
     }
     else {
         NSLog("Unable to setup Plaid Link due to: \(error?.localizedDescription)")
@@ -378,13 +379,13 @@ PLKPlaidLink.setup { (success, error) in
 <!-- SMARTDOWN_SETUP_CUSTOM -->
 ```swift
 // With custom configuration
-let linkConfiguration: PLKConfiguration
-linkConfiguration = PLKConfiguration(key: "<#YOUR_PLAID_PUBLIC_KEY#>", env: .development, product: .auth)
+let linkConfiguration = PLKConfiguration(key: "<#YOUR_PLAID_PUBLIC_KEY#>", env: .development, product: .auth)
+linkConfiguration.clientName = "Link Demo"
 PLKPlaidLink.setup(with: linkConfiguration) { (success, error) in
     if (success) {
         // Handle success here, e.g. by posting a notification
         NSLog("Plaid Link setup was successful")
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PLBPlaidLinkSetupFinished"), object: self)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PLDPlaidLinkSetupFinished"), object: self)
     }
     else {
         NSLog("Unable to setup Plaid Link due to: \(error?.localizedDescription)")
@@ -448,7 +449,7 @@ present(linkViewController, animated: true)
 ```swift
 // With custom configuration
 let linkConfiguration = PLKConfiguration(key: "<#YOUR_PLAID_PUBLIC_KEY#>", env: .development, product: .auth)
-linkConfiguration.clientName = "Link Beta"
+linkConfiguration.clientName = "Link Demo"
 let linkViewDelegate = self
 let linkViewController = PLKPlaidLinkViewController(configuration: linkConfiguration, delegate: linkViewDelegate)
 present(linkViewController, animated: true)
@@ -461,8 +462,8 @@ When things work differently as expected LinkKit will use the value of the
 the console. **Environment Variables** can be added in the **Arguments** tab
 of the **Run** phase in the Scheme Editor (Product ► Scheme ► Edit Scheme `⌘<`)
 
-<img src='docs/images/setup/09_edit_scheme.jpg' width='350' title='Edit current scheme'>
-<img src='docs/images/setup/09_troubleshooting.jpg' width='350' title='Setting the PLKPLAIDLINK_DIAGNOSTICS environment variable'>
+<img src='docs/images/setup/09-edit_scheme.jpg' width='350' title='Edit current scheme'>
+<img src='docs/images/setup/09-troubleshooting.jpg' width='350' title='Setting the PLKPLAIDLINK_DIAGNOSTICS environment variable'>
 
 Available settings are:
 
@@ -474,21 +475,19 @@ Available settings are:
 | Debug    | 3                                |
 
 
-### About the LinkBeta Xcode projects
+### About the LinkDemo Xcode projects
 
 In order to compile the source code that uses the [custom configuration](#configuration)
 add `-DUSE_CUSTOM_CONFIG` to `OTHER_SWIFT_FLAGS` in the
-LinkBeta-Swift build settings and to `OTHER_CFLAGS` in the LinkBeta-ObjC build settings.
+LinkDemo-Swift build settings and to `OTHER_CFLAGS` in the LinkDemo-ObjC build settings.
 
-<img src='docs/images/setup/10_use_custom_config.jpg' width='350' title='Enabling use of custom configuration'>
+<img src='docs/images/setup/10-use_custom_config.jpg' width='350' title='Enabling use of custom configuration'>
 
 Throughout the source code there are HTML-like comments such as
 <code>&lt;!-- SMARTDOWN_PRESENT_CUSTOM --&gt;</code>, they are used to update
 the code examples in this README from the actual source code ensuring that the
 examples are working as intended.
 
-
-## Known Issues
 
 [linkkit]: LinkKit.framework
 [dashboard-keys]: https://dashboard.plaid.com/account/keys

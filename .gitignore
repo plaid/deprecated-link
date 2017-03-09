@@ -15,6 +15,7 @@ node_modules
 !default.xcworkspace
 *.xcuserdata
 xcuserdata
+**/.DS_Store
 
 
 ## requirejs ##
