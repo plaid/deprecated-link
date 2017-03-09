@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:LinkDemo-ObjC/LinkDemo-ObjC.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:LinkDemo-Swift/LinkDemo-Swift.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:LinkDemo-Swift2/LinkDemo-Swift2.xcodeproj">
+   </FileRef>
+</Workspace>
