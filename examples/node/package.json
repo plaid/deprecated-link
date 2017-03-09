@@ -1,9 +1,0 @@
-{
-  "name": "plaid-link-demo",
-  "dependencies": {
-    "envvar": "1.0.x",
-    "express": "4.12.x",
-    "plaid": "1.0.x"
-  },
-  "private": true
-}

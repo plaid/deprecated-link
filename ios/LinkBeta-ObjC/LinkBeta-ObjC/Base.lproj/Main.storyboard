@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="TVF-mV-62s">
+                                <rect key="frame" x="300" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BZd-re-Tiz">
+                                <rect key="frame" x="98" y="303" width="180" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="28K-tv-DdY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                <inset key="titleEdgeInsets" minX="4" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Plaid Link" image="Button">
+                                    <color key="titleColor" red="0.070588238537311554" green="0.23529411852359772" blue="0.41568627953529358" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" red="0.47058823704719543" green="0.58823531866073608" blue="0.69019609689712524" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1ah-K8-MRL"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LinkKit &lt;VERSION&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zhc-NK-3UN">
+                                <rect key="frame" x="16" y="626" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.070588238537311554" green="0.23529411852359772" blue="0.41568627953529358" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="BZd-re-Tiz" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="23e-NM-4ve"/>
+                            <constraint firstItem="zhc-NK-3UN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="6tf-x7-Odm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zhc-NK-3UN" secondAttribute="trailing" id="JqD-Dh-xrF"/>
+                            <constraint firstItem="BZd-re-Tiz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QOS-Wi-vCQ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="zhc-NK-3UN" secondAttribute="bottom" constant="20" id="Xvk-hN-hke"/>
+                            <constraint firstItem="TVF-mV-62s" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="jQw-RD-d6j"/>
+                            <constraint firstItem="TVF-mV-62s" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="l5T-hP-xYg"/>
+                            <constraint firstItem="TVF-mV-62s" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="300" id="sAS-cS-eGR"/>
+                            <constraint firstItem="TVF-mV-62s" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="wVc-hK-Rx7"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="button" destination="BZd-re-Tiz" id="4Dt-PQ-hID"/>
+                        <outlet property="label" destination="zhc-NK-3UN" id="MwY-9b-gB3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="137.18140929535232"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Background" width="640" height="640"/>
+        <image name="Button" width="60" height="60"/>
+    </resources>
+</document>
