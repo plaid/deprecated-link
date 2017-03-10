@@ -24,6 +24,8 @@ Here are some screenshots of the user interface provided by Plaid Link iOS:
       * [Objective-C](#objective-c)
       * [Swift](#swift)
     * [Troubleshooting](#troubleshooting)
+  * [Custom initializers](#custom-initializers)
+  * [Update mode](#update-mode)
   * [Known Issues](#known-issues)
 
 ## Preparation
@@ -474,7 +476,6 @@ Available settings are:
 | Info     | 2                                |
 | Debug    | 3                                |
 
-
 ### About the LinkDemo Xcode projects
 
 In order to compile the source code that uses the [custom configuration](#configuration)
@@ -488,6 +489,39 @@ Throughout the source code there are HTML-like comments such as
 the code examples in this README from the actual source code ensuring that the
 examples are working as intended.
 
+## Custom initializers
+
+To preselect an institution instantiate the `PLKPlaidLinkViewController` object using [`initWithInstitution:delegate:`](https://github.com/plaid/link/blob/master/ios/LinkKit.framework/Headers/PLKPlaidLinkViewController.h#L80-L96) and pass the `institution_id` (e.g. `ins_109509`) of the institution you would like to use  for as the first parameter. Then present the `linkViewController` instance as usual.
+
+Refer to the [Plaid API documentation](https://plaid.com/docs/api/#institution-search) on how to find out the `institution_id` for an institution.
+
+Objective-C
+```objc
+PLKPlaidLinkViewController* linkViewController = [[PLKPlaidLinkViewController alloc] initWithInstitution:@"<#INSTITUTION_ID#>" delegate:linkViewDelegate];
+```
+
+Swift
+```swift
+let linkViewController = PLKPlaidLinkViewController(institution: "<#INSTITUTION_ID#>", delegate: delegate:linkViewDelegate)
+```
+
+## Update mode
+
+To initiate the [update mode][link-update-mode] instantiate the `PLKPlaidLinkViewController` object using [`initWithPublicToken:delegate:`](https://github.com/plaid/link/blob/master/ios/LinkKit.framework/Headers/PLKPlaidLinkViewController.h#L120-L136) and pass your [generated `public_token`][create-public-token] as the first parameter. Then present the `linkViewController` instance as usual.
+
+Objective-C
+```objc
+PLKPlaidLinkViewController* linkViewController = [[PLKPlaidLinkViewController alloc] initWithPublicToken:@"<#GENERATED_PUBLIC_TOKEN#>" delegate:linkViewDelegate];
+```
+
+Swift
+```swift
+let linkViewController = PLKPlaidLinkViewController(publicToken: "<#GENERATED_PUBLIC_TOKEN#>", delegate:linkViewDelegate)
+```
+
+## Known issues
 
 [linkkit]: LinkKit.framework
 [dashboard-keys]: https://dashboard.plaid.com/account/keys
+[link-update-mode]: https://plaid.com/docs/api/#updating-items-via-link
+[create-public-token]: https://plaid.com/docs/api/#creating-public-tokens
