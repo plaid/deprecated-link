@@ -20,6 +20,7 @@
 @interface ViewController ()
 @property IBOutlet UIButton* button;
 @property IBOutlet UILabel* label;
+@property IBOutlet UIView* buttonContainerView;
 @end
 
 @implementation ViewController
@@ -40,8 +41,14 @@
 
     NSBundle* linkKitBundle = [NSBundle bundleForClass:[PLKPlaidLinkViewController class]];
     NSString* linkName      = [linkKitBundle objectForInfoDictionaryKey:(NSString*)kCFBundleNameKey];
-    self.label.text         = [NSString stringWithFormat:@"%@: %s+%.0f"
+    self.label.text         = [NSString stringWithFormat:@"Objective-C — %@ %s+%.0f"
                                  , linkName, LinkKitVersionString, LinkKitVersionNumber];
+
+    UIColor* shadowColor = [UIColor colorWithRed:3/255.0 green:49/255.0 blue:86/255.0 alpha:0.1];
+    self.buttonContainerView.layer.shadowColor   = [shadowColor CGColor];
+    self.buttonContainerView.layer.shadowOffset  = CGSizeMake(0, -1);
+    self.buttonContainerView.layer.shadowRadius  = 2;
+    self.buttonContainerView.layer.shadowOpacity = 1;
 }
 
 - (void)didReceiveNotification:(NSNotification*)notification {

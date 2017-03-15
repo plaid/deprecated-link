@@ -19,57 +19,67 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="b0t-S9-a0K">
-                                <rect key="frame" x="300" y="0.0" width="375" height="667"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KFo-kH-Y5q">
-                                <rect key="frame" x="97" y="303" width="180" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="180" id="EXw-0A-36n"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
-                                <inset key="titleEdgeInsets" minX="4" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Plaid Link" image="Button">
-                                    <color key="titleColor" red="0.078343756496906281" green="0.3074435293674469" blue="0.49176591634750366" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <state key="disabled">
-                                    <color key="titleColor" red="0.54145348072052002" green="0.65494805574417114" blue="0.74429744482040405" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="didTapButtonWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JO1-xY-IdW"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="LinkKit &lt;VERSION&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dBv-rr-Cro">
-                                <rect key="frame" x="16" y="626" width="343" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.078343756496906281" green="0.3074435293674469" blue="0.49176591634750366" alpha="1" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="WELCOME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="88W-lh-Zjh">
+                                <rect key="frame" x="32" y="64" width="71" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.74990838766098022" blue="0.97924989461898804" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Plaid Link  SDK Example" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dm8-2S-KIb">
+                                <rect key="frame" x="32" y="96" width="194" height="80"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="32"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;LANGUAGE&gt; — &lt;VERSION&gt;" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zhc-NK-3UN">
+                                <rect key="frame" x="32" y="184" width="310" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.54509803921568623" green="0.65490196078431373" blue="0.74117647058823533" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wpa-zw-kT3">
+                                <rect key="frame" x="0.0" y="464" width="600" height="136"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BZd-re-Tiz">
+                                        <rect key="frame" x="144" y="40" width="312" height="56"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="56" id="9Uw-eN-6AB"/>
+                                            <constraint firstAttribute="width" constant="312" id="JuM-XK-xTd"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                        <inset key="titleEdgeInsets" minX="4" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Open Plaid Link" backgroundImage="Button"/>
+                                        <connections>
+                                            <action selector="didTapButtonWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QS1-n6-WTd"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="BZd-re-Tiz" firstAttribute="centerY" secondItem="wpa-zw-kT3" secondAttribute="centerY" id="Cjn-Ur-bKr"/>
+                                    <constraint firstAttribute="height" constant="136" id="NiY-VD-OYX"/>
+                                    <constraint firstItem="BZd-re-Tiz" firstAttribute="centerX" secondItem="wpa-zw-kT3" secondAttribute="centerX" id="dNj-bq-xRZ"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.96862745098039216" green="0.97647058823529409" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="b0t-S9-a0K" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="300" id="6vC-nY-5Rp"/>
-                            <constraint firstItem="KFo-kH-Y5q" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Hcv-iJ-jr0"/>
-                            <constraint firstItem="b0t-S9-a0K" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="Kwb-mp-KCF"/>
-                            <constraint firstItem="b0t-S9-a0K" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="WLa-ev-NRg"/>
-                            <constraint firstItem="KFo-kH-Y5q" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aCg-ql-ywx"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="dBv-rr-Cro" secondAttribute="trailing" id="fYC-Pp-YYn"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dBv-rr-Cro" secondAttribute="bottom" constant="20" id="iUO-Xi-yVs"/>
-                            <constraint firstItem="dBv-rr-Cro" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="lnu-Hn-0SK"/>
-                            <constraint firstItem="b0t-S9-a0K" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="qLQ-dK-uX6"/>
+                            <constraint firstAttribute="trailing" secondItem="wpa-zw-kT3" secondAttribute="trailing" id="bDb-WZ-YxE"/>
+                            <constraint firstItem="wpa-zw-kT3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="fC6-Jx-wUJ"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="wpa-zw-kT3" secondAttribute="bottom" id="wSr-JC-S9n"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="button" destination="KFo-kH-Y5q" id="dXD-M0-mI5"/>
-                        <outlet property="label" destination="dBv-rr-Cro" id="rNQ-Ak-4oK"/>
+                        <outlet property="button" destination="BZd-re-Tiz" id="4Dt-PQ-hID"/>
+                        <outlet property="buttonContainerView" destination="wpa-zw-kT3" id="oBK-eA-XWv"/>
+                        <outlet property="label" destination="zhc-NK-3UN" id="MwY-9b-gB3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="137.18140929535232"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Background" width="640" height="640"/>
-        <image name="Button" width="60" height="60"/>
+        <image name="Button" width="11" height="11"/>
     </resources>
 </document>

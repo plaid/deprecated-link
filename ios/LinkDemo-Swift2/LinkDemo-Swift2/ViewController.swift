@@ -13,6 +13,7 @@ class ViewController: UIViewController {
 
     @IBOutlet var button: UIButton!
     @IBOutlet var label: UILabel!
+    @IBOutlet var buttonContainerView: UIView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,7 +27,14 @@ class ViewController: UIViewController {
         let linkKitVersion = linkKitBundle.objectForInfoDictionaryKey("CFBundleShortVersionString")!
         let linkKitBuild   = linkKitBundle.objectForInfoDictionaryKey(kCFBundleVersionKey as String)!
         let linkKitName    = linkKitBundle.objectForInfoDictionaryKey(kCFBundleNameKey as String)!
-        label.text         = "\(linkKitName): \(linkKitVersion)+\(linkKitBuild)"
+        label.text         = "Swift 2 — \(linkKitName): \(linkKitVersion)+\(linkKitBuild)"
+
+        let shadowColor    = UIColor(colorLiteralRed: 3/255.0, green: 49/255.0, blue: 86/255.0, alpha: 0.1)
+        buttonContainerView.layer.shadowColor   = shadowColor.CGColor
+        buttonContainerView.layer.shadowOffset  = CGSize(width: 0, height: -1)
+        buttonContainerView.layer.shadowRadius  = 2
+        buttonContainerView.layer.shadowOpacity = 1
+
     }
 
     func didReceiveNotification(notification: NSNotification) {
@@ -36,7 +44,7 @@ class ViewController: UIViewController {
         }
     }
 
-    @IBAction func didTapButtonWithSender(sender: AnyObject?) {
+    @IBAction func didTapButtonWithSender(_: AnyObject?) {
 #if USE_CUSTOM_CONFIG
             presentPlaidLinkWithCustomConfiguration()
 #else
