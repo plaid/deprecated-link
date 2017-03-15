@@ -111,9 +111,7 @@
     // With custom configuration
     PLKConfiguration* linkConfiguration;
     @try {
-        linkConfiguration = [[PLKConfiguration alloc] initWithKey:@"<#YOUR_PLAID_PUBLIC_KEY#>"
-                                                               env:PLKEnvironmentDevelopment
-                                                           product:PLKProductAuth];
+        linkConfiguration = [[PLKConfiguration alloc] initWithKey:@"<#YOUR_PLAID_PUBLIC_KEY#>" env:PLKEnvironmentSandbox product:PLKProductAuth];
         linkConfiguration.clientName = @"Link Demo";
         id<PLKPlaidLinkViewDelegate> linkViewDelegate  = self;
         PLKPlaidLinkViewController* linkViewController = [[PLKPlaidLinkViewController alloc] initWithConfiguration:linkConfiguration delegate:linkViewDelegate];

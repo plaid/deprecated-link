@@ -24,7 +24,7 @@ Here are some screenshots of the user interface provided by Plaid Link iOS:
       * [Objective-C](#objective-c)
       * [Swift](#swift)
     * [Troubleshooting](#troubleshooting)
-  * [Custom Initializers](#user-content-custom-initializers-info)
+  * [Custom Initializers](#user-content-custom-initializer-info)
     ([Objective-C](#user-content-objc-custom-initializer), [Swift](#user-content-swift-custom-initializer))
   * [Update Mode](#user-content-update-mode-info)
     ([Objective-C](#user-content-objc-update-mode), [Swift](#user-content-swift-update-mode))
@@ -112,21 +112,33 @@ There are two ways that Plaid Link iOS can be configured:
 
 #### Required `PLKPlaidLinkConfiguration` items:
 
-| Key          | Type            | Values                                                                                  | Description                                                                                                                                                                                                      |
-| ---          | ---             | :---:                                                                                   | ---                                                                                                                                                                                                              |
-| `clientName` | String          | —                                                                                       | Displayed to the user once they have successfully linked their account.                                                                                                                                          |
-| `key`        | String          | —                                                                                       | Your Plaid `public_key` available from the [Plaid dashboard][dashboard-keys]                                                                                                                                     |
-| `env`        | String          | `Development`, `Testing`, `Production`                                                  | Select the environment to use. For development use `Development`, for testing use `Testing` and for release builds choose `Production`. Depending on the `env` LinkKit will talk to different Plaid API servers. |
-| `product`    | String or Array | `auth`, `transactions`, `income`, or `identity` | Select the Plaid products you would like to use (visit the [Plaid Products page](https://plaid.com/products/) to learn more)
+| Key          | Type            | Values                                              | Description                                                                                                                                                                                                      |
+| ---          | ---             | :---:                                               | ---                                                                                                                                                                                                              |
+| `clientName` | String          | —                                                   | Displayed to the user once they have successfully linked their account.                                                                                                                                          |
+| `key`        | String          | —                                                   | Your Plaid `public_key` available from the [Plaid dashboard][dashboard-keys]                                                                                                                                     |
+| `env`        | String          | `Production`, `Tartan`¹, `Sandbox`², `Development`² | Select the environment to use. For development use `Development`, for testing use `Testing` and for release builds choose `Production`. Depending on the `env` LinkKit will talk to different Plaid API servers. |
+| `product`    | String or Array | `auth`, `transactions`, `income`, or `identity`     | Select the Plaid products you would like to use (visit the [Plaid Products page](https://plaid.com/products/) to learn more)
+
+¹ For use with APIv1 only
+
+² For use with APIv2 only
 
 #### Optional `PLKPlaidLinkConfiguration` items:
 
-| Key                                                 | Type    | Values¹                                    | Description                                                                                                                                                                                               |
-| ---                                                 | ---     | :---:                                      | ---                                                                                                                                                                                                       |
+| Key                                                 | Type    | Values¹                                    | Description                                                                                                                                                                                                |
+| ---                                                 | ---     | :---:                                      | ---                                                                                                                                                                                                        |
 | `webhook`                                           | URL     | —                                          | The URL provided will receive notifications once a user's transactions have been processed and are ready for use. For details refer to the [Plaid API documentation](https://plaid.com/docs/api/#webhook). |
-| <a name='config-select-account'>`selectAccount`</a> | Boolean | `YES`, **`NO`**                            | Whether the user should select a specific account after successfully linking their bank account                                                                                                           |
+| <a name='config-select-account'>`selectAccount`</a> | Boolean | `YES`, **`NO`**                            | Whether the user should select a specific account after successfully linking their bank account                                                                                                            |
+| `apiVersion`                                        | String  | `APIv1`, **`APIv2`**                       | The Plaid API version to use, please specify `APIv1` only if you have an important reason to do so and have been enabled for `APIv1` use by Plaid.                                                         |
 
 ¹ _Default values are shown in_ **bold**.
+
+#### Environment \ API Version Compatibility
+
+| ↓`apiVersion` \ `env`→ | `Production` | `Tartan` | `Sandbox` | `Development` |
+| ---                    | :---:        | :---:    | :---:     | :---:         |
+| `APIv1`                | ✓            | ✓        | —         | —             |
+| `APIv2`                | ✓            | —        | ✓         | ✓             |
 
 Commandline aficionados may find the following command useful:
 
@@ -333,9 +345,7 @@ initialisation of the `PLKPlaidLinkViewController`.
 // With custom configuration
 PLKConfiguration* linkConfiguration;
 @try {
-    linkConfiguration = [[PLKConfiguration alloc] initWithKey:@"<#YOUR_PLAID_PUBLIC_KEY#>"
-                                                           env:PLKEnvironmentDevelopment
-                                                       product:PLKProductAuth];
+    linkConfiguration = [[PLKConfiguration alloc] initWithKey:@"<#YOUR_PLAID_PUBLIC_KEY#>" env:PLKEnvironmentSandbox product:PLKProductAuth];
     linkConfiguration.clientName = @"Link Demo";
     id<PLKPlaidLinkViewDelegate> linkViewDelegate  = self;
     PLKPlaidLinkViewController* linkViewController = [[PLKPlaidLinkViewController alloc] initWithConfiguration:linkConfiguration delegate:linkViewDelegate];
@@ -454,7 +464,7 @@ Be sure to read about the details regarding the [metadata](#user-content-metadat
 ```swift
 func linkViewController(_ linkViewController: PLKPlaidLinkViewController, didSucceedWithPublicToken publicToken: String, metadata: [String : Any]?) {
     dismiss(animated: true) {
-    // Handle success, e.g. by storing publicToken with your service
+        // Handle success, e.g. by storing publicToken with your service
         NSLog("Successfully linked account!\npublicToken: \(publicToken)\nmetadata: \(metadata)")
         self.handleSuccessWithToken(publicToken, metadata: metadata)
     }
@@ -495,7 +505,7 @@ present(linkViewController, animated: true)
 <!-- SMARTDOWN_PRESENT_CUSTOM -->
 ```swift
 // With custom configuration
-let linkConfiguration = PLKConfiguration(key: "<#YOUR_PLAID_PUBLIC_KEY#>", env: .development, product: .auth)
+let linkConfiguration = PLKConfiguration(key: "<#YOUR_PLAID_PUBLIC_KEY#>", env: .sandbox, product: .auth)
 linkConfiguration.clientName = "Link Demo"
 let linkViewDelegate = self
 let linkViewController = PLKPlaidLinkViewController(configuration: linkConfiguration, delegate: linkViewDelegate)

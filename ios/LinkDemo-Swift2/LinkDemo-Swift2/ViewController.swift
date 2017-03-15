@@ -77,7 +77,7 @@ class ViewController: UIViewController {
     // MARK: Plaid Link setup with custom configuration
     func presentPlaidLinkWithCustomConfiguration() {
         // With custom configuration
-        let linkConfiguration = PLKConfiguration(key: "<#YOUR_PLAID_PUBLIC_KEY#>", env: .Development, product: .Auth)
+        let linkConfiguration = PLKConfiguration(key: "<#YOUR_PLAID_PUBLIC_KEY#>", env: .Sandbox, product: .Auth)
         linkConfiguration.clientName = "Link Demo"
         let linkViewDelegate = self
         let linkViewController = PLKPlaidLinkViewController(configuration: linkConfiguration, delegate: linkViewDelegate)

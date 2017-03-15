@@ -82,7 +82,7 @@ class ViewController: UIViewController {
     func presentPlaidLinkWithCustomConfiguration() {
         // <!-- SMARTDOWN_PRESENT_CUSTOM -->
         // With custom configuration
-        let linkConfiguration = PLKConfiguration(key: "<#YOUR_PLAID_PUBLIC_KEY#>", env: .development, product: .auth)
+        let linkConfiguration = PLKConfiguration(key: "<#YOUR_PLAID_PUBLIC_KEY#>", env: .sandbox, product: .auth)
         linkConfiguration.clientName = "Link Demo"
         let linkViewDelegate = self
         let linkViewController = PLKPlaidLinkViewController(configuration: linkConfiguration, delegate: linkViewDelegate)
@@ -127,7 +127,7 @@ extension ViewController : PLKPlaidLinkViewDelegate
 // <!-- SMARTDOWN_DELEGATE_SUCCESS -->
     func linkViewController(_ linkViewController: PLKPlaidLinkViewController, didSucceedWithPublicToken publicToken: String, metadata: [String : Any]?) {
         dismiss(animated: true) {
-        // Handle success, e.g. by storing publicToken with your service
+            // Handle success, e.g. by storing publicToken with your service
             NSLog("Successfully linked account!\npublicToken: \(publicToken)\nmetadata: \(metadata)")
             self.handleSuccessWithToken(publicToken, metadata: metadata)
         }
