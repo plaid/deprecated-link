@@ -68,6 +68,9 @@ class ViewController: UIViewController {
         // With shared configuration from Info.plist
         let linkViewDelegate = self
         let linkViewController = PLKPlaidLinkViewController(delegate: linkViewDelegate)
+        if (UI_USER_INTERFACE_IDIOM() == .Pad) {
+            linkViewController.modalPresentationStyle = .FormSheet
+        }
         presentViewController(linkViewController, animated: true, completion: nil)
     }
 
@@ -78,6 +81,29 @@ class ViewController: UIViewController {
         linkConfiguration.clientName = "Link Demo"
         let linkViewDelegate = self
         let linkViewController = PLKPlaidLinkViewController(configuration: linkConfiguration, delegate: linkViewDelegate)
+        if (UI_USER_INTERFACE_IDIOM() == .Pad) {
+            linkViewController.modalPresentationStyle = .FormSheet
+        }
+        presentViewController(linkViewController, animated: true, completion: nil)
+    }
+
+    // MARK: Start Plaid Link with an institution pre-selected
+    func presentPlaidLinkWithCustomInitializer() {
+        let linkViewDelegate = self
+        let linkViewController = PLKPlaidLinkViewController(institution: "<#INSTITUTION_ID#>", delegate: linkViewDelegate)
+        if (UI_USER_INTERFACE_IDIOM() == .Pad) {
+            linkViewController.modalPresentationStyle = .FormSheet;
+        }
+        presentViewController(linkViewController, animated: true, completion: nil)
+    }
+
+    // MARK: Start Plaid Link in update mode
+    func presentPlaidLinkInUpdateMode() {
+        let linkViewDelegate = self
+        let linkViewController = PLKPlaidLinkViewController(publicToken: "<#GENERATED_PUBLIC_TOKEN#>", delegate: linkViewDelegate)
+        if (UI_USER_INTERFACE_IDIOM() == .Pad) {
+            linkViewController.modalPresentationStyle = .FormSheet
+        }
         presentViewController(linkViewController, animated: true, completion: nil)
     }
 }

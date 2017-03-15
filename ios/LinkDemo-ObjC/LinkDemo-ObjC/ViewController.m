@@ -89,7 +89,7 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
-#pragma mark Plaid Link setup with shared configuration from Info.plist
+#pragma mark Start Plaid Link with shared configuration from Info.plist
 - (void)presentPlaidLinkWithSharedConfiguration {
 
     // <!-- SMARTDOWN_PRESENT_SHARED -->
@@ -104,7 +104,7 @@
     
 }
 
-#pragma mark Plaid Link setup with shared configuration from Info.plist
+#pragma mark Start Plaid Link with shared configuration from Info.plist
 - (void)presentPlaidLinkWithCustomConfiguration {
 
     // <!-- SMARTDOWN_PRESENT_CUSTOM -->
@@ -125,6 +125,34 @@
         NSLog(@"Invalid configuration: %@", exception);
     }
     // <!-- SMARTDOWN_PRESENT_CUSTOM -->
+
+}
+
+#pragma mark Start Plaid Link with an institution pre-selected
+- (void)presentPlaidLinkWithCustomInitializer {
+
+    // <!-- SMARTDOWN_CUSTOM_INITIALIZER -->
+    id<PLKPlaidLinkViewDelegate> linkViewDelegate  = self;
+    PLKPlaidLinkViewController* linkViewController = [[PLKPlaidLinkViewController alloc] initWithInstitution:@"<#INSTITUTION_ID#>" delegate:linkViewDelegate];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        linkViewController.modalPresentationStyle = UIModalPresentationFormSheet;
+    }
+    [self presentViewController:linkViewController animated:YES completion:nil];
+    // <!-- SMARTDOWN_CUSTOM_INITIALIZER -->
+
+}
+
+#pragma mark Start Plaid Link in update mode
+- (void)presentPlaidLinkInUpdateMode {
+
+    // <!-- SMARTDOWN_UPDATE_MODE -->
+    id<PLKPlaidLinkViewDelegate> linkViewDelegate  = self;
+    PLKPlaidLinkViewController* linkViewController = [[PLKPlaidLinkViewController alloc] initWithPublicToken:@"<#GENERATED_PUBLIC_TOKEN#>" delegate:linkViewDelegate];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        linkViewController.modalPresentationStyle = UIModalPresentationFormSheet;
+    }
+    [self presentViewController:linkViewController animated:YES completion:nil];
+    // <!-- SMARTDOWN_UPDATE_MODE -->
 
 }
 

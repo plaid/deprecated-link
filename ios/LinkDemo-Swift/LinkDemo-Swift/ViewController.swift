@@ -71,6 +71,9 @@ class ViewController: UIViewController {
         // With shared configuration from Info.plist
         let linkViewDelegate = self
         let linkViewController = PLKPlaidLinkViewController(delegate: linkViewDelegate)
+        if (UI_USER_INTERFACE_IDIOM() == .pad) {
+            linkViewController.modalPresentationStyle = .formSheet;
+        }
         present(linkViewController, animated: true)
         // <!-- SMARTDOWN_PRESENT_SHARED -->
     }
@@ -83,8 +86,35 @@ class ViewController: UIViewController {
         linkConfiguration.clientName = "Link Demo"
         let linkViewDelegate = self
         let linkViewController = PLKPlaidLinkViewController(configuration: linkConfiguration, delegate: linkViewDelegate)
+        if (UI_USER_INTERFACE_IDIOM() == .pad) {
+            linkViewController.modalPresentationStyle = .formSheet;
+        }
         present(linkViewController, animated: true)
         // <!-- SMARTDOWN_PRESENT_CUSTOM -->
+    }
+
+    // MARK: Start Plaid Link with an institution pre-selected
+    func presentPlaidLinkWithCustomInitializer() {
+        // <!-- SMARTDOWN_CUSTOM_INITIALIZER -->
+        let linkViewDelegate = self
+        let linkViewController = PLKPlaidLinkViewController(institution: "<#INSTITUTION_ID#>", delegate: linkViewDelegate)
+        if (UI_USER_INTERFACE_IDIOM() == .pad) {
+            linkViewController.modalPresentationStyle = .formSheet;
+        }
+        present(linkViewController, animated: true)
+        // <!-- SMARTDOWN_CUSTOM_INITIALIZER -->
+    }
+
+    // MARK: Start Plaid Link in update mode
+    func presentPlaidLinkInUpdateMode() {
+        // <!-- SMARTDOWN_UPDATE_MODE -->
+        let linkViewDelegate = self
+        let linkViewController = PLKPlaidLinkViewController(publicToken: "<#GENERATED_PUBLIC_TOKEN#>", delegate: linkViewDelegate)
+        if (UI_USER_INTERFACE_IDIOM() == .pad) {
+            linkViewController.modalPresentationStyle = .formSheet;
+        }
+        present(linkViewController, animated: true)
+        // <!-- SMARTDOWN_UPDATE_MODE -->
     }
 }
 
