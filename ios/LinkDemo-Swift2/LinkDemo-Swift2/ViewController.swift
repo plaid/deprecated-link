@@ -13,6 +13,7 @@ class ViewController: UIViewController {
 
     @IBOutlet var button: UIButton!
     @IBOutlet var label: UILabel!
+    @IBOutlet var buttonContainerView: UIView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,7 +27,14 @@ class ViewController: UIViewController {
         let linkKitVersion = linkKitBundle.objectForInfoDictionaryKey("CFBundleShortVersionString")!
         let linkKitBuild   = linkKitBundle.objectForInfoDictionaryKey(kCFBundleVersionKey as String)!
         let linkKitName    = linkKitBundle.objectForInfoDictionaryKey(kCFBundleNameKey as String)!
-        label.text         = "\(linkKitName): \(linkKitVersion)+\(linkKitBuild)"
+        label.text         = "Swift 2 — \(linkKitName): \(linkKitVersion)+\(linkKitBuild)"
+
+        let shadowColor    = UIColor(colorLiteralRed: 3/255.0, green: 49/255.0, blue: 86/255.0, alpha: 0.1)
+        buttonContainerView.layer.shadowColor   = shadowColor.CGColor
+        buttonContainerView.layer.shadowOffset  = CGSize(width: 0, height: -1)
+        buttonContainerView.layer.shadowRadius  = 2
+        buttonContainerView.layer.shadowOpacity = 1
+
     }
 
     func didReceiveNotification(notification: NSNotification) {
@@ -36,7 +44,7 @@ class ViewController: UIViewController {
         }
     }
 
-    @IBAction func didTapButtonWithSender(sender: AnyObject?) {
+    @IBAction func didTapButtonWithSender(_: AnyObject?) {
 #if USE_CUSTOM_CONFIG
             presentPlaidLinkWithCustomConfiguration()
 #else
@@ -68,16 +76,42 @@ class ViewController: UIViewController {
         // With shared configuration from Info.plist
         let linkViewDelegate = self
         let linkViewController = PLKPlaidLinkViewController(delegate: linkViewDelegate)
+        if (UI_USER_INTERFACE_IDIOM() == .Pad) {
+            linkViewController.modalPresentationStyle = .FormSheet
+        }
         presentViewController(linkViewController, animated: true, completion: nil)
     }
 
     // MARK: Plaid Link setup with custom configuration
     func presentPlaidLinkWithCustomConfiguration() {
         // With custom configuration
-        let linkConfiguration = PLKConfiguration(key: "<#YOUR_PLAID_PUBLIC_KEY#>", env: .Development, product: .Auth)
+        let linkConfiguration = PLKConfiguration(key: "<#YOUR_PLAID_PUBLIC_KEY#>", env: .Sandbox, product: .Auth)
         linkConfiguration.clientName = "Link Demo"
         let linkViewDelegate = self
         let linkViewController = PLKPlaidLinkViewController(configuration: linkConfiguration, delegate: linkViewDelegate)
+        if (UI_USER_INTERFACE_IDIOM() == .Pad) {
+            linkViewController.modalPresentationStyle = .FormSheet
+        }
+        presentViewController(linkViewController, animated: true, completion: nil)
+    }
+
+    // MARK: Start Plaid Link with an institution pre-selected
+    func presentPlaidLinkWithCustomInitializer() {
+        let linkViewDelegate = self
+        let linkViewController = PLKPlaidLinkViewController(institution: "<#INSTITUTION_ID#>", delegate: linkViewDelegate)
+        if (UI_USER_INTERFACE_IDIOM() == .Pad) {
+            linkViewController.modalPresentationStyle = .FormSheet;
+        }
+        presentViewController(linkViewController, animated: true, completion: nil)
+    }
+
+    // MARK: Start Plaid Link in update mode
+    func presentPlaidLinkInUpdateMode() {
+        let linkViewDelegate = self
+        let linkViewController = PLKPlaidLinkViewController(publicToken: "<#GENERATED_PUBLIC_TOKEN#>", delegate: linkViewDelegate)
+        if (UI_USER_INTERFACE_IDIOM() == .Pad) {
+            linkViewController.modalPresentationStyle = .FormSheet
+        }
         presentViewController(linkViewController, animated: true, completion: nil)
     }
 }

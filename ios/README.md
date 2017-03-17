@@ -24,8 +24,10 @@ Here are some screenshots of the user interface provided by Plaid Link iOS:
       * [Objective-C](#objective-c)
       * [Swift](#swift)
     * [Troubleshooting](#troubleshooting)
-  * [Custom initializers](#custom-initializers)
-  * [Update mode](#update-mode)
+  * [Custom Initializers](#user-content-custom-initializer-info)
+    ([Objective-C](#user-content-objc-custom-initializer), [Swift](#user-content-swift-custom-initializer))
+  * [Update Mode](#user-content-update-mode-info)
+    ([Objective-C](#user-content-objc-update-mode), [Swift](#user-content-swift-update-mode))
   * [Known Issues](#known-issues)
 
 ## Preparation
@@ -110,21 +112,33 @@ There are two ways that Plaid Link iOS can be configured:
 
 #### Required `PLKPlaidLinkConfiguration` items:
 
-| Key          | Type            | Values                                                                                  | Description                                                                                                                                                                                                      |
-| ---          | ---             | :---:                                                                                   | ---                                                                                                                                                                                                              |
-| `clientName` | String          | —                                                                                       | Displayed to the user once they have successfully linked their account.                                                                                                                                          |
-| `key`        | String          | —                                                                                       | Your Plaid `public_key` available from the [Plaid dashboard][dashboard-keys]                                                                                                                                     |
-| `env`        | String          | `Development`, `Testing`, `Production`                                                  | Select the environment to use. For development use `Development`, for testing use `Testing` and for release builds choose `Production`. Depending on the `env` LinkKit will talk to different Plaid API servers. |
-| `product`    | String or Array | `auth`, `transactions`, `income`, or `identity` | Select the Plaid products you would like to use (visit the [Plaid Products page](https://plaid.com/products/) to learn more)
+| Key          | Type            | Values                                              | Description                                                                                                                                                                                                      |
+| ---          | ---             | :---:                                               | ---                                                                                                                                                                                                              |
+| `clientName` | String          | —                                                   | Displayed to the user once they have successfully linked their account.                                                                                                                                          |
+| `key`        | String          | —                                                   | Your Plaid `public_key` available from the [Plaid dashboard][dashboard-keys]                                                                                                                                     |
+| `env`        | String          | `Production`, `Tartan`¹, `Sandbox`², `Development`² | Select the environment to use. For development use `Development`, for testing use `Testing` and for release builds choose `Production`. Depending on the `env` LinkKit will talk to different Plaid API servers. |
+| `product`    | String or Array | `auth`, `transactions`, `income`, or `identity`     | Select the Plaid products you would like to use (visit the [Plaid Products page](https://plaid.com/products/) to learn more)
+
+¹ For use with APIv1 only
+
+² For use with APIv2 only
 
 #### Optional `PLKPlaidLinkConfiguration` items:
 
-| Key                                                 | Type    | Values¹                                    | Description                                                                                                                                                                                               |
-| ---                                                 | ---     | :---:                                      | ---                                                                                                                                                                                                       |
+| Key                                                 | Type    | Values¹                                    | Description                                                                                                                                                                                                |
+| ---                                                 | ---     | :---:                                      | ---                                                                                                                                                                                                        |
 | `webhook`                                           | URL     | —                                          | The URL provided will receive notifications once a user's transactions have been processed and are ready for use. For details refer to the [Plaid API documentation](https://plaid.com/docs/api/#webhook). |
-| <a name='config-select-account'>`selectAccount`</a> | Boolean | `YES`, **`NO`**                            | Whether the user should select a specific account after successfully linking their bank account                                                                                                           |
+| <a name='config-select-account'>`selectAccount`</a> | Boolean | `YES`, **`NO`**                            | Whether the user should select a specific account after successfully linking their bank account                                                                                                            |
+| `apiVersion`                                        | String  | `APIv1`, **`APIv2`**                       | The Plaid API version to use, please specify `APIv1` only if you have an important reason to do so and have been enabled for `APIv1` use by Plaid.                                                         |
 
 ¹ _Default values are shown in_ **bold**.
+
+#### Environment \ API Version Compatibility
+
+| ↓`apiVersion` \ `env`→ | `Production` | `Tartan` | `Sandbox` | `Development` |
+| ---                    | :---:        | :---:    | :---:     | :---:         |
+| `APIv1`                | ✓            | ✓        | —         | —             |
+| `APIv2`                | ✓            | —        | ✓         | ✓             |
 
 Commandline aficionados may find the following command useful:
 
@@ -331,9 +345,7 @@ initialisation of the `PLKPlaidLinkViewController`.
 // With custom configuration
 PLKConfiguration* linkConfiguration;
 @try {
-    linkConfiguration = [[PLKConfiguration alloc] initWithKey:@"<#YOUR_PLAID_PUBLIC_KEY#>"
-                                                           env:PLKEnvironmentDevelopment
-                                                       product:PLKProductAuth];
+    linkConfiguration = [[PLKConfiguration alloc] initWithKey:@"<#YOUR_PLAID_PUBLIC_KEY#>" env:PLKEnvironmentSandbox product:PLKProductAuth];
     linkConfiguration.clientName = @"Link Demo";
     id<PLKPlaidLinkViewDelegate> linkViewDelegate  = self;
     PLKPlaidLinkViewController* linkViewController = [[PLKPlaidLinkViewController alloc] initWithConfiguration:linkConfiguration delegate:linkViewDelegate];
@@ -346,6 +358,46 @@ PLKConfiguration* linkConfiguration;
 }
 ```
 
+<a name='custom-initializer-info'></a>
+##### Custom Initializers
+
+To preselect an institution instantiate the `PLKPlaidLinkViewController` object using
+[`initWithInstitution:delegate:`](https://github.com/plaid/link/blob/master/ios/LinkKit.framework/Headers/PLKPlaidLinkViewController.h#L80-L96)
+and pass the `institution_id` (e.g. `ins_109509`) of the institution you would
+like to use for as the first parameter. Then present the `linkViewController` instance as usual.
+
+Refer to the [Plaid API documentation](https://plaid.com/docs/api/#institution-search)
+on how to find out the `institution_id` for an institution.
+
+<a name='objc-custom-initializer'></a>
+<!-- SMARTDOWN_CUSTOM_INITIALIZER -->
+```objc
+id<PLKPlaidLinkViewDelegate> linkViewDelegate  = self;
+PLKPlaidLinkViewController* linkViewController = [[PLKPlaidLinkViewController alloc] initWithInstitution:@"<#INSTITUTION_ID#>" delegate:linkViewDelegate];
+if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+    linkViewController.modalPresentationStyle = UIModalPresentationFormSheet;
+}
+[self presentViewController:linkViewController animated:YES completion:nil];
+```
+
+<a name='update-mode-info'></a>
+##### Update Mode
+
+To initiate the [update mode][link-update-mode] instantiate the `PLKPlaidLinkViewController`
+object using [`initWithPublicToken:delegate:`](https://github.com/plaid/link/blob/master/ios/LinkKit.framework/Headers/PLKPlaidLinkViewController.h#L120-L136)
+and pass your [generated `public_token`][create-public-token] as the first
+parameter. Then present the `linkViewController` instance as usual.
+
+<a name='objc-update-mode'></a>
+<!-- SMARTDOWN_UPDATE_MODE -->
+```objc
+id<PLKPlaidLinkViewDelegate> linkViewDelegate  = self;
+PLKPlaidLinkViewController* linkViewController = [[PLKPlaidLinkViewController alloc] initWithPublicToken:@"<#GENERATED_PUBLIC_TOKEN#>" delegate:linkViewDelegate];
+if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+    linkViewController.modalPresentationStyle = UIModalPresentationFormSheet;
+}
+[self presentViewController:linkViewController animated:YES completion:nil];
+```
 
 #### Swift
 
@@ -412,7 +464,7 @@ Be sure to read about the details regarding the [metadata](#user-content-metadat
 ```swift
 func linkViewController(_ linkViewController: PLKPlaidLinkViewController, didSucceedWithPublicToken publicToken: String, metadata: [String : Any]?) {
     dismiss(animated: true) {
-    // Handle success, e.g. by storing publicToken with your service
+        // Handle success, e.g. by storing publicToken with your service
         NSLog("Successfully linked account!\npublicToken: \(publicToken)\nmetadata: \(metadata)")
         self.handleSuccessWithToken(publicToken, metadata: metadata)
     }
@@ -443,6 +495,9 @@ func linkViewController(_ linkViewController: PLKPlaidLinkViewController, didExi
 // With shared configuration from Info.plist
 let linkViewDelegate = self
 let linkViewController = PLKPlaidLinkViewController(delegate: linkViewDelegate)
+if (UI_USER_INTERFACE_IDIOM() == .pad) {
+    linkViewController.modalPresentationStyle = .formSheet;
+}
 present(linkViewController, animated: true)
 ```
 
@@ -450,10 +505,43 @@ present(linkViewController, animated: true)
 <!-- SMARTDOWN_PRESENT_CUSTOM -->
 ```swift
 // With custom configuration
-let linkConfiguration = PLKConfiguration(key: "<#YOUR_PLAID_PUBLIC_KEY#>", env: .development, product: .auth)
+let linkConfiguration = PLKConfiguration(key: "<#YOUR_PLAID_PUBLIC_KEY#>", env: .sandbox, product: .auth)
 linkConfiguration.clientName = "Link Demo"
 let linkViewDelegate = self
 let linkViewController = PLKPlaidLinkViewController(configuration: linkConfiguration, delegate: linkViewDelegate)
+if (UI_USER_INTERFACE_IDIOM() == .pad) {
+    linkViewController.modalPresentationStyle = .formSheet;
+}
+present(linkViewController, animated: true)
+```
+
+##### Custom Initializers
+
+For more information please read [additional information about custom initializers](#user-content-custom-initializer-info)
+
+<a name='swift-custom-initializer'></a>
+<!-- SMARTDOWN_CUSTOM_INITIALIZER -->
+```swift
+let linkViewDelegate = self
+let linkViewController = PLKPlaidLinkViewController(institution: "<#INSTITUTION_ID#>", delegate: linkViewDelegate)
+if (UI_USER_INTERFACE_IDIOM() == .pad) {
+    linkViewController.modalPresentationStyle = .formSheet;
+}
+present(linkViewController, animated: true)
+```
+
+##### Update Mode
+
+For more information please read [additional information about update mode](#user-content-update-mode-info)
+
+<a name='swift-update-mode'></a>
+<!-- SMARTDOWN_UPDATE_MODE -->
+```swift
+let linkViewDelegate = self
+let linkViewController = PLKPlaidLinkViewController(publicToken: "<#GENERATED_PUBLIC_TOKEN#>", delegate: linkViewDelegate)
+if (UI_USER_INTERFACE_IDIOM() == .pad) {
+    linkViewController.modalPresentationStyle = .formSheet;
+}
 present(linkViewController, animated: true)
 ```
 
@@ -489,37 +577,9 @@ Throughout the source code there are HTML-like comments such as
 the code examples in this README from the actual source code ensuring that the
 examples are working as intended.
 
-## Custom initializers
-
-To preselect an institution instantiate the `PLKPlaidLinkViewController` object using [`initWithInstitution:delegate:`](https://github.com/plaid/link/blob/master/ios/LinkKit.framework/Headers/PLKPlaidLinkViewController.h#L80-L96) and pass the `institution_id` (e.g. `ins_109509`) of the institution you would like to use  for as the first parameter. Then present the `linkViewController` instance as usual.
-
-Refer to the [Plaid API documentation](https://plaid.com/docs/api/#institution-search) on how to find out the `institution_id` for an institution.
-
-Objective-C
-```objc
-PLKPlaidLinkViewController* linkViewController = [[PLKPlaidLinkViewController alloc] initWithInstitution:@"<#INSTITUTION_ID#>" delegate:linkViewDelegate];
-```
-
-Swift
-```swift
-let linkViewController = PLKPlaidLinkViewController(institution: "<#INSTITUTION_ID#>", delegate: delegate:linkViewDelegate)
-```
-
-## Update mode
-
-To initiate the [update mode][link-update-mode] instantiate the `PLKPlaidLinkViewController` object using [`initWithPublicToken:delegate:`](https://github.com/plaid/link/blob/master/ios/LinkKit.framework/Headers/PLKPlaidLinkViewController.h#L120-L136) and pass your [generated `public_token`][create-public-token] as the first parameter. Then present the `linkViewController` instance as usual.
-
-Objective-C
-```objc
-PLKPlaidLinkViewController* linkViewController = [[PLKPlaidLinkViewController alloc] initWithPublicToken:@"<#GENERATED_PUBLIC_TOKEN#>" delegate:linkViewDelegate];
-```
-
-Swift
-```swift
-let linkViewController = PLKPlaidLinkViewController(publicToken: "<#GENERATED_PUBLIC_TOKEN#>", delegate:linkViewDelegate)
-```
 
 ## Known issues
+
 
 [linkkit]: LinkKit.framework
 [dashboard-keys]: https://dashboard.plaid.com/account/keys

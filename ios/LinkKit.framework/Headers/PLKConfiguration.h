@@ -15,13 +15,16 @@ NS_ASSUME_NONNULL_BEGIN
  The Plaid API environment selects the Plaid servers with which LinkKit communicates.
  */
 typedef NS_ENUM(NSInteger, PLKEnvironment) {
-    /// For development use.
+    /// For APIv2 development use.
     PLKEnvironmentDevelopment = 0,
+ 
+    /// For APIv2 testing use.
+    PLKEnvironmentSandbox,
 
-    /// For testing use.
-    PLKEnvironmentTesting,
-
-    /// For production use only. @remark Requests are billed.
+    /// For APIv1 testing use.
+    PLKEnvironmentTartan,
+   
+    /// For production use only (APIv1 and APIv2). @remark Requests are billed.
     PLKEnvironmentProduction,
 };
 

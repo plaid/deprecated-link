@@ -20,6 +20,7 @@
 @interface ViewController ()
 @property IBOutlet UIButton* button;
 @property IBOutlet UILabel* label;
+@property IBOutlet UIView* buttonContainerView;
 @end
 
 @implementation ViewController
@@ -40,8 +41,14 @@
 
     NSBundle* linkKitBundle = [NSBundle bundleForClass:[PLKPlaidLinkViewController class]];
     NSString* linkName      = [linkKitBundle objectForInfoDictionaryKey:(NSString*)kCFBundleNameKey];
-    self.label.text         = [NSString stringWithFormat:@"%@: %s+%.0f"
+    self.label.text         = [NSString stringWithFormat:@"Objective-C — %@ %s+%.0f"
                                  , linkName, LinkKitVersionString, LinkKitVersionNumber];
+
+    UIColor* shadowColor = [UIColor colorWithRed:3/255.0 green:49/255.0 blue:86/255.0 alpha:0.1];
+    self.buttonContainerView.layer.shadowColor   = [shadowColor CGColor];
+    self.buttonContainerView.layer.shadowOffset  = CGSizeMake(0, -1);
+    self.buttonContainerView.layer.shadowRadius  = 2;
+    self.buttonContainerView.layer.shadowOpacity = 1;
 }
 
 - (void)didReceiveNotification:(NSNotification*)notification {
@@ -89,7 +96,7 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
-#pragma mark Plaid Link setup with shared configuration from Info.plist
+#pragma mark Start Plaid Link with shared configuration from Info.plist
 - (void)presentPlaidLinkWithSharedConfiguration {
 
     // <!-- SMARTDOWN_PRESENT_SHARED -->
@@ -104,16 +111,14 @@
     
 }
 
-#pragma mark Plaid Link setup with shared configuration from Info.plist
+#pragma mark Start Plaid Link with shared configuration from Info.plist
 - (void)presentPlaidLinkWithCustomConfiguration {
 
     // <!-- SMARTDOWN_PRESENT_CUSTOM -->
     // With custom configuration
     PLKConfiguration* linkConfiguration;
     @try {
-        linkConfiguration = [[PLKConfiguration alloc] initWithKey:@"<#YOUR_PLAID_PUBLIC_KEY#>"
-                                                               env:PLKEnvironmentDevelopment
-                                                           product:PLKProductAuth];
+        linkConfiguration = [[PLKConfiguration alloc] initWithKey:@"<#YOUR_PLAID_PUBLIC_KEY#>" env:PLKEnvironmentSandbox product:PLKProductAuth];
         linkConfiguration.clientName = @"Link Demo";
         id<PLKPlaidLinkViewDelegate> linkViewDelegate  = self;
         PLKPlaidLinkViewController* linkViewController = [[PLKPlaidLinkViewController alloc] initWithConfiguration:linkConfiguration delegate:linkViewDelegate];
@@ -125,6 +130,34 @@
         NSLog(@"Invalid configuration: %@", exception);
     }
     // <!-- SMARTDOWN_PRESENT_CUSTOM -->
+
+}
+
+#pragma mark Start Plaid Link with an institution pre-selected
+- (void)presentPlaidLinkWithCustomInitializer {
+
+    // <!-- SMARTDOWN_CUSTOM_INITIALIZER -->
+    id<PLKPlaidLinkViewDelegate> linkViewDelegate  = self;
+    PLKPlaidLinkViewController* linkViewController = [[PLKPlaidLinkViewController alloc] initWithInstitution:@"<#INSTITUTION_ID#>" delegate:linkViewDelegate];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        linkViewController.modalPresentationStyle = UIModalPresentationFormSheet;
+    }
+    [self presentViewController:linkViewController animated:YES completion:nil];
+    // <!-- SMARTDOWN_CUSTOM_INITIALIZER -->
+
+}
+
+#pragma mark Start Plaid Link in update mode
+- (void)presentPlaidLinkInUpdateMode {
+
+    // <!-- SMARTDOWN_UPDATE_MODE -->
+    id<PLKPlaidLinkViewDelegate> linkViewDelegate  = self;
+    PLKPlaidLinkViewController* linkViewController = [[PLKPlaidLinkViewController alloc] initWithPublicToken:@"<#GENERATED_PUBLIC_TOKEN#>" delegate:linkViewDelegate];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        linkViewController.modalPresentationStyle = UIModalPresentationFormSheet;
+    }
+    [self presentViewController:linkViewController animated:YES completion:nil];
+    // <!-- SMARTDOWN_UPDATE_MODE -->
 
 }
 

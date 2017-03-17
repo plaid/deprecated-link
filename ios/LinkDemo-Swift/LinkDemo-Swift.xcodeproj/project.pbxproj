@@ -286,7 +286,7 @@
 				INFOPLIST_FILE = "LinkDemo-Swift/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LINK_ENV = Development;
+				LINK_ENV = Sandbox;
 				LINK_KEY = YOUR_PLAID_PUBLIC_KEY;
 				PRODUCT_BUNDLE_IDENTIFIER = com.plaid.linkdemo.swift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -304,7 +304,7 @@
 				INFOPLIST_FILE = "LinkDemo-Swift/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LINK_ENV = Testing;
+				LINK_ENV = Production;
 				LINK_KEY = YOUR_PLAID_PUBLIC_KEY;
 				PRODUCT_BUNDLE_IDENTIFIER = com.plaid.linkdemo.swift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
