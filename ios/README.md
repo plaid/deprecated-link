@@ -291,8 +291,8 @@ to an error or a user initiated exit, `-linkViewController:didExitWithError:meta
 <a name='metadata-details'></a>
 The `metadata` contains the following keys, note that values can be `[NSNull null]`.
 
-| Constant                           | Type       | Description                                                                                                                                                              |
-| ---                                | ---        | ---                                                                                                                                                                      | --- |
+|              Constant              |    Type    |                                                                               Description                                                                                |
+|------------------------------------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `kPLKMetadataAccountIdKey`         | String     | Identifier for the selected account                                                                                                                                      |
 | `kPLKMetadataAccountKey`           | Dictionary | Contains the keys `kPLKMetadataIdKey` and `kPLKMetadataNameKey`. Only applicable when the [`selectAccount`](#user-content-config-select-account) property is set to true |
 | `kPLKMetadataIdKey`                | String     | Identifier for the selected account                                                                                                                                      |
