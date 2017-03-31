@@ -40,10 +40,10 @@ typedef NS_ENUM(NSInteger, PLKAPIVersion) {
 /// The default API version to use. *Note:* This may change with future releases
 static PLKAPIVersion kPLKAPIVersionDefault = PLKAPIv2;
 
-/// A Plaid public_key that can be used for testing when using PLKEnvironmentDevelopment or PLKEnvironmentTesting.
+/// A Plaid public_key that can be used for testing when using PLKEnvironmentTartan.
 PLK_EXTERN NSString* const kPLKTestKey;
 
-/// A Plaid public_key that can be used for testing longtail when using PLKEnvironmentDevelopment or PLKEnvironmentTesting.
+/// A Plaid public_key that can be used for testing longtail when using PLKEnvironmentTartan.
 PLK_EXTERN NSString* const kPLKTestKeyLongtailAuth;
 
 
