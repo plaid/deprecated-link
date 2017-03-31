@@ -33,8 +33,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 NSLog("Plaid Link setup was successful")
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PLDPlaidLinkSetupFinished"), object: self)
             }
+            else if let error = error {
+                NSLog("Unable to setup Plaid Link due to: \(error.localizedDescription)")
+            }
             else {
-                NSLog("Unable to setup Plaid Link due to: \(error?.localizedDescription)")
+                NSLog("Unable to setup Plaid Link")
             }
         }
         // <!-- SMARTDOWN_SETUP_SHARED -->
@@ -52,8 +55,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 NSLog("Plaid Link setup was successful")
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PLDPlaidLinkSetupFinished"), object: self)
             }
+            else if let error = error {
+                NSLog("Unable to setup Plaid Link due to: \(error.localizedDescription)")
+            }
             else {
-                NSLog("Unable to setup Plaid Link due to: \(error?.localizedDescription)")
+                NSLog("Unable to setup Plaid Link")
             }
         }
         // <!-- SMARTDOWN_SETUP_CUSTOM -->

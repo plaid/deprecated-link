@@ -54,15 +54,15 @@ class ViewController: UIViewController {
     }
 
     func handleSuccessWithToken(_ publicToken: String, metadata: [String : Any]?) {
-        presentAlertViewWithTitle("Success", message: "token: \(publicToken)\nmetadata: \(metadata)")
+        presentAlertViewWithTitle("Success", message: "token: \(publicToken)\nmetadata: \(metadata ?? [:])")
     }
 
     func handleError(_ error: Error, metadata: [String : Any]?) {
-        presentAlertViewWithTitle("Failure", message: "error: \(error.localizedDescription)\nmetadata: \(metadata)")
+        presentAlertViewWithTitle("Failure", message: "error: \(error.localizedDescription)\nmetadata: \(metadata ?? [:])")
     }
     
     func handleExitWithMetadata(_ metadata: [String : Any]?) {
-        presentAlertViewWithTitle("Exit", message: "metadata: \(metadata)")
+        presentAlertViewWithTitle("Exit", message: "metadata: \(metadata ?? [:])")
     }
     
     func presentAlertViewWithTitle(_ title: String, message: String) {
@@ -135,7 +135,7 @@ extension ViewController : PLKPlaidLinkViewDelegate
     func linkViewController(_ linkViewController: PLKPlaidLinkViewController, didSucceedWithPublicToken publicToken: String, metadata: [String : Any]?) {
         dismiss(animated: true) {
             // Handle success, e.g. by storing publicToken with your service
-            NSLog("Successfully linked account!\npublicToken: \(publicToken)\nmetadata: \(metadata)")
+            NSLog("Successfully linked account!\npublicToken: \(publicToken)\nmetadata: \(metadata ?? [:])")
             self.handleSuccessWithToken(publicToken, metadata: metadata)
         }
     }
@@ -145,11 +145,11 @@ extension ViewController : PLKPlaidLinkViewDelegate
     func linkViewController(_ linkViewController: PLKPlaidLinkViewController, didExitWithError error: Error?, metadata: [String : Any]?) {
         dismiss(animated: true) {
             if let error = error {
-                NSLog("Failed to link account due to: \(error.localizedDescription)\nmetadata: \(metadata)")
+                NSLog("Failed to link account due to: \(error.localizedDescription)\nmetadata: \(metadata ?? [:])")
                 self.handleError(error, metadata: metadata)
             }
             else {
-                NSLog("Plaid link exited with metadata: \(metadata)")
+                NSLog("Plaid link exited with metadata: \(metadata ?? [:])")
                 self.handleExitWithMetadata(metadata)
             }
         }

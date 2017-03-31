@@ -2,6 +2,16 @@
 
 <!-- http://keepachangelog.com -->
 
+## 2017-03-31 — LinkKit 1.0.3
+### Added
+- Institution `huntington`
+
+### Changed
+- Fix issue with credentials authentication when an institution requires a PIN
+- Use default api version when none specified
+- Fix compiler warnings in LinkDemo-Swift project
+
+
 ## 2017-03-17 — LinkKit 1.0.2
 ### Added
 - Institutions `citizens` and `regions`

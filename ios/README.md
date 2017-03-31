@@ -423,8 +423,11 @@ PLKPlaidLink.setup { (success, error) in
         NSLog("Plaid Link setup was successful")
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PLDPlaidLinkSetupFinished"), object: self)
     }
+    else if let error = error {
+        NSLog("Unable to setup Plaid Link due to: \(error.localizedDescription)")
+    }
     else {
-        NSLog("Unable to setup Plaid Link due to: \(error?.localizedDescription)")
+        NSLog("Unable to setup Plaid Link")
     }
 }
 ```
@@ -441,8 +444,11 @@ PLKPlaidLink.setup(with: linkConfiguration) { (success, error) in
         NSLog("Plaid Link setup was successful")
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PLDPlaidLinkSetupFinished"), object: self)
     }
+    else if let error = error {
+        NSLog("Unable to setup Plaid Link due to: \(error.localizedDescription)")
+    }
     else {
-        NSLog("Unable to setup Plaid Link due to: \(error?.localizedDescription)")
+        NSLog("Unable to setup Plaid Link")
     }
 }
 ```
@@ -465,7 +471,7 @@ Be sure to read about the details regarding the [metadata](#user-content-metadat
 func linkViewController(_ linkViewController: PLKPlaidLinkViewController, didSucceedWithPublicToken publicToken: String, metadata: [String : Any]?) {
     dismiss(animated: true) {
         // Handle success, e.g. by storing publicToken with your service
-        NSLog("Successfully linked account!\npublicToken: \(publicToken)\nmetadata: \(metadata)")
+        NSLog("Successfully linked account!\npublicToken: \(publicToken)\nmetadata: \(metadata ?? [:])")
         self.handleSuccessWithToken(publicToken, metadata: metadata)
     }
 }
@@ -476,11 +482,11 @@ func linkViewController(_ linkViewController: PLKPlaidLinkViewController, didSuc
 func linkViewController(_ linkViewController: PLKPlaidLinkViewController, didExitWithError error: Error?, metadata: [String : Any]?) {
     dismiss(animated: true) {
         if let error = error {
-            NSLog("Failed to link account due to: \(error.localizedDescription)\nmetadata: \(metadata)")
+            NSLog("Failed to link account due to: \(error.localizedDescription)\nmetadata: \(metadata ?? [:])")
             self.handleError(error, metadata: metadata)
         }
         else {
-            NSLog("Plaid link exited with metadata: \(metadata)")
+            NSLog("Plaid link exited with metadata: \(metadata ?? [:])")
             self.handleExitWithMetadata(metadata)
         }
     }
