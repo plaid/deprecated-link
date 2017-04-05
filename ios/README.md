@@ -94,11 +94,12 @@ the result with a `UIAlertViewController` and logs the result to the console usi
 The scripts removes code from the framework, which included to support the iPhone Simulator,
 but which may not be distributed via the App Store.
 
-Change the `${PROJECT_DIR}/LinkKit.framework` path in the example below according to your setup.
+Change the `${PROJECT_DIR}/LinkKit.framework` path in the example below according to your setup,
+and be sure to quote the filepaths when they contain whitespace.
 
 ```sh
-cp ${PROJECT_DIR}/LinkKit.framework/prepare_for_distribution.sh ${CODESIGNING_FOLDER_PATH}/Frameworks/LinkKit.framework/prepare_for_distribution.sh
-${CODESIGNING_FOLDER_PATH}/Frameworks/LinkKit.framework/prepare_for_distribution.sh
+cp "${PROJECT_DIR}"/LinkKit.framework/prepare_for_distribution.sh "${CODESIGNING_FOLDER_PATH}"/Frameworks/LinkKit.framework/prepare_for_distribution.sh
+"${CODESIGNING_FOLDER_PATH}"/Frameworks/LinkKit.framework/prepare_for_distribution.sh
 ```
 
 ### Configuration
@@ -143,7 +144,7 @@ There are two ways that Plaid Link iOS can be configured:
 Commandline aficionados may find the following command useful:
 
 ```sh
-/usr/libexec/PlistBuddy ${PATH_TO_THE_APPLICATIONS}/Info.plist \
+/usr/libexec/PlistBuddy "${PATH_TO_THE_APPLICATIONS}"/Info.plist \
   -c 'Add PLKPlaidLinkConfiguration:clientName string $(PRODUCT_NAME)' \
   -c 'Add PLKPlaidLinkConfiguration:key string $(LINK_KEY)' \
   -c 'Add PLKPlaidLinkConfiguration:env string $(LINK_ENV)' \
