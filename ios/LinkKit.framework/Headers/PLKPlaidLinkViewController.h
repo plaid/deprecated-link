@@ -78,16 +78,12 @@ PLK_EMPTY_INIT_UNAVAILABLE;
 
 
 /**
- Initializes and returns a newly created Plaid Link view controller in update mode using
+ Initializes and returns a newly created Plaid Link view controller with an institution pre-selected using
  the shared configuration.
 
- When a user changes their username, password, or MFA credentials with a financial institution
- or is locked out of their account, they must update their credentials with Plaid as well.
- Link's update mode makes this process secure and painless.
- To use update mode, initialize Link with the publicToken for the user you wish to update.
+ This will cause Link to open directly to the authentication step for the institution.
 
- @param identifier The Plaid identifier for a financial institution
-                    This will cause Link to open directly to the authentication step for the institution.
+ @param identifier The Plaid identifier for a financial institution.
  @param delegate A delegate object that wishes to receive messages from the inquiry object.
                  Delegate methods are listed under PLKPlaidLinkViewDelegate.
  @return The initialized Plaid Link view controller object or throws an exception if there was a problem initializing the object.
@@ -97,16 +93,12 @@ PLK_EMPTY_INIT_UNAVAILABLE;
 
 
 /**
- Initializes and returns a newly created Plaid Link view controller in update mode using
- the give custom configuration.
+ Initializes and returns a newly created Plaid Link view controller with an institution pre-selected using
+ the given custom configuration.
 
- When a user changes their username, password, or MFA credentials with a financial institution
- or is locked out of their account, they must update their credentials with Plaid as well.
- Link's update mode makes this process secure and painless.
- To use update mode, initialize Link with the publicToken for the user you wish to update.
+ This will cause Link to open directly to the authentication step for the institution.
 
- @param identifier The Plaid identifier for a financial institution
-                    This will cause Link to open directly to the authentication step for the institution.
+ @param identifier The Plaid identifier for a financial institution.
  @param configuration A custom configuration object to use.
  @param delegate A delegate object that wishes to receive messages from the inquiry object.
                  Delegate methods are listed under PLKPlaidLinkViewDelegate.
@@ -126,8 +118,9 @@ PLK_EMPTY_INIT_UNAVAILABLE;
  Link's update mode makes this process secure and painless.
  To use update mode, initialize Link with the publicToken for the user you wish to update.
 
+ This will cause Link to open directly to the authentication step for that user's institution.
+
  @param publicToken An existing user's public token to launch Link in update mode.
-                    This will cause Link to open directly to the authentication step for that user's institution.
  @param delegate A delegate object that wishes to receive messages from the inquiry object.
                  Delegate methods are listed under PLKPlaidLinkViewDelegate.
  @return The initialized Plaid Link view controller object or throws an exception if there was a problem initializing the object.
@@ -138,15 +131,16 @@ PLK_EMPTY_INIT_UNAVAILABLE;
 
 /**
  Initializes and returns a newly created Plaid Link view controller in update mode using
- the give custom configuration.
+ the given custom configuration.
 
  When a user changes their username, password, or MFA credentials with a financial institution
  or is locked out of their account, they must update their credentials with Plaid as well.
  Link's update mode makes this process secure and painless.
  To use update mode, initialize Link with the publicToken for the user you wish to update.
 
+ This will cause Link to open directly to the authentication step for that user's institution.
+
  @param publicToken An existing user's public token to launch Link in update mode.
-                    This will cause Link to open directly to the authentication step for that user's institution.
  @param configuration A custom configuration object to use.
  @param delegate A delegate object that wishes to receive messages from the inquiry object.
                  Delegate methods are listed under PLKPlaidLinkViewDelegate.

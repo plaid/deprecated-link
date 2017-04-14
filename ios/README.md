@@ -149,7 +149,7 @@ Commandline aficionados may find the following command useful:
   -c 'Add PLKPlaidLinkConfiguration:key string $(LINK_KEY)' \
   -c 'Add PLKPlaidLinkConfiguration:env string $(LINK_ENV)' \
   -c 'Add PLKPlaidLinkConfiguration:product string auth' \
-  -c 'Add PLKPlaidLinkConfiguration:selectAccount bool NO' \
+  -c 'Add PLKPlaidLinkConfiguration:selectAccount bool NO'
 ```
 
 The command adds the necessary keys and values to the `Info.plist`. In this example the values
