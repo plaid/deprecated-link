@@ -19,6 +19,8 @@ Here are some screenshots of the user interface provided by Plaid Link iOS:
   * [Quick Guide for The Impatient (TL;DR)](#quick-guide-for-the-impatient)
   * [Getting Started](#getting-started)
     * [Integration](#integration)
+      * [Cocoapods](#cocoapods)
+      * [Manual](#manual)
     * [Configuration](#configuration)
     * [Implementation](#implementation)
       * [Objective-C](#objective-c)
@@ -73,6 +75,23 @@ the Plaid Link iOS user interface. When Plaid Link iOS is finished the applicati
 the result with a `UIAlertViewController` and logs the result to the console using `NSLog`.
 
 ### Integration
+
+#### Cocoapods
+
+To integrate [`LinkKit.framework`][linkkit] into your application using
+[CocoaPods](https://cocoapods.org/#install) add the next line to your Podfile:
+
+```
+pod 'Plaid'
+```
+
+and run the following command:
+`pod install`
+
+To update [`LinkKit.framework`][linkkit] in the future run:
+`pod update Plaid`
+
+#### Manual
 
 * Get the latest version of [`LinkKit.framework`][linkkit]
 * Embed the [`LinkKit.framework`][linkkit] into your application
