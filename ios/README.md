@@ -20,6 +20,7 @@ Here are some screenshots of the user interface provided by Plaid Link iOS:
   * [Getting Started](#getting-started)
     * [Integration](#integration)
       * [Cocoapods](#cocoapods)
+      * [Carthage](#carthage)
       * [Manual](#manual)
     * [Configuration](#configuration)
     * [Implementation](#implementation)
@@ -100,6 +101,23 @@ pod 'Plaid'
 * To update [`LinkKit.framework`][linkkit] in the future run:
 `pod update Plaid`
 
+#### Carthage
+
+To integrate [`LinkKit.framework`][linkkit] into your application using
+[Carthage](https://github.com/Carthage/Carthage):
+
+* Add the next line to your Cartfile:
+
+```
+binary "https://raw.githubusercontent.com/plaid/link/carthage/LinkKit.json"
+```
+
+* Run the following command: `carthage update`
+
+* This downloads the latest version of [`LinkKit.framework`][linkkit]
+to `Carthage/Build/iOS/LinkKit.framework`
+
+* Follow the [manual steps below](#manual)
 
 #### Manual
 
