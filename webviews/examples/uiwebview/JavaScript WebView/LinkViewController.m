@@ -27,6 +27,9 @@
     // Generate the Link initialization URL based off of the configuration settings
     NSURL* linkInitializationUrl = [self generateLinkInitializationURLWithOptions:linkInitializationOptions];
 
+    // The body of link doesn't need to be scrolled, therefore we can disable scrollview bouncing:
+    _webview.scrollView.bounces = NO;
+  
     // Load the Link initialization URL in the webview.
     // Link will start automatically
     [_webview loadRequest:[NSURLRequest requestWithURL:linkInitializationUrl]];

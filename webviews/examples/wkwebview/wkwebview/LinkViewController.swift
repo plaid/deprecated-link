@@ -10,15 +10,7 @@ import WebKit
 
 class LinkViewController: UIViewController, WKNavigationDelegate {
 
-    @IBOutlet var containerView : UIView? = nil
-
-    var webView: WKWebView!
-
-    override func loadView() {
-        self.webView = WKWebView()
-        self.webView.navigationDelegate = self
-        self.view = webView
-    }
+    let webView = WKWebView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +19,18 @@ class LinkViewController: UIViewController, WKNavigationDelegate {
         let linkUrl = generateLinkInitializationURL()
         let url = NSURL(string: linkUrl)
         let request = NSURLRequest(url:url! as URL)
-        self.webView.load(request as URLRequest)
-        self.webView.allowsBackForwardNavigationGestures = false
+        
+        webView.navigationDelegate = self
+        webView.allowsBackForwardNavigationGestures = false
+        
+        webView.frame = view.frame
+        webView.scrollView.bounces = false
+        self.view.addSubview(webView)
+        webView.load(request as URLRequest)
+    }
+    
+    override var prefersStatusBarHidden : Bool {
+        return true
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,9 +54,9 @@ class LinkViewController: UIViewController, WKNavigationDelegate {
             "product": "auth",
             "selectAccount": "true",
             "clientName": "Test App",
-            "webhook": "https://requestb.in",
             "isMobile": "true",
-            "isWebview": "true"
+            "isWebview": "true",
+            "webhook": "https://requestb.in",
         ]
 
         // Build a dictionary with the Link configuration options
@@ -68,8 +70,8 @@ class LinkViewController: UIViewController, WKNavigationDelegate {
     }
 
     func webView(_ webView: WKWebView,
-                 decidePolicyForNavigationAction navigationAction: WKNavigationAction,
-                 decisionHandler: ((WKNavigationActionPolicy) -> Void)) {
+                 decidePolicyFor navigationAction: WKNavigationAction,
+                 decisionHandler: @escaping ((WKNavigationActionPolicy) -> Void)) {
 
         let linkScheme = "plaidlink";
         let actionScheme = navigationAction.request.url?.scheme;
@@ -81,7 +83,7 @@ class LinkViewController: UIViewController, WKNavigationDelegate {
 
             case "connected"?:
                 // Close the webview
-                self.dismiss(animated: true, completion: nil)
+                self.navigationController?.popViewController(animated: true)
 
                 // Parse data passed from Link into a dictionary
                 // This includes the public_token as well as account and institution metadata
@@ -93,7 +95,7 @@ class LinkViewController: UIViewController, WKNavigationDelegate {
 
             case "exit"?:
                 // Close the webview
-                self.dismiss(animated: true, completion: nil)
+                self.navigationController?.popViewController(animated: true)
 
                 // Parse data passed from Link into a dictionary
                 // This includes information about where the user was in the Link flow
@@ -118,7 +120,7 @@ class LinkViewController: UIViewController, WKNavigationDelegate {
             // Handle http:// and https:// links inside of Plaid Link,
             // and open them in a new Safari page. This is necessary for links
             // such as "forgot-password" and "locked-account"
-            UIApplication.shared.openURL(navigationAction.request.url!)
+            UIApplication.shared.open(navigationAction.request.url!, options: [:], completionHandler: nil)
             decisionHandler(.cancel)
         } else {
             print("Unrecognized URL scheme detected that is neither HTTP, HTTPS, or related to Plaid Link: \(navigationAction.request.url?.absoluteString)");
