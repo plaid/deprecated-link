@@ -8,4 +8,4 @@
 
 ## [Link on the web](web)
 
-[![Examples of Plaid Link on the web](https://blog.plaid.com/assets/csa_lineup.jpg)](web)
+[![Examples of Plaid Link on the web](https://blog.plaid.com/assets/csa_lineup.png)](web)
