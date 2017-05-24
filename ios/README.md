@@ -109,7 +109,7 @@ To integrate [`LinkKit.framework`][linkkit] into your application using
 * Add the next line to your Cartfile:
 
 ```
-binary "https://raw.githubusercontent.com/plaid/link/carthage/LinkKit.json"
+binary "https://raw.githubusercontent.com/plaid/link/master/LinkKit.json"
 ```
 
 * Run the following command: `carthage update`
