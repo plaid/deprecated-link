@@ -17,18 +17,18 @@ class LinkViewController: UIViewController, WKNavigationDelegate {
 
         // load the link url
         let linkUrl = generateLinkInitializationURL()
-        let url = NSURL(string: linkUrl)
-        let request = NSURLRequest(url:url! as URL)
-        
+        let url = URL(string: linkUrl)
+        let request = URLRequest(url: url!)
+
         webView.navigationDelegate = self
         webView.allowsBackForwardNavigationGestures = false
-        
+
         webView.frame = view.frame
         webView.scrollView.bounces = false
         self.view.addSubview(webView)
-        webView.load(request as URLRequest)
+        webView.load(request)
     }
-    
+
     override var prefersStatusBarHidden : Bool {
         return true
     }
@@ -41,7 +41,7 @@ class LinkViewController: UIViewController, WKNavigationDelegate {
     // getUrlParams :: parse query parameters into a Dictionary
     func getUrlParams(url: URL) -> Dictionary<String, String> {
         var paramsDictionary = [String: String]()
-        let queryItems = NSURLComponents(string: (url.absoluteString))?.queryItems
+        let queryItems = URLComponents(string: (url.absoluteString))?.queryItems
         queryItems?.forEach { paramsDictionary[$0.name] = $0.value }
         return paramsDictionary
     }
@@ -61,11 +61,11 @@ class LinkViewController: UIViewController, WKNavigationDelegate {
 
         // Build a dictionary with the Link configuration options
         // See the Link docs (https://plaid.com/docs/quickstart) for full documentation.
-        let components = NSURLComponents()
+        var components = URLComponents()
         components.scheme = "https"
         components.host = "cdn.plaid.com"
         components.path = "/link/v2/stable/link.html"
-        components.queryItems = config.map { (NSURLQueryItem(name: $0, value: $1) as URLQueryItem) }
+        components.queryItems = config.map { URLQueryItem(name: $0, value: $1) }
         return components.string!
     }
 
@@ -83,7 +83,7 @@ class LinkViewController: UIViewController, WKNavigationDelegate {
 
             case "connected"?:
                 // Close the webview
-                self.navigationController?.popViewController(animated: true)
+                _ = self.navigationController?.popViewController(animated: true)
 
                 // Parse data passed from Link into a dictionary
                 // This includes the public_token as well as account and institution metadata
@@ -95,7 +95,7 @@ class LinkViewController: UIViewController, WKNavigationDelegate {
 
             case "exit"?:
                 // Close the webview
-                self.navigationController?.popViewController(animated: true)
+                _ = self.navigationController?.popViewController(animated: true)
 
                 // Parse data passed from Link into a dictionary
                 // This includes information about where the user was in the Link flow
