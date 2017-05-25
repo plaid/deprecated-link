@@ -10,7 +10,7 @@ example integration, and checkout the [WebView docs][link-docs-webview] for more
 information:
 
 - [iOS WKWebView in Swift](examples/wkwebview)
-- [iOS UIWebView in Objective C](examples/uiwebview)
+- [iOS UIWebView in Objective C](examples/uiwebview) - *we highly recommend using `WKWebView` instead if you are targeting iOS `>= 8`*
 - [Android WebView](examples/android)
 
 [link-docs-webview]: https://plaid.com/docs/api#webview-integration
