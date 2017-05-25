@@ -1,6 +1,6 @@
 # Plaid Link - UIWebView
 
-*Plaid's support for `UIWebView` is deprecated. Please consider using [`WKWebView`] instead.*
+*Plaid's support for `UIWebView` is deprecated. Please consider using [`WKWebView`](../wkwebview) instead.*
 
 If you need it, the legacy example is still available at [historical point of this repository][old-example].
 
