@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         // Initialize Link
         HashMap<String, String> linkInitializeOptions = new HashMap<String,String>();
         linkInitializeOptions.put("key", "[PLAID_PUBLIC_KEY]");
+        linkInitializeOptions.put("apiVersion", "v2");
         linkInitializeOptions.put("product", "auth");
         linkInitializeOptions.put("selectAccount", "true");
         linkInitializeOptions.put("env", "sandbox");
