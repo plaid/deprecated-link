@@ -1,6 +1,6 @@
 # Link WebView examples
 
-![mobile-web-beta](https://plaid.com/images/docs/link-docs-image-2.jpg)
+![mobile-web-beta](https://plaid.com/images/docs/link-webview-screenshot.png)
 
 WebViews open Link directly, rather than via an embedded iFrame.
 Communication is standardized too for WebViews, employing the common
