@@ -64,4 +64,9 @@ PLK_EXTERN NSString* const kPLKStatusRequiresCredentials;
 /// User was prompted to verify they are human via reCAPTCHA.
 PLK_EXTERN NSString* const kPLKStatusRequiresRecaptcha;
 
+/// Use this key to obtain the identifier of a Link internal error
+/// from the NSError's userInfo passed to the PLKPlaidLinkViewDelegate
+/// in the linkViewController:didExitWithError:metadata: delegate method.
+PLK_EXTERN NSString* const PLKInternalErrorOccurrenceKey;
+
 #endif /* PLKConstants_h */
