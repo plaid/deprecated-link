@@ -7,7 +7,7 @@
 - Add time-out message when searching for an institution takes too long
 
 ### Changed
-- Fix isue with configured webhook when using APIv2
+- Fix issue with configured webhook when using APIv2
 
 
 
