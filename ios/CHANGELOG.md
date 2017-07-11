@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 2017-07-11 — LinkKit 1.0.6
+### Added
+- Add [copy customization](https://blog.plaid.com/link-copy-customization/) which allows to change the text of certain user interface elements in the Link flow
+- Add exit button when searching for an institution yielded no results so people can directly exit out of Link iOS
+- Add time-out message when searching for an institution takes too long
+
+### Changed
+- Fix isue with configured webhook when using APIv2
+
+
+
 ## 2017-06-12 — LinkKit 1.0.5
 ### Added
 - Add phone MFA type
