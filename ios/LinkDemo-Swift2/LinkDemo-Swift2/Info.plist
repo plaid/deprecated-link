@@ -32,6 +32,43 @@
 		<string>auth</string>
 		<key>selectAccount</key>
 		<false/>
+		<key>customization</key>
+		<dict>
+			<key>connectedPane</key>
+			<dict>
+				<key>title</key>
+				<string>Sign-up successful</string>
+				<key>message</key>
+				<string>You successfully linked your account with &lt;CLIENT&gt;</string>
+				<key>submitButton</key>
+				<string>Continue</string>
+			</dict>
+			<key>reconnectedPane</key>
+			<dict>
+				<key>title</key>
+				<string>Update successful</string>
+				<key>message</key>
+				<string>You successfully updated your account credentials with &lt;CLIENT&gt;</string>
+				<key>submitButton</key>
+				<string>Continue</string>
+			</dict>
+			<key>institutionSelectPane</key>
+			<dict>
+				<key>title</key>
+				<string>Choose your bank</string>
+				<key>searchButton</key>
+				<string>Search for your bank</string>
+			</dict>
+			<key>institutionSearchPane</key>
+			<dict>
+				<key>exitButton</key>
+				<string>Quit</string>
+				<key>initialMessage</key>
+				<string>Find your bank or credit union</string>
+				<key>noResultsMessage</key>
+				<string>Unfortunately the institution you searched for could not be found</string>
+			</dict>
+		</dict>
 	</dict>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

@@ -46,6 +46,41 @@ PLK_EXTERN NSString* const kPLKTestKey;
 /// A Plaid public_key that can be used for testing longtail when using PLKEnvironmentTartan.
 PLK_EXTERN NSString* const kPLKTestKeyLongtailAuth;
 
+// Keys customizing panes, see customizeWithDictionary:
+/// This pane is shown at the end of an successful update flow.
+PLK_EXTERN NSString* const kPLKConnectedPaneKey;
+
+/// This pane is shown at the end of an successful update flow.
+PLK_EXTERN NSString* const kPLKReconnectedPaneKey;
+
+/// This pane is shown at the end of an successful update flow.
+PLK_EXTERN NSString* const kPLKInstitutionSelectPaneKey;
+
+/// This pane is shown at the end of an successful update flow.
+PLK_EXTERN NSString* const kPLKInstitutionSearchPaneKey;
+
+// Keys customizing UI elements in panes, see customizeWithDictionary:
+/// The text shown as the navigation bar title.
+PLK_EXTERN NSString* const kPLKCustomizationTitleKey;
+
+/// The text shown upon successful (re)connection of an account.
+PLK_EXTERN NSString* const kPLKCustomizationMessageKey;
+
+/// The text shown on the submit button.
+PLK_EXTERN NSString* const kPLKCustomizationSubmitButtonKey;
+
+/// The text shown on the button on the bottom of the institution select view to ?.
+PLK_EXTERN NSString* const kPLKCustomizationSearchButtonKey;
+
+/// The text shown when the institution search is activated.
+PLK_EXTERN NSString* const kPLKCustomizationInitialMessageKey;
+
+/// The text shown for empty search results.
+PLK_EXTERN NSString* const kPLKCustomizationNoResultsMessageKey;
+
+/// The text shown on the exit button for empty search results.
+PLK_EXTERN NSString* const kPLKCustomizationExitButtonKey;
+
 
 /**
  The PLKConfiguration class defines properties used when interacting with the Plaid API.
@@ -130,6 +165,15 @@ PLK_EMPTY_INIT_UNAVAILABLE;
 - (instancetype)initWithKey:(NSString*)key
                         env:(PLKEnvironment)env
                     product:(PLKProduct)product;
+
+/**
+ Change the text of certain user interface elements.
+ 
+ @param customization The desired customizations, for details which elements can be customized
+ on which panes please refer to the online documentation available at:
+ https://github.com/plaid/link/blob/master/ios/README.md#customization
+ */
+- (void)customizeWithDictionary:(NSDictionary<NSString*,NSDictionary<NSString*,id>*>*)customizations;
 @end
 
 NS_ASSUME_NONNULL_END

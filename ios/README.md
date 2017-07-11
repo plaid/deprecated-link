@@ -26,11 +26,12 @@ Here are some screenshots of the user interface provided by Plaid Link iOS:
     * [Implementation](#implementation)
       * [Objective-C](#objective-c)
       * [Swift](#swift)
-    * [Troubleshooting](#troubleshooting)
   * [Custom Initializers](#user-content-custom-initializer-info)
     ([Objective-C](#user-content-objc-custom-initializer), [Swift](#user-content-swift-custom-initializer))
   * [Update Mode](#user-content-update-mode-info)
     ([Objective-C](#user-content-objc-update-mode), [Swift](#user-content-swift-update-mode))
+  * [Customization](#customization)
+  * [Troubleshooting](#troubleshooting)
   * [Known Issues](#known-issues)
 
 ## Preparation
@@ -173,11 +174,12 @@ There are two ways that Plaid Link iOS can be configured:
 
 #### Optional `PLKPlaidLinkConfiguration` items:
 
-| Key                                                 | Type    | Values¹                                    | Description                                                                                                                                                                                                |
-| ---                                                 | ---     | :---:                                      | ---                                                                                                                                                                                                        |
-| `webhook`                                           | URL     | —                                          | The URL provided will receive notifications once a user's transactions have been processed and are ready for use. For details refer to the [Plaid API documentation](https://plaid.com/docs/api/#webhook). |
-| <a name='config-select-account'>`selectAccount`</a> | Boolean | `YES`, **`NO`**                            | Whether the user should select a specific account after successfully linking their bank account                                                                                                            |
-| `apiVersion`                                        | String  | `APIv1`, **`APIv2`**                       | The Plaid API version to use, please specify `APIv1` only if you have an important reason to do so and have been enabled for `APIv1` use by Plaid.                                                         |
+| Key                                                 | Type        | Values¹                                    | Description                                                                                                                                                                                                                                                |
+| ---                                                 | ---         | :---:                                      | ---                                                                                                                                                                                                                                                        |
+| `webhook`                                           | String      | —                                          | The webhook (a URL string starting with `http://` or `https://`) will receive notifications once a user's transactions have been processed and are ready for use. For details refer to the [Plaid API documentation](https://plaid.com/docs/api/#webhook). |
+| <a name='config-select-account'>`selectAccount`</a> | Boolean     | `YES`, **`NO`**                            | Whether the user should select a specific account after successfully linking their bank account                                                                                                                                                            |
+| `apiVersion`                                        | String      | `APIv1`, **`APIv2`**                       | The Plaid API version to use, please specify `APIv1` only if you have an important reason to do so and have been enabled for `APIv1` use by Plaid.                                                                                                         |
+| `customization`                                     | Dictionary  | —                                          | Link copy customization ([see below](#shared-configuration-customization))                                                                                                                                                                                 |
 
 ¹ _Default values are shown in_ **bold**.
 
@@ -599,6 +601,150 @@ if (UI_USER_INTERFACE_IDIOM() == .pad) {
 present(linkViewController, animated: true)
 ```
 
+### Customization
+
+:warning: **The preferred and recommended method to customize LinkKit is to use customization feature in the [dashboard][dashboard-customization], LinkKit will
+automatically use the values you provide there.**
+
+Customization allows you to change the text of certain user interface elements in the Link flow ([see below](#user-content-link-customization)).
+In the rare case where customization is necessary from within your application directly, either add your customizations to the `PLKPlaidLinkConfiguration` section in your
+application's Info.plist ([example](#shared-configuration-customization)) or call the `customizeWithDictionary:` method passing in the desired customizations
+([example](#instance-configuration-customization)) on the `PLKConfiguration` object that is used to configure LinkKit.
+
+<a name='link-customization'>The following images illustrate the customizable elements on different panes in detail:</a>
+
+<img src='docs/images/customization/connectedPane.png' width='250' title='Connected pane customization'>
+<img src='docs/images/customization/reconnectedPane.png' width='250' title='Reconnected pane customization'>
+<img src='docs/images/customization/institutionSelectPane.png' width='250' title='Institution select pane customization'>
+<img src='docs/images/customization/institutionSearchPane_initialMessage.png' width='250' title='Institution Search pane customization'>
+<img src='docs/images/customization/institutionSearchPane_noResultsMessage.png' width='250' title='Institution Search pane customization'>
+
+The following table shows which elements can be customized on which panes:
+
+| ↓UI Element \ Pane→| `connectedPane` | `reconnectedPane` | `institutionSelectPane` | `institutionSearchPane` |
+| ---                | :---:           | :---:             | :---:                   | :---:                   |
+| `title`            | ✓               | ✓                 | ✓                       | —                       |
+| `message`          | ✓¹              | ✓¹                | —                       | —                       |
+| `submitButton`     | ✓               | ✓                 | —                       | —                       |
+| `searchButton`     | —               | —                 | ✓                       | —                       |
+| `initialMessage`   | —               | —                 | —                       | ✓                       |
+| `noResultsMessage` | —               | —                 | —                       | ✓                       |
+| `exitButton`       | —               | —                 | —                       | ✓                       |
+
+¹ Any occurrences of `<CLIENT>` in the `message` are replaced with the configured `clientName`.
+
+✓ Customization supported, — Customization not supported
+
+#### Shared Configuration Customization
+
+To customize LinkKit using a shared configuration from your application's `Info.plist` add a `customization` dictionary
+to the `PLKPlaidLinkConfiguration` section and add the Link Panes with the UI Elements you would like to customize:
+
+| Key                     | Type       | Allowed Values                                                                    |
+| ---                     | ---        | ---                                                                               |
+|**Link Panes**|
+| `connectedPane`         | Dictionary | `title`, `message`, `submitButton`                                                |
+| `reconnectedPane`       | Dictionary | `title`, `message`, `submitButton`                                                |
+| `institutionSelectPane` | Dictionary | `title`, `searchButton`                                                           |
+| `institutionSearchPane` | Dictionary | `initialMessage`, `noResultsMessage`, `exitButton`                                |
+|**UI Elements**|
+| `title`                 | String     |                                                                                   |
+| `messsage`              | String     |                                                                                   |
+| `submitButton`          | String     |                                                                                   |
+| `searchButton`          | String     |                                                                                   |
+| `initialMessage`        | String     |                                                                                   |
+| `noResultsMessage`      | String     |                                                                                   |
+| `exitButton`            | String     |                                                                                   |
+
+An example making use of all available customization with a LinkKit shared configuration looks as follows:
+
+<img src='docs/images/customization/setupPlistCustomization.png' width='350' title='Adding copy customization to Info.plist'>
+
+#### Instance Configuration Customization
+
+As mentioned above you can add customizations to your instance configuration by calling `customizeWithDictionary:`
+on your `PLKConfiguration` object and provide just the customizations you need.
+An example making use of all available customization with a LinkKit instance configuration looks as follows
+
+<!-- SMARTDOWN_CUSTOMIZATION -->
+
+for Objective-C:
+```objc
+[configuration customizeWithDictionary: @{
+                              kPLKConnectedPaneKey: @{
+                                      kPLKCustomizationTitleKey: @"Sign-up successful",
+                                      kPLKCustomizationMessageKey: @"You successfully linked your account",
+                                      kPLKCustomizationSubmitButtonKey: @"Continue"
+                                      },
+                              
+                              kPLKReconnectedPaneKey: @{
+                                      kPLKCustomizationTitleKey: @"Update successful",
+                                      kPLKCustomizationMessageKey: @"You successfully updated your account credentials",
+                                      kPLKCustomizationSubmitButtonKey: @"Continue"
+                                      },
+                              
+                              kPLKInstitutionSelectPaneKey: @{
+                                      kPLKCustomizationTitleKey: @"Choose your bank",
+                                      kPLKCustomizationSearchButtonKey: @"Search for your bank"
+                                      },
+                              
+                              kPLKInstitutionSearchPaneKey: @{
+                                      kPLKCustomizationExitButtonKey: @"Quit",
+                                      kPLKCustomizationInitialMessageKey: @"Find your bank or credit union",
+                                      kPLKCustomizationNoResultsMessageKey: @"Unfortunately the institution you searched for could not be found"
+                                      },
+                              
+                              }];
+```
+
+and Swift:
+```swift
+linkConfiguration.customize(with: [
+            kPLKConnectedPaneKey: [
+                kPLKCustomizationTitleKey: "Sign-up successful",
+                kPLKCustomizationMessageKey: "You successfully linked your account with <CLIENT>",
+                kPLKCustomizationSubmitButtonKey: "Continue"
+            ],
+            
+            kPLKReconnectedPaneKey: [
+                kPLKCustomizationTitleKey: "Update successful",
+                kPLKCustomizationMessageKey: "You successfully updated your account credentials <CLIENT>",
+                kPLKCustomizationSubmitButtonKey: "Continue"
+            ],
+            
+            kPLKInstitutionSelectPaneKey: [
+                kPLKCustomizationTitleKey: "Choose your bank",
+                kPLKCustomizationSearchButtonKey: "Search for your bank"
+            ],
+            
+            kPLKInstitutionSearchPaneKey: [
+                kPLKCustomizationExitButtonKey: "Quit",
+                kPLKCustomizationInitialMessageKey: "Find your bank or credit union",
+                kPLKCustomizationNoResultsMessageKey: "Unfortunately the institution you searched for could not be found"
+            ],
+            ])
+```
+
+NSString constants for the customization pane and element names are available:
+
+| Customizable Pane Name  | Constant                       |
+| ---                     | ---                            |
+| `connectedPane`         | `kPLKConnectedPaneKey`         |
+| `reconnectedPane`       | `kPLKReconnectedPaneKey`       |
+| `institutionSelectPane` | `kPLKInstitutionSelectPaneKey` |
+| `institutionSearchPane` | `kPLKInstitutionSearchPaneKey` |
+
+| Customizable Element Name | Constant                               |
+| ---                       | ---                                    |
+| `title`                   | `kPLKCustomizationTitleKey`            |
+| `message`                 | `kPLKCustomizationMessageKey`          |
+| `submitButton`            | `kPLKCustomizationSubmitButtonKey`     |
+| `searchButton`            | `kPLKCustomizationSearchButtonKey`     |
+| `initialMessage`          | `kPLKCustomizationInitialMessageKey`   |
+| `noResultsMessage`        | `kPLKCustomizationNoResultsMessageKey` |
+| `exitButton`              | `kPLKCustomizationExitButtonKey`       |
+
+
 ### Troubleshooting
 
 When things work differently as expected LinkKit will use the value of the
@@ -637,5 +783,6 @@ examples are working as intended.
 
 [linkkit]: LinkKit.framework
 [dashboard-keys]: https://dashboard.plaid.com/account/keys
+[dashboard-customization]: https://dashboard.plaid.com/link
 [link-update-mode]: https://plaid.com/docs/api/#updating-items-via-link
 [create-public-token]: https://plaid.com/docs/api/#creating-public-tokens
