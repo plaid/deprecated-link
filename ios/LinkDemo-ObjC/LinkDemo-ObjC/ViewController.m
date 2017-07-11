@@ -142,7 +142,7 @@
 
         /*
          NOTE: The preferred method to customize LinkKit is to use the customization feature
-         in the dashboard (http://localhost:6419/ios/dashboard-customization).
+         in the dashboard (https://dashboard.plaid.com/link).
          In the rare case where customization is necessary from within your application directly
          and you prefer to initialize link directly using instance configuration an example
          is given below.
