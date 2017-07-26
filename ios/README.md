@@ -660,6 +660,51 @@ An example making use of all available customization with a LinkKit shared confi
 
 <img src='docs/images/customization/setupPlistCustomization.png' width='350' title='Adding copy customization to Info.plist'>
 
+As a template you can copy and paste the following XML below the `PLKPlaidLinkConfiguration` key in the `Info.plist`
+and rename the `New item` to `customization`:
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>connectedPane</key>
+	<dict>
+		<key>title</key>
+		<string>Sign-up successful</string>
+		<key>message</key>
+		<string>You successfully linked your account with &lt;CLIENT&gt;</string>
+		<key>submitButton</key>
+		<string>Continue</string>
+	</dict>
+	<key>reconnectedPane</key>
+	<dict>
+		<key>title</key>
+		<string>Update successful</string>
+		<key>message</key>
+		<string>You successfully updated your account credentials with &lt;CLIENT&gt;</string>
+		<key>submitButton</key>
+		<string>Continue</string>
+	</dict>
+	<key>institutionSelectPane</key>
+	<dict>
+		<key>title</key>
+		<string>Choose your bank</string>
+		<key>searchButton</key>
+		<string>Search for your bank</string>
+	</dict>
+	<key>institutionSearchPane</key>
+	<dict>
+		<key>exitButton</key>
+		<string>Quit</string>
+		<key>initialMessage</key>
+		<string>Find your bank or credit union</string>
+		<key>noResultsMessage</key>
+		<string>Unfortunately the institution you searched for could not be found</string>
+	</dict>
+</dict>
+</plist>
+```
+
 #### Instance Configuration Customization
 
 As mentioned above you can add customizations to your instance configuration by calling `customizeWithDictionary:`
