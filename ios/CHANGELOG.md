@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2017-07-26 — LinkKit 1.0.7
+### Changed
+- Fix interactive area of exit button ([#185](https://github.com/plaid/link/issues/185))
+- Fix issue where the logo for certain institutions was not shown in the search results
+
+
+
 ## 2017-07-11 — LinkKit 1.0.6
 ### Added
 - Add [copy customization](https://blog.plaid.com/link-copy-customization/) which allows to change the text of certain user interface elements in the Link flow

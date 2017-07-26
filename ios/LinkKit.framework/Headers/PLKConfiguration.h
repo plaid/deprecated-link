@@ -69,7 +69,7 @@ PLK_EXTERN NSString* const kPLKCustomizationMessageKey;
 /// The text shown on the submit button.
 PLK_EXTERN NSString* const kPLKCustomizationSubmitButtonKey;
 
-/// The text shown on the button on the bottom of the institution select view to ?.
+/// The text shown on the button on the bottom of the institution select view to show the institution search.
 PLK_EXTERN NSString* const kPLKCustomizationSearchButtonKey;
 
 /// The text shown when the institution search is activated.
@@ -169,7 +169,7 @@ PLK_EMPTY_INIT_UNAVAILABLE;
 /**
  Change the text of certain user interface elements.
  
- @param customization The desired customizations, for details which elements can be customized
+ @param customizations The desired customizations, for details which elements can be customized
  on which panes please refer to the online documentation available at:
  https://github.com/plaid/link/blob/master/ios/README.md#customization
  */
