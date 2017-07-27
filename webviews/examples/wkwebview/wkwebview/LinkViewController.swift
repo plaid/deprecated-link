@@ -57,6 +57,7 @@ class LinkViewController: UIViewController, WKNavigationDelegate {
             "isMobile": "true",
             "isWebview": "true",
             "webhook": "https://requestb.in",
+            // "apiVersion": "v2", // enable this if using the legacy API environment
         ]
 
         // Build a dictionary with the Link configuration options
