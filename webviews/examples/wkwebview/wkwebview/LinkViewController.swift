@@ -51,6 +51,7 @@ class LinkViewController: UIViewController, WKNavigationDelegate {
         let config = [
             "key": "[PLAID_PUBLIC_KEY]",
             "env": "sandbox",
+            "apiVersion": "v2", // set this to "v1" if using the legacy Plaid API
             "product": "auth",
             "selectAccount": "true",
             "clientName": "Test App",
