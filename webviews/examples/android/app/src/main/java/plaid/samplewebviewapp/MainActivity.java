@@ -22,9 +22,10 @@ public class MainActivity extends AppCompatActivity {
         HashMap<String, String> linkInitializeOptions = new HashMap<String,String>();
         linkInitializeOptions.put("key", "[PLAID_PUBLIC_KEY]");
         linkInitializeOptions.put("product", "auth");
-        linkInitializeOptions.put("selectAccount", "true");
+        linkInitializeOptions.put("apiVersion", "v2"); // set this to "v1" if using the legacy Plaid API
         linkInitializeOptions.put("env", "sandbox");
         linkInitializeOptions.put("clientName", "Test App");
+        linkInitializeOptions.put("selectAccount", "true");
         linkInitializeOptions.put("webhook", "http://requestb.in");
         linkInitializeOptions.put("baseUrl", "https://cdn.plaid.com/link/v2/stable/link.html");
         // If initializing Link in PATCH / update mode, also provide the public_token
