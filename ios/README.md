@@ -360,12 +360,13 @@ Possible values for the `kPLKMetadataStatusKey` metadata:
 | Constant                        | Description                                                                                                                     |
 | ---                             | ---                                                                                                                             |
 | `kPLKStatusConnected`           | User completed the Link flow                                                                                                    |
-| `kPLKStatusRequiresQuestions`   | User was prompted to answer security question(s)                                                                                |
-| `kPLKStatusRequiresSelections`  | User was prompted to answer multiple choice question(s)                                                                         |
-| `kPLKStatusRequiresCode`        | User was prompted to provide a one-time passcode.                                                                               |
-| `kPLKStatusChooseDevice`        | User was prompted to select a device at which to receive a one-time passcode.                                                   |
-| `kPLKStatusRequiresCredentials` | User was prompted to provide credentials for the selected financial institution or has not yet selected a financial institution |
-| `kPLKStatusRequiresRecaptcha`   | User was prompted to verify they are human via reCAPTCHA                                                                        |
+| `kPLKStatusRequiresQuestions`   | User prompted to answer security question(s)                                                                                    |
+| `kPLKStatusRequiresSelections`  | User prompted to answer multiple choice question(s)                                                                             |
+| `kPLKStatusRequiresCode`        | User prompted to provide a one-time passcode.                                                                                   |
+| `kPLKStatusChooseDevice`        | User prompted to select a device at which to receive a one-time passcode.                                                       |
+| `kPLKStatusRequiresCredentials` | User prompted to provide credentials for the selected financial institution or has not yet selected a financial institution     |
+| `kPLKStatusRequiresRecaptcha`   | User prompted to verify they are human via reCAPTCHA                                                                            |
+| `kPLKStatusInstitutionNotFound` | User exited the Link flow after unsuccessfully (no results returned) searching for a financial institution                      |
 
 
 <a name='objc-present-shared'></a>
