@@ -46,23 +46,28 @@ typedef NS_OPTIONS(NSInteger, PLKProduct) {
 /// User completed the Link flow.
 PLK_EXTERN NSString* const kPLKStatusConnected;
 
-/// User was prompted to answer security question(s).
+/// User prompted to answer security question(s).
 PLK_EXTERN NSString* const kPLKStatusRequiresQuestions;
 
-/// User was prompted to answer multiple choice question(s)
+/// User prompted to answer multiple choice question(s).
 PLK_EXTERN NSString* const kPLKStatusRequiresSelections;
 
-/// User was prompted to provide a one time passcode.
+/// User prompted to provide a one-time passcode.
 PLK_EXTERN NSString* const kPLKStatusRequiresCode;
 
-/// User was prompted to select a device at which to receive a one-time passcode.
+/// User prompted to select a device on which to receive a one-time passcode.
 PLK_EXTERN NSString* const kPLKStatusChooseDevice;
 
-/// User was prompted to provide credentials for the selected financial institution or has not yet selected a financial institution.
+/// User prompted to provide credentials for the selected financial institution or
+/// has not yet selected a financial institution.
 PLK_EXTERN NSString* const kPLKStatusRequiresCredentials;
 
 /// User was prompted to verify they are human via reCAPTCHA.
 PLK_EXTERN NSString* const kPLKStatusRequiresRecaptcha;
+
+/// User exited the Link flow after unsuccessfully (no results returned) searching for
+/// a financial institution.
+PLK_EXTERN NSString* const kPLKStatusInstitutionNotFound;
 
 /// Use this key to obtain the identifier of a Link internal error
 /// from the NSError's userInfo passed to the PLKPlaidLinkViewDelegate

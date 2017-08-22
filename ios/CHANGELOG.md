@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## 2017-08-18 — LinkKit 1.0.8
+### Added
+- Add support for three or more MFA selection options
+- Tapping on sample credentials in the development mode view copies them to the pasteboard
+
+### Changed
+- Immediately notify users when attempting to patch an item without any errors
+- Correctly pass errors to the `PLKPlaidLinkViewDelegate` after recaptcha validation ([#191](https://github.com/plaid/link/issues/191))
+- Enable scrolling for long questions on MFA view.
+- Correctly set `metadata.status` to `kPLKStatusInstitutionNotFound` when the user tapped the exit button shown when the institution search yielded no results ([#190](https://github.com/plaid/link/issues/190))
+- Use application name as set in Info.plist (`kCFBundleNameKey`) when `clientName` is not configured [#189](https://github.com/plaid/link/issues/189))
+- Correctly set returned institution metadata to `null` when Link exits from institution selection [#185](https://github.com/plaid/link/issues/185#issuecomment-319513872))
+- Improve animation when dismissing `PLKPlaidLinkViewController` with a subview being the `firstResponder`
+- Improve accessibility on back button
+- Prefix method names on UIKit and Foundation categories with `plk_` to prevent method name clashes ([#195](https://github.com/plaid/link/issues/195))
+
+
+
 ## 2017-07-26 — LinkKit 1.0.7
 ### Changed
 - Fix interactive area of exit button ([#185](https://github.com/plaid/link/issues/185))
