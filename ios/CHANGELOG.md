@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2017-08-25 — LinkKit 1.0.9
+### Changed
+- Improve search results when using APIv1
+
+
+
 ## 2017-08-18 — LinkKit 1.0.8
 ### Added
 - Add support for three or more MFA selection options
