@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2017-09-04 — LinkKit 1.0.10
+### Changed
+- Fix issue where an empty select account pane was shown instead of an error message stating that no eligible ACH accounts were available
+
+
+
 ## 2017-08-25 — LinkKit 1.0.9
 ### Changed
 - Improve search results when using APIv1
