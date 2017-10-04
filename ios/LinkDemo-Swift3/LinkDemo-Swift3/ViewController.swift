@@ -7,9 +7,7 @@
 
 import UIKit
 
-// <!-- SMARTDOWN_IMPORT_LINKKIT -->
 import LinkKit
-// <!-- SMARTDOWN_IMPORT_LINKKIT -->
 
 class ViewController: UIViewController {
 
@@ -75,7 +73,6 @@ class ViewController: UIViewController {
 
     // MARK: Plaid Link setup with shared configuration from Info.plist
     func presentPlaidLinkWithSharedConfiguration() {
-        // <!-- SMARTDOWN_PRESENT_SHARED -->
         // With shared configuration from Info.plist
         let linkViewDelegate = self
         let linkViewController = PLKPlaidLinkViewController(delegate: linkViewDelegate)
@@ -83,12 +80,10 @@ class ViewController: UIViewController {
             linkViewController.modalPresentationStyle = .formSheet;
         }
         present(linkViewController, animated: true)
-        // <!-- SMARTDOWN_PRESENT_SHARED -->
     }
 
     // MARK: Plaid Link setup with custom configuration
     func presentPlaidLinkWithCustomConfiguration() {
-        // <!-- SMARTDOWN_PRESENT_CUSTOM -->
         // With custom configuration
         let linkConfiguration = PLKConfiguration(key: "<#YOUR_PLAID_PUBLIC_KEY#>", env: .sandbox, product: .auth)
         linkConfiguration.clientName = "Link Demo"
@@ -98,31 +93,26 @@ class ViewController: UIViewController {
             linkViewController.modalPresentationStyle = .formSheet;
         }
         present(linkViewController, animated: true)
-        // <!-- SMARTDOWN_PRESENT_CUSTOM -->
     }
 
     // MARK: Start Plaid Link with an institution pre-selected
     func presentPlaidLinkWithCustomInitializer() {
-        // <!-- SMARTDOWN_CUSTOM_INITIALIZER -->
         let linkViewDelegate = self
         let linkViewController = PLKPlaidLinkViewController(institution: "<#INSTITUTION_ID#>", delegate: linkViewDelegate)
         if (UI_USER_INTERFACE_IDIOM() == .pad) {
             linkViewController.modalPresentationStyle = .formSheet;
         }
         present(linkViewController, animated: true)
-        // <!-- SMARTDOWN_CUSTOM_INITIALIZER -->
     }
 
     // MARK: Start Plaid Link in update mode
     func presentPlaidLinkInUpdateMode() {
-        // <!-- SMARTDOWN_UPDATE_MODE -->
         let linkViewDelegate = self
         let linkViewController = PLKPlaidLinkViewController(publicToken: "<#GENERATED_PUBLIC_TOKEN#>", delegate: linkViewDelegate)
         if (UI_USER_INTERFACE_IDIOM() == .pad) {
             linkViewController.modalPresentationStyle = .formSheet;
         }
         present(linkViewController, animated: true)
-        // <!-- SMARTDOWN_UPDATE_MODE -->
     }
     
     // MARK: Start Plaid Link with custom instance configuration including client-side customizations
@@ -138,7 +128,6 @@ class ViewController: UIViewController {
          For further details which elements can be customized on which panes please refer to the online documentation available at:
          https://github.com/plaid/link/blob/master/ios/README.md#customization
          */
-        // <!-- SMARTDOWN_CUSTOMIZATION -->
         linkConfiguration.customize(with: [
             kPLKConnectedPaneKey: [
                 kPLKCustomizationTitleKey: "Sign-up successful",
@@ -163,7 +152,6 @@ class ViewController: UIViewController {
                 kPLKCustomizationNoResultsMessageKey: "Unfortunately the institution you searched for could not be found"
             ],
             ])
-        // <!-- SMARTDOWN_CUSTOMIZATION -->
         
         linkConfiguration.clientName = "Link Demo"
         let linkViewDelegate = self
@@ -176,12 +164,9 @@ class ViewController: UIViewController {
 }
 
 // MARK: - PLKPlaidLinkViewDelegate Protocol
-// <!-- SMARTDOWN_PROTOCOL -->
 extension ViewController : PLKPlaidLinkViewDelegate
-// <!-- SMARTDOWN_PROTOCOL -->
 {
 
-// <!-- SMARTDOWN_DELEGATE_SUCCESS -->
     func linkViewController(_ linkViewController: PLKPlaidLinkViewController, didSucceedWithPublicToken publicToken: String, metadata: [String : Any]?) {
         dismiss(animated: true) {
             // Handle success, e.g. by storing publicToken with your service
@@ -189,9 +174,7 @@ extension ViewController : PLKPlaidLinkViewDelegate
             self.handleSuccessWithToken(publicToken, metadata: metadata)
         }
     }
-// <!-- SMARTDOWN_DELEGATE_SUCCESS -->
 
-// <!-- SMARTDOWN_DELEGATE_EXIT -->
     func linkViewController(_ linkViewController: PLKPlaidLinkViewController, didExitWithError error: Error?, metadata: [String : Any]?) {
         dismiss(animated: true) {
             if let error = error {
@@ -204,5 +187,9 @@ extension ViewController : PLKPlaidLinkViewDelegate
             }
         }
     }
-// <!-- SMARTDOWN_DELEGATE_EXIT -->
+
+    func linkViewController(_ linkViewController: PLKPlaidLinkViewController, didHandleEvent event: String, metadata: [String : Any]?) {
+        NSLog("Link event: \(event)\nmetadata: \(metadata)")
+    }
+    
 }

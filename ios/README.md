@@ -3,7 +3,7 @@
 Welcome to the Plaid Link iOS!
 
 In this repository you find instructions and sample applications in
-[Objective-C](LinkDemo-ObjC), [Swift](LinkDemo-Swift) and [Swift 2](LinkDemo-Swift2) (requires Xcode 7)
+[Objective-C](LinkDemo-ObjC), [Swift4](LinkDemo-Swift4), [Swift3](LinkDemo-Swift3) and [Swift 2](LinkDemo-Swift2) (requires Xcode 7)
 that demonstrate Plaid Link for iOS. At the center of it all lies [`LinkKit.framework`][linkkit]
 an embeddeable framework managing the details of linking an account with Plaid.
 
@@ -49,21 +49,21 @@ You will need the following to integrate Plaid Link iOS:
 ## Quick Guide For the Impatient
 
 1. Embed the [`LinkKit.framework`][linkkit] into your application
-* Add a custom **Run Script Build Phase** that runs *after* the **Embed Frameworks Build Phase**
-  and contains
-  [this script](#user-content-prepare-distribution-script), to strip any non-ARM architectures
-  from the embedded framework from distribution builds.
-* Import LinkKit
-  ([Objective-C](#user-content-objc-import), [Swift](#user-content-swift-import))
-* Setup Plaid Link
-  ([Objective-C](#user-content-objc-setup-shared), [Swift](#user-content-swift-setup-shared))
-  Optional, but highly recommended! [Read why...](#setup-plaid-link)
-* Adopt the [`PLKPlaidLinkViewDelegate`](LinkKit.framework/Headers/PLKPlaidLinkViewController.h) protocol 
-  ([Objective-C](#user-content-objc-protocol), [Swift](#user-content-swift-protocol))
-* Implement the delegate methods
-  ([Objective-C](#user-content-objc-delegate), [Swift](#user-content-swift-delegate))
-* Present the `PLKPlaidLinkViewController`
-  ([Objective-C](#user-content-objc-present-custom), [Swift](#user-content-swift-present-custom))
+2. Add a custom **Run Script Build Phase** that runs *after* the **Embed Frameworks Build Phase**
+   and contains
+   [this script](#user-content-prepare-distribution-script), to strip any non-ARM architectures
+   from the embedded framework from distribution builds.
+3. Import LinkKit
+   ([Objective-C](#user-content-objc-import), [Swift](#user-content-swift-import))
+4. Setup Plaid Link
+   ([Objective-C](#user-content-objc-setup-shared), [Swift](#user-content-swift-setup-shared))
+   Optional, but highly recommended! [Read why...](#setup-plaid-link)
+5. Adopt the [`PLKPlaidLinkViewDelegate`](LinkKit.framework/Headers/PLKPlaidLinkViewController.h) protocol
+   ([Objective-C](#user-content-objc-protocol), [Swift](#user-content-swift-protocol))
+6. Implement the delegate methods
+   ([Objective-C](#user-content-objc-delegate), [Swift](#user-content-swift-delegate))
+7. Present the `PLKPlaidLinkViewController`
+   ([Objective-C](#user-content-objc-present-custom), [Swift](#user-content-swift-present-custom))
 
 ## Getting Started
 
@@ -156,8 +156,8 @@ There are two ways that Plaid Link iOS can be configured:
 
 1. either in code (see below for [Objective-C](#user-content-objc-setup-custom) and
    [Swift](#user-content-swift-setup-custom))
-*  or by adding a Plaid Link specific entry named `PLKPlaidLinkConfiguration` containing
-   the following configuration items to the `Info.plist` of the application:
+2.  or by adding a Plaid Link specific entry named `PLKPlaidLinkConfiguration` containing
+    the following configuration items to the `Info.plist` of the application:
 
 #### Required `PLKPlaidLinkConfiguration` items:
 
@@ -174,12 +174,12 @@ There are two ways that Plaid Link iOS can be configured:
 
 #### Optional `PLKPlaidLinkConfiguration` items:
 
-| Key                                                 | Type        | Values¹                                    | Description                                                                                                                                                                                                                                                |
-| ---                                                 | ---         | :---:                                      | ---                                                                                                                                                                                                                                                        |
-| `webhook`                                           | String      | —                                          | The webhook (a URL string starting with `http://` or `https://`) will receive notifications once a user's transactions have been processed and are ready for use. For details refer to the [Plaid API documentation](https://plaid.com/docs/api/#webhook). |
-| <a name='config-select-account'>`selectAccount`</a> | Boolean     | `YES`, **`NO`**                            | Whether the user should select a specific account after successfully linking their bank account                                                                                                                                                            |
-| `apiVersion`                                        | String      | `APIv1`, **`APIv2`**                       | The Plaid API version to use, please specify `APIv1` only if you have an important reason to do so and have been enabled for `APIv1` use by Plaid.                                                                                                         |
-| `customization`                                     | Dictionary  | —                                          | Link copy customization ([see below](#shared-configuration-customization))                                                                                                                                                                                 |
+| Key                                                 | Type       | Values¹              | Description                                                                                                                                                                                                                                                |
+| ---                                                 | ---        | :---:                | ---                                                                                                                                                                                                                                                        |
+| `webhook`                                           | String     | —                    | The webhook (a URL string starting with `http://` or `https://`) will receive notifications once a user's transactions have been processed and are ready for use. For details refer to the [Plaid API documentation](https://plaid.com/docs/api/#webhook). |
+| <a name='config-select-account'>`selectAccount`</a> | Boolean    | `YES`, **`NO`**      | Whether the user should select a specific account after successfully linking their bank account                                                                                                                                                            |
+| `apiVersion`                                        | String     | `APIv1`, **`APIv2`** | The Plaid API version to use, please specify `APIv1` only if you have an important reason to do so and have been enabled for `APIv1` use by Plaid.                                                                                                         |
+| `customization`                                     | Dictionary | —                    | Link copy customization ([see below](#shared-configuration-customization))                                                                                                                                                                                 |
 
 ¹ _Default values are shown in_ **bold**.
 
@@ -299,11 +299,8 @@ PLKConfiguration* linkConfiguration;
 <a name='objc-delegate'></a>
 ##### Implement the delegate methods
 
-<!-- SMARTDOWN_Explain when the success delegate method is called and what the given parameters are -->
-
 The `-linkViewController:didSucceedWithPublicToken:metadata:` delegate method is called
-when the user successfully linked their bank account with Plaid. In all other cases, due
-to an error or a user initiated exit, `-linkViewController:didExitWithError:metadata` is called.
+when the user successfully linked their bank account with Plaid.
 
 <!-- SMARTDOWN_DELEGATE_SUCCESS -->
 ```objc
@@ -318,7 +315,7 @@ to an error or a user initiated exit, `-linkViewController:didExitWithError:meta
 }
 ```
 
-<!-- SMARTDOWN_Explain when the exit delegate method is called and what the given parameters are -->
+The `-linkViewController:didExitWithError:metadata` when the user initiated an exit or when an error occurred.
 
 <!-- SMARTDOWN_DELEGATE_EXIT -->
 ```objc
@@ -338,11 +335,23 @@ to an error or a user initiated exit, `-linkViewController:didExitWithError:meta
 }
 ```
 
+ The optional `-linkViewController:didHandleEvent:metadata` delegate method is called when certain events in the Link flow have occurred. This enables your application to gain further insight into what is going on as the user goes through the Link flow.
+For details about the events see the link-web onEvent [documentation](https://plaid.com/docs/api/#onevent-callback).
+
+<!-- SMARTDOWN_DELEGATE_EVENT -->
+```objc
+- (void)linkViewController:(PLKPlaidLinkViewController*)linkViewController
+            didHandleEvent:(NSString*)event
+                  metadata:(NSDictionary<NSString*,id>* _Nullable)metadata {
+    NSLog(@"Link event: %@\nmetadata: %@", event, metadata);
+}
+```
+
 <a name='metadata-details'></a>
 The `metadata` contains the following keys, note that values can be `[NSNull null]`.
 
-|              Constant              |    Type    |                                                                               Description                                                                                |
-|------------------------------------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Constant                           | Type       | Description                                                                                                                                                              |
+| ---                                | ---        | ---                                                                                                                                                                      |
 | `kPLKMetadataAccountIdKey`         | String     | Identifier for the selected account                                                                                                                                      |
 | `kPLKMetadataAccountKey`           | Dictionary | Contains the keys `kPLKMetadataIdKey` and `kPLKMetadataNameKey`. Only applicable when the [`selectAccount`](#user-content-config-select-account) property is set to true |
 | `kPLKMetadataIdKey`                | String     | Identifier for the selected account                                                                                                                                      |
@@ -353,20 +362,39 @@ The `metadata` contains the following keys, note that values can be `[NSNull nul
 | `kPLKMetadataRequestIdKey`         | String     | An internal identifier that helps us track your request in our system, please include it in every support request                                                        |
 | `kPLKMetadataPlaidApiRequestIdKey` | String     | An internal identifier that helps us track your request in our system, please include it in every support request                                                        |
 
+In addition to the above the `metadata` contains the following keys for `linkViewController:didHandleEvent:metadata`, note that values can be `[NSNull null]`.
+
+| Constant                                | Type   | Description                                                                                                                                   |
+| ---                                     | ---    | ---                                                                                                                                           |
+| `kPLKMetadataInstitutionSearchQueryKey` | String | The query used to search for institutions.                                                                                                    |
+| `kPLKMetadataInstitutionIdKey`          | String | The ID of the selected [institution][institutions].                                                                                           |
+| `kPLKMetadataInstitutionNameKey`        | String | The name of the selected [institution][institutions].                                                                                         |
+| `kPLKMetadataInstitution_TypeKey`       | String | The type of the institution (only set when using the legacy API).                                                                             |
+| `kPLKMetadataLinkRequestIdKey`          | String | The request ID for the last request made by Link. This can be shared with Plaid Support to expedite investigation.                            |
+| `kPLKMetadataLinkSessionIdKey`          | String | The `link_session_id` is a unique identifier for a single session of Link. It is always available and will stay constant throughout the flow. |
+| `kPLKMetadataErrorTypeKey`              | String | The [error type](#errors) that the user encountered.                                                                                          |
+| `kPLKMetadataErrorCodeKey`              | String | The [error code](#errors) that the user encountered.                                                                                          |
+| `kPLKMetadataErrorMessageKey`           | String | The [error message](#errors) that the user encountered.                                                                                       |
+| `kPLKMetadataMFATypeKey`                | String | If set, the user has encountered one of the following MFA types: `code`, `device`, `questions`, `selections`.                                 |
+| `kPLKMetadataViewNameKey`               | String | The name of the [view](#metadata-view_name-) that is being transitioned to.                                                                   |
+| `kPLKMetadataTimestampKey`              | String | An [ISO 8601][iso8601] representation of when the event occurred.                                                                             |
+| `kPLKMetadataExitStatusKey`             | String | The [status](#metadata-status-) key indicates the point at which the user exited the Link flow.                                               |
+
+
 
 <a name='metadata-status'></a>
 Possible values for the `kPLKMetadataStatusKey` metadata:
 
-| Constant                        | Description                                                                                                                     |
-| ---                             | ---                                                                                                                             |
-| `kPLKStatusConnected`           | User completed the Link flow                                                                                                    |
-| `kPLKStatusRequiresQuestions`   | User prompted to answer security question(s)                                                                                    |
-| `kPLKStatusRequiresSelections`  | User prompted to answer multiple choice question(s)                                                                             |
-| `kPLKStatusRequiresCode`        | User prompted to provide a one-time passcode.                                                                                   |
-| `kPLKStatusChooseDevice`        | User prompted to select a device at which to receive a one-time passcode.                                                       |
-| `kPLKStatusRequiresCredentials` | User prompted to provide credentials for the selected financial institution or has not yet selected a financial institution     |
-| `kPLKStatusRequiresRecaptcha`   | User prompted to verify they are human via reCAPTCHA                                                                            |
-| `kPLKStatusInstitutionNotFound` | User exited the Link flow after unsuccessfully (no results returned) searching for a financial institution                      |
+| Constant                        | Description                                                                                                                 |
+| ---                             | ---                                                                                                                         |
+| `kPLKStatusConnected`           | User completed the Link flow                                                                                                |
+| `kPLKStatusRequiresQuestions`   | User prompted to answer security question(s)                                                                                |
+| `kPLKStatusRequiresSelections`  | User prompted to answer multiple choice question(s)                                                                         |
+| `kPLKStatusRequiresCode`        | User prompted to provide a one-time passcode.                                                                               |
+| `kPLKStatusChooseDevice`        | User prompted to select a device at which to receive a one-time passcode.                                                   |
+| `kPLKStatusRequiresCredentials` | User prompted to provide credentials for the selected financial institution or has not yet selected a financial institution |
+| `kPLKStatusRequiresRecaptcha`   | User prompted to verify they are human via reCAPTCHA                                                                        |
+| `kPLKStatusInstitutionNotFound` | User exited the Link flow after unsuccessfully (no results returned) searching for a financial institution                  |
 
 
 <a name='objc-present-shared'></a>
@@ -622,15 +650,15 @@ application's Info.plist ([example](#shared-configuration-customization)) or cal
 
 The following table shows which elements can be customized on which panes:
 
-| ↓UI Element \ Pane→| `connectedPane` | `reconnectedPane` | `institutionSelectPane` | `institutionSearchPane` |
-| ---                | :---:           | :---:             | :---:                   | :---:                   |
-| `title`            | ✓               | ✓                 | ✓                       | —                       |
-| `message`          | ✓¹              | ✓¹                | —                       | —                       |
-| `submitButton`     | ✓               | ✓                 | —                       | —                       |
-| `searchButton`     | —               | —                 | ✓                       | —                       |
-| `initialMessage`   | —               | —                 | —                       | ✓                       |
-| `noResultsMessage` | —               | —                 | —                       | ✓                       |
-| `exitButton`       | —               | —                 | —                       | ✓                       |
+| ↓UI Element \ Pane→ | `connectedPane` | `reconnectedPane` | `institutionSelectPane` | `institutionSearchPane` |
+| ---                 | :---:           | :---:             | :---:                   | :---:                   |
+| `title`             | ✓               | ✓                 | ✓                       | —                       |
+| `message`           | ✓¹              | ✓¹                | —                       | —                       |
+| `submitButton`      | ✓               | ✓                 | —                       | —                       |
+| `searchButton`      | —               | —                 | ✓                       | —                       |
+| `initialMessage`    | —               | —                 | —                       | ✓                       |
+| `noResultsMessage`  | —               | —                 | —                       | ✓                       |
+| `exitButton`        | —               | —                 | —                       | ✓                       |
 
 ¹ Any occurrences of `<CLIENT>` in the `message` are replaced with the configured `clientName`.
 
@@ -641,21 +669,21 @@ The following table shows which elements can be customized on which panes:
 To customize LinkKit using a shared configuration from your application's `Info.plist` add a `customization` dictionary
 to the `PLKPlaidLinkConfiguration` section and add the Link Panes with the UI Elements you would like to customize:
 
-| Key                     | Type       | Allowed Values                                                                    |
-| ---                     | ---        | ---                                                                               |
-|**Link Panes**|
-| `connectedPane`         | Dictionary | `title`, `message`, `submitButton`                                                |
-| `reconnectedPane`       | Dictionary | `title`, `message`, `submitButton`                                                |
-| `institutionSelectPane` | Dictionary | `title`, `searchButton`                                                           |
-| `institutionSearchPane` | Dictionary | `initialMessage`, `noResultsMessage`, `exitButton`                                |
-|**UI Elements**|
-| `title`                 | String     |                                                                                   |
-| `messsage`              | String     |                                                                                   |
-| `submitButton`          | String     |                                                                                   |
-| `searchButton`          | String     |                                                                                   |
-| `initialMessage`        | String     |                                                                                   |
-| `noResultsMessage`      | String     |                                                                                   |
-| `exitButton`            | String     |                                                                                   |
+| Key                     | Type       | Allowed Values                                     |
+| ---                     | ---        | ---                                                |
+| **Link Panes**          |
+| `connectedPane`         | Dictionary | `title`, `message`, `submitButton`                 |
+| `reconnectedPane`       | Dictionary | `title`, `message`, `submitButton`                 |
+| `institutionSelectPane` | Dictionary | `title`, `searchButton`                            |
+| `institutionSearchPane` | Dictionary | `initialMessage`, `noResultsMessage`, `exitButton` |
+| **UI Elements**         |
+| `title`                 | String     |                                                    |
+| `messsage`              | String     |                                                    |
+| `submitButton`          | String     |                                                    |
+| `searchButton`          | String     |                                                    |
+| `initialMessage`        | String     |                                                    |
+| `noResultsMessage`      | String     |                                                    |
+| `exitButton`            | String     |                                                    |
 
 An example making use of all available customization with a LinkKit shared configuration looks as follows:
 
@@ -716,59 +744,58 @@ An example making use of all available customization with a LinkKit instance con
 
 for Objective-C:
 ```objc
-[configuration customizeWithDictionary: @{
-                              kPLKConnectedPaneKey: @{
-                                      kPLKCustomizationTitleKey: @"Sign-up successful",
-                                      kPLKCustomizationMessageKey: @"You successfully linked your account",
-                                      kPLKCustomizationSubmitButtonKey: @"Continue"
-                                      },
-                              
-                              kPLKReconnectedPaneKey: @{
-                                      kPLKCustomizationTitleKey: @"Update successful",
-                                      kPLKCustomizationMessageKey: @"You successfully updated your account credentials",
-                                      kPLKCustomizationSubmitButtonKey: @"Continue"
-                                      },
-                              
-                              kPLKInstitutionSelectPaneKey: @{
-                                      kPLKCustomizationTitleKey: @"Choose your bank",
-                                      kPLKCustomizationSearchButtonKey: @"Search for your bank"
-                                      },
-                              
-                              kPLKInstitutionSearchPaneKey: @{
-                                      kPLKCustomizationExitButtonKey: @"Quit",
-                                      kPLKCustomizationInitialMessageKey: @"Find your bank or credit union",
-                                      kPLKCustomizationNoResultsMessageKey: @"Unfortunately the institution you searched for could not be found"
-                                      },
-                              
-                              }];
+[linkConfiguration customizeWithDictionary:@{
+                                 kPLKConnectedPaneKey: @{
+                                         kPLKCustomizationTitleKey: @"Sign-up successful",
+                                         kPLKCustomizationMessageKey: @"You successfully linked your account with <CLIENT>",
+                                         kPLKCustomizationSubmitButtonKey: @"Continue"
+                                         },
+                                 
+                                 kPLKReconnectedPaneKey: @{
+                                         kPLKCustomizationTitleKey: @"Update successful",
+                                         kPLKCustomizationMessageKey: @"You successfully updated your account credentials <CLIENT>",
+                                         kPLKCustomizationSubmitButtonKey: @"Continue"
+                                         },
+                                 
+                                 kPLKInstitutionSelectPaneKey: @{
+                                         kPLKCustomizationTitleKey: @"Choose your bank",
+                                         kPLKCustomizationSearchButtonKey: @"Search for your bank"
+                                         },
+                                 
+                                 kPLKInstitutionSearchPaneKey: @{
+                                         kPLKCustomizationExitButtonKey: @"Quit",
+                                         kPLKCustomizationInitialMessageKey: @"Find your bank or credit union",
+                                         kPLKCustomizationNoResultsMessageKey: @"Unfortunately the institution you searched for could not be found"
+                                         },
+                                 }];
 ```
 
 and Swift:
 ```swift
 linkConfiguration.customize(with: [
-            kPLKConnectedPaneKey: [
-                kPLKCustomizationTitleKey: "Sign-up successful",
-                kPLKCustomizationMessageKey: "You successfully linked your account with <CLIENT>",
-                kPLKCustomizationSubmitButtonKey: "Continue"
-            ],
-            
-            kPLKReconnectedPaneKey: [
-                kPLKCustomizationTitleKey: "Update successful",
-                kPLKCustomizationMessageKey: "You successfully updated your account credentials <CLIENT>",
-                kPLKCustomizationSubmitButtonKey: "Continue"
-            ],
-            
-            kPLKInstitutionSelectPaneKey: [
-                kPLKCustomizationTitleKey: "Choose your bank",
-                kPLKCustomizationSearchButtonKey: "Search for your bank"
-            ],
-            
-            kPLKInstitutionSearchPaneKey: [
-                kPLKCustomizationExitButtonKey: "Quit",
-                kPLKCustomizationInitialMessageKey: "Find your bank or credit union",
-                kPLKCustomizationNoResultsMessageKey: "Unfortunately the institution you searched for could not be found"
-            ],
-            ])
+    kPLKConnectedPaneKey: [
+        kPLKCustomizationTitleKey: "Sign-up successful",
+        kPLKCustomizationMessageKey: "You successfully linked your account with <CLIENT>",
+        kPLKCustomizationSubmitButtonKey: "Continue"
+    ],
+    
+    kPLKReconnectedPaneKey: [
+        kPLKCustomizationTitleKey: "Update successful",
+        kPLKCustomizationMessageKey: "You successfully updated your account credentials <CLIENT>",
+        kPLKCustomizationSubmitButtonKey: "Continue"
+    ],
+    
+    kPLKInstitutionSelectPaneKey: [
+        kPLKCustomizationTitleKey: "Choose your bank",
+        kPLKCustomizationSearchButtonKey: "Search for your bank"
+    ],
+    
+    kPLKInstitutionSearchPaneKey: [
+        kPLKCustomizationExitButtonKey: "Quit",
+        kPLKCustomizationInitialMessageKey: "Find your bank or credit union",
+        kPLKCustomizationNoResultsMessageKey: "Unfortunately the institution you searched for could not be found"
+    ],
+    ])
 ```
 
 NSString constants for the customization pane and element names are available:

@@ -250,5 +250,13 @@
 }
 // <!-- SMARTDOWN_DELEGATE_EXIT -->
 
+// <!-- SMARTDOWN_DELEGATE_EVENT -->
+- (void)linkViewController:(PLKPlaidLinkViewController*)linkViewController
+            didHandleEvent:(NSString*)event
+                  metadata:(NSDictionary<NSString*,id>* _Nullable)metadata {
+    NSLog(@"Link event: %@\nmetadata: %@", event, metadata);
+}
+// <!-- SMARTDOWN_DELEGATE_EVENT -->
+
 @end
 
