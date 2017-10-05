@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## 2017-10-02 — LinkKit 1.1.0
+### Added
+- Add support for iPhone X
+- Allow selecting multiple accounts if the corresponding option is enabled in the [Dashboard](https://dashboard.plaid.com/)
+- Add `kPLKMetadataAccountsKey` to `metadata` returned in the `PLKPlaidLinkViewDelegate` methods
+- Add `kPLKMetadataLinkSessionIdKey` to `metadata` returned in the `PLKPlaidLinkViewDelegate` methods
+- Add APIv2 error codes to the `NSError.userInfo` passed to the `linkViewController:didExitWithError:metadata:` `PLKPlaidLinkViewDelegate` method ([#208](https://github.com/plaid/link/issues/208))
+- Extend `PLKPlaidLinkViewDelegate` protocol with `linkViewController:didHandleEvent:metadata`, see https://www.plaid.com/docs/api/#onevent-callback for details.
+
+### Changed
+- Automatically select an account if there is only one available
+- Replace `kPLKMetadataRequestIdKey` with `kPLKMetadataLinkRequestIdKey` in `metadata` returned in the `PLKPlaidLinkViewDelegate` methods when using APIv1
+
+### Removed
+- Remove right `×` exit button from navigation bar on connected pane and select account pane
+
+
+
 ## 2017-09-04 — LinkKit 1.0.10
 ### Changed
 - Fix issue where an empty select account pane was shown instead of an error message stating that no eligible ACH accounts were available

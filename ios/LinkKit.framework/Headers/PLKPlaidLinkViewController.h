@@ -26,17 +26,70 @@ PLK_EXTERN NSString* const kPLKMetadataAccountIdKey;
 /// The corresponding value contains a NSDictionary with institution type and identifier.
 PLK_EXTERN NSString* const kPLKMetadataInstitutionKey;
 
+/// The corresponding value contains the institution identifier
+PLK_EXTERN NSString* const kPLKMetadataInstitutionIdKey;
+
+/// The corresponding value contains the institution name
+PLK_EXTERN NSString* const kPLKMetadataInstitutionNameKey;
+
 /// The corresponding value contains the institution type
 PLK_EXTERN NSString* const kPLKMetadataInstitutionTypeKey;
+
+/// The corresponding value contains the institution type
+PLK_EXTERN NSString* const kPLKMetadataInstitution_TypeKey;
 
 /// The corresponding value indicates the point at which the user exited the Link flow.
 PLK_EXTERN NSString* const kPLKMetadataStatusKey;
 
-/// The corresponding value contains
+/// The corresponding value contains a unique APIv2 request ID, which can be shared with Plaid Support to expedite investigation.
 PLK_EXTERN NSString* const kPLKMetadataRequestIdKey;
 
-/// The corresponding value contains
+/// The corresponding value contains a unique Link APIv1 request ID, which can be shared with Plaid Support to expedite investigation.
+PLK_EXTERN NSString* const kPLKMetadataLinkRequestIdKey;
+
+/// The corresponding value contains a unique Plaid APIv1 request ID, which can be shared with Plaid Support to expedite investigation.
 PLK_EXTERN NSString* const kPLKMetadataPlaidApiRequestIdKey;
+
+/// The corresponding value represents a unique and omnipresent identifier for all actions and events throughout a user's session in Link.
+PLK_EXTERN NSString* const kPLKMetadataLinkSessionIdKey;
+
+/// The corresponding value is the error type that the user encountered. See online documentation for details https://www.plaid.com/docs/api/#errors.
+PLK_EXTERN NSString* const kPLKMetadataErrorTypeKey;
+
+/// The corresponding value is the error code that the user encountered. See online documentation for details https://www.plaid.com/docs/api/#errors.
+PLK_EXTERN NSString* const kPLKMetadataErrorCodeKey;
+
+/// The corresponding value is the error message that the user encountered. See online documentation for details https://www.plaid.com/docs/api/#errors.
+PLK_EXTERN NSString* const kPLKMetadataErrorMessageKey;
+
+/// The corresponding value is the query used to search for institutions.
+PLK_EXTERN NSString* const kPLKMetadataInstitutionSearchQueryKey;
+
+/// The corresponding value indicates the type of MFA the user has encountered.
+PLK_EXTERN NSString* const kPLKMetadataMFATypeKey;
+
+/// The corresponding value is the name of the view on TRANSITION_VIEW events.
+PLK_EXTERN NSString* const kPLKMetadataViewNameKey;
+
+/// The corresponding value is a ISO 8601 formatted string representing the time when the event occurred.
+PLK_EXTERN NSString* const kPLKMetadataTimestampKey;
+
+/// The corresponding value indicates the point at which the user exited the Link flow.
+PLK_EXTERN NSString* const kPLKMetadataExitStatusKey;
+
+
+/// The corresponding value is a broad categorization of the error.
+PLK_EXTERN NSString* const kPLKErrorTypeKey;
+
+/// The corresponding value represents a particular error code.
+PLK_EXTERN NSString* const kPLKErrorCodeKey;
+
+/// The corresponding value is a developer-friendly representation of the error code.
+PLK_EXTERN NSString* const kPLKErrorMessageKey;
+
+/// The corresponding value is a user-friendly representation of the error code or [NSNull null] if the error is not related to user action.
+PLK_EXTERN NSString* const kPLKDisplayMessageKey;
+
 
 @protocol PLKPlaidLinkViewDelegate;
 
@@ -70,7 +123,7 @@ PLK_EMPTY_INIT_UNAVAILABLE;
 
  @param configuration A custom configuration object to use.
  @param delegate A delegate object that wishes to receive messages from the inquiry object.
-                   Delegate methods are listed under PLKPlaidLinkViewDelegate.
+                 Delegate methods are listed under PLKPlaidLinkViewDelegate.
  @return The initialized Plaid Link view controller object or throws an exception if there was a problem initializing the object.
  */
 - (instancetype)initWithConfiguration:(PLKConfiguration*)configuration
@@ -164,7 +217,7 @@ PLK_EMPTY_INIT_UNAVAILABLE;
 
  @param linkViewController A Plaid Link view controller object informing the delegate about the
                            successful authentication.
- @param publicToken The publicToken
+ @param publicToken A NSString to send to your app server or use for update mode.
  @param metadata A NSDictionary object containing information about the institution that the
                  user selected and the account if selectAccount was configured.
  */
@@ -179,12 +232,28 @@ PLK_EMPTY_INIT_UNAVAILABLE;
  @param linkViewController A Plaid Link view controller object informing the delegate that the
                            Link flow was exited
  @param error If an error occurred, contains an NSError object that describes the problem, nil otherwise.
+              The error's userInfo contains entries according to https://plaid.com/docs/api/#errors unless the legacy API is used.
  @param metadata A NSDictionary object containing information about the institution that the
                  user selected and the most recent API request IDs.
                  Storing this information can be helpful for support.
  */
 - (void)linkViewController:(PLKPlaidLinkViewController*)linkViewController
           didExitWithError:(NSError* _Nullable)error
+                  metadata:(NSDictionary<NSString*,id>* _Nullable)metadata;
+
+@optional
+/**
+ The delegate method is called when certain events in the Link flow have occurred.
+ For details about the events see the onEvent documentation:
+ https://plaid.com/docs/api/#onevent-callback
+
+ @param linkViewController A Plaid Link view controller object informing the delegate a certain
+                           event in the Link flow has occurred.
+ @param event A NSString indicating the type of Link flow event that occurred.
+ @param metadata A NSDictionary object containing information about the event.
+ */
+- (void)linkViewController:(PLKPlaidLinkViewController*)linkViewController
+            didHandleEvent:(NSString*)event
                   metadata:(NSDictionary<NSString*,id>* _Nullable)metadata;
 @end
 
