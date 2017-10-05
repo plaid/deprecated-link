@@ -13,7 +13,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="LinkDemo_Swift4" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -56,7 +56,7 @@
                                         <inset key="titleEdgeInsets" minX="4" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="Open Plaid Link" backgroundImage="Button"/>
                                         <connections>
-                                            <action selector="didTapButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1ah-K8-MRL"/>
+                                            <action selector="didTapButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jod-2B-O3D"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -76,9 +76,10 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="button" destination="BZd-re-Tiz" id="4Dt-PQ-hID"/>
-                        <outlet property="buttonContainerView" destination="wpa-zw-kT3" id="TtA-Bo-8BD"/>
-                        <outlet property="label" destination="zhc-NK-3UN" id="MwY-9b-gB3"/>
+                        <outlet property="button" destination="BZd-re-Tiz" id="xNC-5n-D1d"/>
+                        <outlet property="buttonContainerView" destination="wpa-zw-kT3" id="Skd-fW-Eay"/>
+                        <outlet property="label" destination="zhc-NK-3UN" id="4uX-mS-CXc"/>
+                        <outlet property="view" destination="8bC-Xf-vdC" id="Mdc-w0-lqC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

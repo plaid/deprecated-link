@@ -5,7 +5,10 @@
       location = "group:LinkDemo-ObjC/LinkDemo-ObjC.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:LinkDemo-Swift/LinkDemo-Swift.xcodeproj">
+      location = "group:LinkDemo-Swift4/LinkDemo-Swift4.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:LinkDemo-Swift3/LinkDemo-Swift3.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:LinkDemo-Swift2/LinkDemo-Swift2.xcodeproj">
