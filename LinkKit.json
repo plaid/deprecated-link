@@ -10,5 +10,6 @@
   "1.0.8": "https://github.com/plaid/link/releases/download/ios/1.0.8/LinkKit.framework.zip", 
   "1.0.9": "https://github.com/plaid/link/releases/download/ios/1.0.9/LinkKit.framework.zip", 
   "1.0.10": "https://github.com/plaid/link/releases/download/ios/1.0.10/LinkKit.framework.zip", 
-  "1.1.0": "https://github.com/plaid/link/releases/download/ios/1.1.0/LinkKit.framework.zip"
+  "1.1.0": "https://github.com/plaid/link/releases/download/ios/1.1.0/LinkKit.framework.zip", 
+  "1.1.1": "https://github.com/plaid/link/releases/download/ios/1.1.1/LinkKit.framework.zip"
 }

@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2017-10-23 — LinkKit 1.1.1
+### Changed
+- Fix Apple review rejections of applications using Plaid Link iOS due to LinkKit.framework containing GCC and LLVM Instrumentation (see [Technical Q&A QA1964](https://developer.apple.com/library/content/qa/qa1964/_index.html)).
+- Fix view controller animation transition when the `backBarButtonItem` was tapped.
+
+
+
 ## 2017-10-02 — LinkKit 1.1.0
 ### Added
 - Add support for iPhone X
