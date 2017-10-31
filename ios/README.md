@@ -92,6 +92,13 @@ pod 'Plaid'
 * Run the following command:
 `pod install`
 
+* Add a **Run Script Build Phase** (we recommend naming it `Prepare for Distribution`) with the
+  [script below](#user-content-prepare-distribution-script).
+  Be sure that the `Prepare for Distribution` build phase runs _after_ the `Embed
+  Frameworks` build phase.
+  <br><img src='docs/images/setup/07-new_run_build_phase.jpg' width='350' title='Add new Run Script Build Phase'>
+  <img src='docs/images/setup/08-edit_run_build_phase.jpg' width='350' title='Editing the `Prepare for Distribution` build phase'>
+
 * To update [`LinkKit.framework`][linkkit] in the future run:
 `pod update Plaid`
 
