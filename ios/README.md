@@ -92,6 +92,13 @@ pod 'Plaid'
 * Run the following command:
 `pod install`
 
+* Add a **Run Script Build Phase** (we recommend naming it `Prepare for Distribution`) with the
+  [script below](#user-content-prepare-distribution-script).
+  Be sure that the `Prepare for Distribution` build phase runs _after_ the `Embed
+  Frameworks` (or `[CP] Embed Pods Frameworks` when using Cocoapods) build phase.
+  <br><img src='docs/images/setup/07-new_run_build_phase.jpg' width='350' title='Add new Run Script Build Phase'>
+  <img src='docs/images/setup/08-edit_run_build_phase.jpg' width='350' title='Editing the `Prepare for Distribution` build phase'>
+
 * To update [`LinkKit.framework`][linkkit] in the future run:
 `pod update Plaid`
 
@@ -132,14 +139,16 @@ to `Carthage/Build/iOS/LinkKit.framework`
 
 <a name='prepare-distribution-script'></a>
 
-The scripts removes code from the framework, which included to support the iPhone Simulator,
+The scripts removes code from the framework, which is included to support the iPhone Simulator,
 but which may not be distributed via the App Store.
 
-Change the `${PROJECT_DIR}/LinkKit.framework` path in the example below according to your setup,
-and be sure to quote the filepaths when they contain whitespace.
+While the example below supports manual integration as well as integration via Cocoapods or
+Carthage, be sure to change the path to `${LINK_ROOT:-$PROJECT_DIR}"/LinkKit.framework/prepare_for_distribution.sh`
+according to your setup and quote the filepaths in case they contain whitespace.
 
 ```sh
-cp "${PROJECT_DIR}"/LinkKit.framework/prepare_for_distribution.sh "${CODESIGNING_FOLDER_PATH}"/Frameworks/LinkKit.framework/prepare_for_distribution.sh
+LINK_ROOT=${PODS_ROOT:+$PODS_ROOT/Plaid/ios}
+cp "${LINK_ROOT:-$PROJECT_DIR}"/LinkKit.framework/prepare_for_distribution.sh "${CODESIGNING_FOLDER_PATH}"/Frameworks/LinkKit.framework/prepare_for_distribution.sh
 "${CODESIGNING_FOLDER_PATH}"/Frameworks/LinkKit.framework/prepare_for_distribution.sh
 ```
 
