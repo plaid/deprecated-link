@@ -140,7 +140,9 @@ PLK_EMPTY_INIT_UNAVAILABLE;
  @param key The public_key associated with your account. Available from https://dashboard.plaid.com/account/keys.
  @param env The Plaid API environment on which to create user accounts
  @param product The Plaid products you wish to use.
- @param selectAccount When set to YES prompts the user to select an individual account once they've authenticated.
+ @param selectAccount The selectAccount parameter controls whether or not your Link integration uses the Select Account view.
+                      This parameter will be removed in a future release, since it has been deprecated in favor of
+                      the Select Account view customization available from the Dashboard https://dashboard.plaid.com/link/account-select.
  @param longtailAuth Enables support for longtailAuth institutions when set to YES.
  @param apiVersion Selects the Plaid API version to use.
  @return A PLKConfiguration object initialized with the given arguments.
@@ -149,7 +151,7 @@ PLK_EMPTY_INIT_UNAVAILABLE;
 - (instancetype)initWithKey:(NSString*)key
                         env:(PLKEnvironment)env
                     product:(PLKProduct)product
-              selectAccount:(BOOL)selectAccount
+              selectAccount:(BOOL)selectAccount // DEPRECATED
                longtailAuth:(BOOL)longtailAuth
                  apiVersion:(PLKAPIVersion)apiVersion NS_DESIGNATED_INITIALIZER;
 

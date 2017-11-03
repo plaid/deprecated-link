@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2017-11-02 — LinkKit 1.1.2
+### Changed
+- Fix single account pre-selection, where `didExitWithError:metadata:` was called instead of `didSucceedWithPublicToken:metadata:` when the pre-selected was not tapped despite of already being selected
+- Add support for alphanumeric mfa codes
+- Deprecate `selectAccount` parameter on `PLKConfiguration` in favour of the Select Account view customization available from the Dashboard https://dashboard.plaid.com/link/account-select or the `kPLKCustomizationEnabledKey` customization for `kPLKAccountSelectPaneKey` when using `PLKConfiguration.customizeWithDictionary:`. The `selectAccount` parameter will be removed in a future release.
+
+
+
 ## 2017-10-23 — LinkKit 1.1.1
 ### Changed
 - Fix Apple review rejections of applications using Plaid Link iOS due to LinkKit.framework containing GCC and LLVM Instrumentation (see [Technical Q&A QA1964](https://developer.apple.com/library/content/qa/qa1964/_index.html)).
