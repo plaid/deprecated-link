@@ -120,7 +120,6 @@ PLK_EXTERN NSString* const kPLKCustomizationExitButtonKey;
 /// The Plaid API version to use.
 @property (readonly) PLKAPIVersion apiVersion;
 
-
 /**
  The singleton instance of the PLKConfiguration class initialized with the values
  from the PLKPlaidLinkConfiguration entry in the applications Info.plist.
