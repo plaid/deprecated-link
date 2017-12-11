@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         let linkKitVersion = linkKitBundle.object(forInfoDictionaryKey: "CFBundleShortVersionString")!
         let linkKitBuild   = linkKitBundle.object(forInfoDictionaryKey: kCFBundleVersionKey as String)!
         let linkKitName    = linkKitBundle.object(forInfoDictionaryKey: kCFBundleNameKey as String)!
-        label.text         = "Swift — \(linkKitName) \(linkKitVersion)+\(linkKitBuild)"
+        label.text         = "Swift 4 — \(linkKitName) \(linkKitVersion)+\(linkKitBuild)"
 
         let shadowColor    = #colorLiteral(red: 0.01176470588, green: 0.1921568627, blue: 0.337254902, alpha: 0.1)
         buttonContainerView.layer.shadowColor   = shadowColor.cgColor
@@ -208,7 +208,7 @@ extension ViewController : PLKPlaidLinkViewDelegate
     
 // <!-- SMARTDOWN_DELEGATE_EVENT -->
     func linkViewController(_ linkViewController: PLKPlaidLinkViewController, didHandleEvent event: String, metadata: [String : Any]?) {
-        NSLog("Link event: \(event)\nmetadata: \(metadata)")
+        NSLog("Link event: \(event)\nmetadata: \(metadata ?? [:])")
     }
 // <!-- SMARTDOWN_DELEGATE_EVENT -->
 }
