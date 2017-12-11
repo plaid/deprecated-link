@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 2017-12-11 — LinkKit 1.1.3
+### Added
+- Allow customization of "top" institutions if the corresponding option is enabled in the [Dashboard](https://dashboard.plaid.com/link/institution-select)
+
+### Changed
+- Add consistency to visual appearance of buttons in highlighted state
+
+
+
 ## 2017-11-02 — LinkKit 1.1.2
 ### Changed
 - Fix single account pre-selection, where `didExitWithError:metadata:` was called instead of `didSucceedWithPublicToken:metadata:` when the pre-selected was not tapped despite of already being selected

@@ -27,7 +27,7 @@ class ViewController: UIViewController {
         let linkKitVersion = linkKitBundle.object(forInfoDictionaryKey: "CFBundleShortVersionString")!
         let linkKitBuild   = linkKitBundle.object(forInfoDictionaryKey: kCFBundleVersionKey as String)!
         let linkKitName    = linkKitBundle.object(forInfoDictionaryKey: kCFBundleNameKey as String)!
-        label.text         = "Swift — \(linkKitName) \(linkKitVersion)+\(linkKitBuild)"
+        label.text         = "Swift 3 — \(linkKitName) \(linkKitVersion)+\(linkKitBuild)"
 
         let shadowColor = UIColor(colorLiteralRed: 3/255.0, green: 49/255.0, blue: 86/255.0, alpha: 0.1)
         buttonContainerView.layer.shadowColor   = shadowColor.cgColor
