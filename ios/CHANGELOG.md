@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 2018-01-11 — LinkKit 1.1.4
+### Added
+- Add support for password managers to allow users to use application extensions provided by password manager applications to fill in the account credentials. Please note that the application integrating LinkKit must add `org-appextension-feature-password-management` to `LSApplicationQueriesSchemes` in its `Info.plist`
+
+### Changed
+- Visual user interface modification to create more similarity between Plaid Link for [web](https://plaid.com/docs/quickstart/) and iOS.
+- Fix issue that prevented bank accounts to be successfully linked when using non-sandbox keys in the Tartan environment with the legacy API.
+
+
+
 ## 2017-12-11 — LinkKit 1.1.3
 ### Added
 - Allow customization of "top" institutions if the corresponding option is enabled in the [Dashboard](https://dashboard.plaid.com/link/institution-select)
