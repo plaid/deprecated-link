@@ -10,7 +10,7 @@
 
 ![Use Custom Config](/ios/docs/images/use_custom_config.jpg)
 
-🤖 Throughout the source code there are HTML-like comments such as <code>&lt;!-- SMARTDOWN_PRESENT_CUSTOM --&gt;</code>, they are used to update the code examples in the [documentation][docs] from the sample applicationsʼ code ensuring that the examples are up-to-date and working as intended.
+🤖 Throughout the source code there are HTML-like comments such as <code>&lt;!-- SMARTDOWN_PRESENT_CUSTOM --&gt;</code>, they are used to update the code examples in the [documentation][link-ios-docs] from the sample applicationsʼ code ensuring that the examples are up-to-date and working as intended.
 
 
 [link-ios-docs]: https://plaid.com/docs/link/ios
