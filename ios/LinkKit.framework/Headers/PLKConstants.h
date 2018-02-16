@@ -29,17 +29,20 @@ typedef NS_OPTIONS(NSInteger, PLKProduct) {
     PLKProductIncome       = 1 << 1,
 
     /// Account and transaction data to better serve users.
-    PLKProductConnect      = 1 << 2,
-    /// APIv2 equivalent of PLKProductConnect.
     PLKProductTransactions = 1 << 2,
+    /// Legacy API equivalent of PLKProductTransactions.
+    PLKProductConnect = 1 << 2,
 
     /// Verify user identities with bank account data to reduce fraud.
-    PLKProductInfo         = 1 << 3,
-    /// APIv2 equivalent of PLKProductInfo
     PLKProductIdentity     = 1 << 3,
+    /// Legacy API equivalent of PLKProductIdentity
+    PLKProductInfo         = 1 << 3,
+
+    /// Historical snapshots, real-time summaries, and auditable copies.
+    PLKProductAssets       = 1 << 4,
 
     /// For internal use only.
-    PLKProductLongtailAuth = 1 << 4
+    PLKProductLongtailAuth = 1 << 5
 };
 
 

@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 2018-02-15 — LinkKit 1.1.5
+### Added
+- Add `PLKProductAssets` support for historical snapshots, real-time summaries, and auditable copies.
+- Improve error handling when initializing LinkKit
+- When retrying a login the previously entered username will remain in the username input field.
+
+### Changed
+- Fix bug where password manager action sheet could be invoked even though password manager button in credential field was invisible
+- Visual user interface modification to create more similarity between Plaid Link for [web](https://plaid.com/docs/quickstart/) and iOS.
+
+
+
 ## 2018-01-11 — LinkKit 1.1.4
 ### Added
 - Add support for password managers to allow users to use application extensions provided by password manager applications to fill in the account credentials. Please note that the application integrating LinkKit must add `org-appextension-feature-password-management` to `LSApplicationQueriesSchemes` in its `Info.plist`
