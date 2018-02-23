@@ -46,7 +46,6 @@ class ViewController: UIViewController {
     @IBAction func didTapButton(_ sender: Any?) {
 #if USE_CUSTOM_CONFIG
         presentPlaidLinkWithCustomConfiguration()
-        // presentPlaidLinkWithCopyCustomization()
 #else
         presentPlaidLinkWithSharedConfiguration()
 #endif
@@ -95,67 +94,10 @@ class ViewController: UIViewController {
         present(linkViewController, animated: true)
     }
 
-    // MARK: Start Plaid Link with an institution pre-selected
-    func presentPlaidLinkWithCustomInitializer() {
-        let linkViewDelegate = self
-        let linkViewController = PLKPlaidLinkViewController(institution: "<#INSTITUTION_ID#>", delegate: linkViewDelegate)
-        if (UI_USER_INTERFACE_IDIOM() == .pad) {
-            linkViewController.modalPresentationStyle = .formSheet;
-        }
-        present(linkViewController, animated: true)
-    }
-
     // MARK: Start Plaid Link in update mode
     func presentPlaidLinkInUpdateMode() {
         let linkViewDelegate = self
         let linkViewController = PLKPlaidLinkViewController(publicToken: "<#GENERATED_PUBLIC_TOKEN#>", delegate: linkViewDelegate)
-        if (UI_USER_INTERFACE_IDIOM() == .pad) {
-            linkViewController.modalPresentationStyle = .formSheet;
-        }
-        present(linkViewController, animated: true)
-    }
-    
-    // MARK: Start Plaid Link with custom instance configuration including client-side customizations
-    func presentPlaidLinkWithCopyCustomization() {
-        let linkConfiguration = PLKConfiguration(key: "<#YOUR_PLAID_PUBLIC_KEY#>", env: .sandbox, product: .auth)
-        
-        /*
-         NOTE: The preferred method to customize LinkKit is to use the customization feature
-         in the dashboard (https://dashboard.plaid.com/link).
-         In the rare case where customization is necessary from within your application directly
-         and you prefer to initialize link directly using instance configuration an example
-         is given below.
-         For further details which elements can be customized on which panes please refer to the online documentation available at:
-         https://github.com/plaid/link/blob/master/ios/README.md#customization
-         */
-        linkConfiguration.customize(with: [
-            kPLKConnectedPaneKey: [
-                kPLKCustomizationTitleKey: "Sign-up successful",
-                kPLKCustomizationMessageKey: "You successfully linked your account with <CLIENT>",
-                kPLKCustomizationSubmitButtonKey: "Continue"
-            ],
-            
-            kPLKReconnectedPaneKey: [
-                kPLKCustomizationTitleKey: "Update successful",
-                kPLKCustomizationMessageKey: "You successfully updated your account credentials <CLIENT>",
-                kPLKCustomizationSubmitButtonKey: "Continue"
-            ],
-            
-            kPLKInstitutionSelectPaneKey: [
-                kPLKCustomizationTitleKey: "Choose your bank",
-                kPLKCustomizationSearchButtonKey: "Search for your bank"
-            ],
-            
-            kPLKInstitutionSearchPaneKey: [
-                kPLKCustomizationExitButtonKey: "Quit",
-                kPLKCustomizationInitialMessageKey: "Find your bank or credit union",
-                kPLKCustomizationNoResultsMessageKey: "Unfortunately the institution you searched for could not be found"
-            ],
-            ])
-        
-        linkConfiguration.clientName = "Link Demo"
-        let linkViewDelegate = self
-        let linkViewController = PLKPlaidLinkViewController(configuration: linkConfiguration, delegate: linkViewDelegate)
         if (UI_USER_INTERFACE_IDIOM() == .pad) {
             linkViewController.modalPresentationStyle = .formSheet;
         }
