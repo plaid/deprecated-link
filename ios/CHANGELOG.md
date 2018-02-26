@@ -2,13 +2,17 @@
 
 ## 2018-02-15 — LinkKit 1.1.5
 ### Added
-- Add `PLKProductAssets` support for historical snapshots, real-time summaries, and auditable copies.
 - Improve error handling when initializing LinkKit
 - When retrying a login the previously entered username will remain in the username input field.
 
 ### Changed
 - Fix bug where password manager action sheet could be invoked even though password manager button in credential field was invisible
 - Visual user interface modification to create more similarity between Plaid Link for [web](https://plaid.com/docs/quickstart/) and iOS.
+
+### Known issues
+The following issues currently exist in LinkKit and will be addressed with the next release planned for beginning of March 2018.
+- LinkKit can crash when the Institution Select pane has been customized with certain longtail institutions with long names. Unfortunately this is a production issue and we recommend removing these institutions from the customized Institution Select pane until the next version of LinkKit has been integrated in your application. For further details see [`plaid/link#235`](https://github.com/plaid/link/issues/235)
+- LinkKit crashes when using custom initializers and navigating back from the development mode info pane to the credentials pane and then submitting credentials. This is a sandbox / development only related issue and cannot occur in production context where the development mode info page is not available. For further details see [`plaid/link#234`](https://github.com/plaid/link/issues/234)
 
 
 
