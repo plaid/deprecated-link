@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 2018-03-01 — LinkKit 1.1.6
+### Added
+- Add warning log message when third-party password manager support is not setup properly
+
+### Changed
+- Values for `PLKPLAIDLINK_DIAGNOSTICS` log level to accommodate for newly added warning log level
+- Fix sandbox only crash when submitting credentials after having viewed the development mode info view ([#234](https://github.com/plaid/link/issues/234))
+- Fix crash when customized institution select pane contained certain institutions ([#235](https://github.com/plaid/link/issues/235))
+
+### Removed
+
+
+
+
 ## 2018-02-15 — LinkKit 1.1.5
 ### Added
 - Improve error handling when initializing LinkKit
