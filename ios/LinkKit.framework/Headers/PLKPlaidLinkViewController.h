@@ -11,32 +11,47 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/// The corresponding value contains the identifier for the account
+/// The corresponding value contains the identifier for the account.
 PLK_EXTERN NSString* const kPLKMetadataIdKey;
 
 /// The corresponding value contains the name of the account or institution.
 PLK_EXTERN NSString* const kPLKMetadataNameKey;
 
-/// The corresponding value contains the name of the account or institution.
+/// The corresponding value contains the masked account number.
+PLK_EXTERN NSString* const kPLKMetadataMaskKey;
+
+/// The corresponding value contains the type of the account or institution.
+PLK_EXTERN NSString* const kPLKMetadataTypeKey;
+
+/// The corresponding value contains the subtype of the account.
+PLK_EXTERN NSString* const kPLKMetadataSubtypeKey;
+
+/// The corresponding value contains a NSDictionary with an account's name, identifier, mask, type, and subtype.
 PLK_EXTERN NSString* const kPLKMetadataAccountKey;
 
-/// The corresponding value contains a NSDictionary with the accounts name and identifier.
+/// The corresponding value contains an NSArray with multiple NSDictionary for the selected accounts; the keys in the NSDictionary are the same as with the kPLKMetadataAccountKey.
+PLK_EXTERN NSString* const kPLKMetadataAccountsKey;
+
+/// The corresponding value contains the identifier for the account.
 PLK_EXTERN NSString* const kPLKMetadataAccountIdKey;
 
-/// The corresponding value contains a NSDictionary with institution type and identifier.
+/// The corresponding value contains a NSDictionary with the name and identifier of the institution.
 PLK_EXTERN NSString* const kPLKMetadataInstitutionKey;
 
-/// The corresponding value contains the institution identifier
+/// The corresponding value contains the identifier for the institution.
 PLK_EXTERN NSString* const kPLKMetadataInstitutionIdKey;
 
-/// The corresponding value contains the institution name
+/// The corresponding value contains the name of the institution.
 PLK_EXTERN NSString* const kPLKMetadataInstitutionNameKey;
 
-/// The corresponding value contains the institution type
-PLK_EXTERN NSString* const kPLKMetadataInstitutionTypeKey;
+/// The corresponding value contains the institution type when using the legacy API.
+PLK_EXTERN NSString* const kPLKAPIv1MetadataInstitutionTypeKey;
 
-/// The corresponding value contains the institution type
-PLK_EXTERN NSString* const kPLKMetadataInstitution_TypeKey;
+/// The corresponding value contains the institution type.
+PLK_EXTERN NSString* const kPLKMetadataInstitution_TypeKey DEPRECATED_MSG_ATTRIBUTE("use kPLKAPIv1MetadataInstitutionTypeKey instead.");
+
+/// The corresponding value contains the institution type.
+PLK_EXTERN NSString* const kPLKMetadataInstitutionTypeKey DEPRECATED_MSG_ATTRIBUTE("use kPLKMetadataTypeKey instead.");
 
 /// The corresponding value indicates the point at which the user exited the Link flow.
 PLK_EXTERN NSString* const kPLKMetadataStatusKey;

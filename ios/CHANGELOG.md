@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 2018-03-20 — LinkKit 1.1.7
+### Added
+- Add customizable exit button below search results (addresses [#228](https://github.com/plaid/link/issues/228)).
+- For the select account flow the account mask, type, and subtype are now returned in the metadata of the `linkViewController:didSucceedWithPublicToken:metadata` handler.
+
+### Changed
+- Deprecate `kPLKMetadataInstitutionType` constant in favor of `kPLKMetadataType` and `kPLKMetadataInstitution_Type` in favor of `kPLKAPIv1MetadataInstitutionType`
+
+### Removed
+- Remove the Success view when Select Accout is enabled in the Plaid Dashboard, to match the behaviour in Link Web
+
+
+
 ## 2018-03-01 — LinkKit 1.1.6
 ### Added
 - Add warning log message when third-party password manager support is not setup properly
@@ -8,9 +21,6 @@
 - Values for `PLKPLAIDLINK_DIAGNOSTICS` log level to accommodate for newly added warning log level
 - Fix sandbox only crash when submitting credentials after having viewed the development mode info view ([#234](https://github.com/plaid/link/issues/234))
 - Fix crash when customized institution select pane contained certain institutions ([#235](https://github.com/plaid/link/issues/235))
-
-### Removed
-
 
 
 
