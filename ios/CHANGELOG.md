@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 2018-04-16 — LinkKit 1.1.8
+### Changed
+- Fix issue with credentials validation that requires a PIN code when using a third-party password manager
+- Fix status bar style for applications that disable view controller-based status bar appearance
+- All delegate methods of the `PLKPlaidLinkViewDelegate` protocol are now called on the main thread
+- Visual user interface modification to create more similarity between Plaid Link for [web](https://plaid.com/docs/quickstart/) and iOS
+- Move the third-party password manager button from the username field to the password field
+
+### Removed
+- Remove back bar button item on credential pane when retrying credentials using custom initializer flow
+
+
+
 ## 2018-03-20 — LinkKit 1.1.7
 ### Added
 - Add customizable exit button below search results (addresses [#228](https://github.com/plaid/link/issues/228)).

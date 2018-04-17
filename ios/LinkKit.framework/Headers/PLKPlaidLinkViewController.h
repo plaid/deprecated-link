@@ -224,11 +224,15 @@ PLK_EMPTY_INIT_UNAVAILABLE;
 /**
  The delegate of a PLKPlaidLinkViewController object must adopt the PLKPlaidLinkViewDelegate
  protocol.
+
+ Note: The methods of this protocol are dispatched to the main queue.
  */
 @protocol PLKPlaidLinkViewDelegate <NSObject>
 
 /**
  The method is called when a user has successfully onboarded their account.
+
+ Note: The method is dispatched to the main queue.
 
  @param linkViewController A Plaid Link view controller object informing the delegate about the
                            successful authentication.
@@ -243,6 +247,8 @@ PLK_EMPTY_INIT_UNAVAILABLE;
 /**
  The delegate method is called when a user has specifically exited the Link flow
  or an error occurred.
+
+ Note: The method is dispatched to the main queue.
 
  @param linkViewController A Plaid Link view controller object informing the delegate that the
                            Link flow was exited
@@ -261,6 +267,8 @@ PLK_EMPTY_INIT_UNAVAILABLE;
  The delegate method is called when certain events in the Link flow have occurred.
  For details about the events see the onEvent documentation:
  https://plaid.com/docs/api/#onevent-callback
+
+ Note: The method is dispatched to the main queue.
 
  @param linkViewController A Plaid Link view controller object informing the delegate a certain
                            event in the Link flow has occurred.
