@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2018-05-17 — LinkKit 1.1.9
+### Changed
+- Improve compatability with iOS 8
+- Fix issue where the search pane would be shown instead of the institution select pane when going back from the credentials pane
+- Visual user interface modification to create more similarity between Plaid Link for [web](https://plaid.com/docs/quickstart/) and iOS
+
+
+
 ## 2018-04-16 — LinkKit 1.1.8
 ### Changed
 - Fix issue with credentials validation that requires a PIN code when using a third-party password manager
