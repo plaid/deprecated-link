@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         linkInitializeOptions.put("webhook", "http://requestb.in");
         linkInitializeOptions.put("baseUrl", "https://cdn.plaid.com/link/v2/stable/link.html");
         // If initializing Link in PATCH / update mode, also provide the public_token
-        // linkInitializeOptions.put("public_token", "PUBLIC_TOKEN")
+        // linkInitializeOptions.put("token", "PUBLIC_TOKEN")
 
         // Generate the Link initialization URL based off of the configuration options.
         final Uri linkInitializationUrl = generateLinkInitializationUrl(linkInitializeOptions);
