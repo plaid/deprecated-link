@@ -113,7 +113,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0910;
-				ORGANIZATIONNAME = "Plaid Technologies, Inc.";
+				ORGANIZATIONNAME = "Plaid Inc.";
 				TargetAttributes = {
 					91035E4E1E3CA7C000A97B26 = {
 						CreatedOnToolsVersion = 8.2.1;

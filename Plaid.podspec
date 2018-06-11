@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
 
   s.homepage          = 'https://plaid.com/docs/api/#ios-bindings'
   s.license           = { :type => 'MIT', :file => 'ios/LICENSE' }
-  s.author            = 'Plaid Technologies, Inc.'
+  s.author            = 'Plaid Inc.'
 
   s.platform          = :ios, '8.0'
   s.source            = { :git => 'https://github.com/plaid/link.git', :tag => "ios/#{s.version}" }

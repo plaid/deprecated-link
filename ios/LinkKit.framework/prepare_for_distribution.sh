@@ -3,7 +3,7 @@
 #  prepare_for_distribution.sh - prepare a framework for distribution
 #  LinkKit
 #
-#  Copyright © 2016 Plaid Technologies, Inc. All rights reserved.
+#  Copyright © 2016 Plaid Inc. All rights reserved.
 
 # Remove unneeded architectures (mostly the iOS Simulator ones i386 and x86_64)
 fmwk_dir=$(dirname "${0}")

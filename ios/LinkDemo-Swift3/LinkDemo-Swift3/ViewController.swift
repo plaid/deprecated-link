@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  LinkDemo-Swift
 //
-//  Copyright © 2017 Plaid Technologies, Inc. All rights reserved.
+//  Copyright © 2017 Plaid Inc. All rights reserved.
 //
 
 import UIKit

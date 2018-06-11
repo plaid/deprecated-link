@@ -2,7 +2,7 @@
 //  PLKConstants.h
 //  LinkKit
 //
-//  Copyright © 2016 Plaid Technologies, Inc. All rights reserved.
+//  Copyright © 2016 Plaid Inc. All rights reserved.
 //
 
 #ifndef PLKConstants_h
