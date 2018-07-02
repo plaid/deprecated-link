@@ -117,7 +117,6 @@
 				TargetAttributes = {
 					91035E4E1E3CA7C000A97B26 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = Z2P2MSMY87;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -313,7 +312,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = Z2P2MSMY87;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../";
 				INFOPLIST_FILE = "LinkDemo-Swift4/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -331,7 +330,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = Z2P2MSMY87;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../";
 				INFOPLIST_FILE = "LinkDemo-Swift4/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
