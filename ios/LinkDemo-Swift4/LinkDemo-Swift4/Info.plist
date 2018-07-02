@@ -25,9 +25,9 @@
 		<key>clientName</key>
 		<string>$(PRODUCT_NAME)</string>
 		<key>env</key>
-		<string>$(LINK_ENV)</string>
+		<string>Sandbox</string>
 		<key>key</key>
-		<string>$(LINK_KEY)</string>
+		<string>5cbfbd8ca018fb3f318df84d5ab6fe</string>
 		<key>product</key>
 		<string>auth</string>
 		<key>selectAccount</key>

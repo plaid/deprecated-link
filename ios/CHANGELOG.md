@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 2018-07-02 — LinkKit 1.1.10
+### Added
+- Plaid Link for iOS now asks end users for their consent to Plaid's privacy policy
+
+### Changed
+- Fix issue that could crash LinkKit in sandbox mode when viewing the development mode information
+- Fix issue where the last active pane instead of the institution select pane would be shown when the same instance of `PLKPlaidLinkViewController` was re-used
+- Present institution website after "Unlock account" is tapped on the result pane for a locked item
+
+
+
 ## 2018-05-17 — LinkKit 1.1.9
 ### Changed
 - Improve compatability with iOS 8
