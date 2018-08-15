@@ -2,7 +2,7 @@
 //  LinkViewController.swift
 //  wkwebview
 //
-//  Copyright (c) 2016 Plaid Technologies, Inc. All rights reserved.
+//  Copyright (c) 2016 Plaid Inc. All rights reserved.
 //
 
 import UIKit

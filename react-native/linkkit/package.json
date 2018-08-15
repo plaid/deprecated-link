@@ -1,0 +1,29 @@
+{
+  "name": "react-native-plaid-link",
+  "version": "0.1.0",
+  "description": "A React Native bridge to the Plaid Link for iOS SDK",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "plaid",
+    "link",
+    "linkkit",
+    "fintech",
+    "banking",
+    "account",
+    "react",
+    "react-native",
+    "ios"
+  ],
+  "author": "Plaid Inc.",
+  "license": "MIT",
+  "peerDependencies": {
+    "react-native": "^0.41.2"
+  },
+  "dependencies": {
+    "react-native-cli": "^2.0.1",
+    "react-native-git-upgrade": "^0.2.7"
+  }
+}
