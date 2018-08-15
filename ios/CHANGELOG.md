@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 2018-08-15 — LinkKit 1.1.11
+### Added
+- Add support for customization of the headline, submit button, and highlight color on the initial consentPane
+- Add support for alphanumeric MFA codes
+- Add support for react native
+- Remove sensitive information from views before moving to the background
+
+### Changed
+- Fix issue where the `Restart` action on the result pane exited the flow instead of going back to the institution select pane.
+- Fix issue where LinkKit can crash during device based mfa (addresses [#252](https://github.com/plaid/link/issues/252)).
+- Improve animation of blur effect during application suspend / resume
+
+
+
 ## 2018-07-02 — LinkKit 1.1.10
 ### Added
 - Plaid Link for iOS now asks end users for their consent to Plaid's privacy policy
@@ -8,6 +22,10 @@
 - Fix issue that could crash LinkKit in sandbox mode when viewing the development mode information
 - Fix issue where the last active pane instead of the institution select pane would be shown when the same instance of `PLKPlaidLinkViewController` was re-used
 - Present institution website after "Unlock account" is tapped on the result pane for a locked item
+
+### Known issues
+The following issues currently exist in LinkKit and will be addressed with the next release planned for the middle of August 2018.
+- LinkKit can crash during device based mfa. For further details see [#252](https://github.com/plaid/link/issues/252).
 
 
 

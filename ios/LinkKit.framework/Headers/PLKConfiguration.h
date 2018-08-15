@@ -40,6 +40,17 @@ typedef NS_ENUM(NSInteger, PLKAPIVersion) {
 /// The default API version to use. *Note:* This may change with future releases
 static PLKAPIVersion kPLKAPIVersionDefault = PLKAPIv2;
 
+
+/// Returns PLKAPIVersion corresponding to the data in the given string or -1 if the string contained invalid api version data.
+PLK_EXTERN PLKAPIVersion PLKAPIVersionFromString(NSString* apiVersion);
+
+/// Returns PLKPorduct corresponding to the data in the given string or -1 contained invalid product data.
+PLK_EXTERN PLKProduct PLKProductFromArray(NSArray<NSString*>* array);
+
+/// Returns PLKEnvironment corresponding to the data in the given string or -1 contained invalid environment data.
+PLK_EXTERN PLKEnvironment PLKEnvironmentFromString(NSString* environment);
+
+
 /// A Plaid public_key that can be used for testing when using PLKEnvironmentTartan.
 PLK_EXTERN NSString* const kPLKTestKey;
 
