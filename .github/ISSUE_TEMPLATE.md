@@ -1,5 +1,23 @@
 *Please do not include your API `secret` or `public_key` in any issue.*
 ---
+### A detailed description of the steps to reproduce the issue
+
+* 
+* 
+* 
+
+### What you expected to see?
+
+### What you saw instead?
+
+<details><summary>Screenshots that shows the state of the UI (if applicable)</summary>
+
+Drag & drop your screenshot files here.
+
+</details>
+
+---
+
 When submitting an issue for Link on the web or within a Webview, please include the following information:
 
 |       Name       | Value |
@@ -8,39 +26,21 @@ When submitting an issue for Link on the web or within a Webview, please include
 | Browser          |       |
 | Operating system |       |
 
-### A detailed description of the steps to reproduce the issue
-
-* 
-* 
-* 
-
-### What you expected to see?
-
-### What you saw instead?
-
-### A screenshot that shows the state of the UI (if applicable)
-
 ---
 
 When submitting an issue for [**Plaid Link iOS**](https://github.com/plaid/link/tree/master/ios)
 please include the following information:
 
-| Name              | Value              |
-| ----------------- | ------------------ |
-| Link `apiVersion` |                    |
-| Link `env`        |                    |
-| LinkKit version   |                    |
-| iOS version       |                    |
-| iOS device        |                    |
+| Name            | Value |
+|-----------------|-------|
+| Link `env`      |       |
+| LinkKit version |       |
+| iOS version     |       |
+| iOS device      |       |
 
-### A detailed description of the steps to reproduce the issue
 
-* 
-* 
-* 
+#### List of used 3rd party libraries (e.g. CocoaPods):
 
-### What you expected to see?
-
-### What you saw instead?
-
-### A screenshot that shows the state of the UI (if applicable)
+* [Plaid](https://cocoapods.org/pods/Plaid)
+*
+*
