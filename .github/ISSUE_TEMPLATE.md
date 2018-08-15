@@ -10,9 +10,9 @@
 
 ### What you saw instead?
 
-<details><summary>Screenshots that shows the state of the UI (if applicable)</summary>
+<details><summary>Screenshots that show the state of the UI (if applicable)</summary>
 
-Drag & drop your screenshot files here.
+<!-- Drag & drop your screenshot files here. -->
 
 </details>
 
@@ -28,8 +28,7 @@ When submitting an issue for Link on the web or within a Webview, please include
 
 ---
 
-When submitting an issue for [**Plaid Link iOS**](https://github.com/plaid/link/tree/master/ios)
-please include the following information:
+When submitting an issue for [**Plaid Link iOS**](https://github.com/plaid/link/tree/master/ios) please include the following information:
 
 | Name            | Value |
 |-----------------|-------|
