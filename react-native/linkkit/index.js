@@ -66,7 +66,7 @@ const PlaidLink = {
       throw new Error('Must provide an onExit callback');
     }
     if (configuration.webhook && configuration.webhook.length > 0 && !configuration.webhook.startsWith('http')) {
-      throw new Error('webhook paramter must be a valid HTTP(S) URL');
+      throw new Error('webhook parameter must be a valid HTTP(S) URL');
     }
 
     RNLinkkit._create(configuration);
