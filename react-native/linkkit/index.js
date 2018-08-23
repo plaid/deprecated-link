@@ -65,7 +65,7 @@ const PlaidLink = {
     if (typeof configuration.onExit !== 'function') {
       throw new Error('Must provide an onExit callback');
     }
-    if (webhook.length > 0 && !webhook.startsWith('http')) {
+    if (configuration.webhook && configuration.webhook.length > 0 && !configuration.webhook.startsWith('http')) {
       throw new Error('webhook paramter must be a valid HTTP(S) URL');
     }
 
