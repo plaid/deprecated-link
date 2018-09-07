@@ -4,7 +4,7 @@
 
 ## [Link WebView](webviews)
 
-[![Examples of Plaid Link WebView](https://plaid.com/images/docs/link-webview-screenshot.png)](webviews)
+[![Examples of Plaid Link WebView](assets/link-webview-screenshot.png)](webviews)
 
 ## [Link on the web](web)
 
