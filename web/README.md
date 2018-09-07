@@ -12,7 +12,8 @@ Head to our [quickstart][quickstart] guide to get started with your Link integra
 
 - [Ember component][ember-plaid], by [@jasonkriss](https://github.com/jasonkriss)
 - [Example Angular/Ionic app][plaid-link-ionic-example], by [@pbernasconi](https://github.com/pbernasconi)
-- [Angular component][angular-plaid-link], by [@csbarnes](https://github.com/csbarnes)
+- [Angular component][ngx-plaid-link], by [@mike-roberts](https://github.com/mike-roberts)
+- [Angular.js component][angular-plaid-link], by [@csbarnes](https://github.com/csbarnes)
 - [React component][react-plaid-link], by [@pbernasconi](https://github.com/pbernasconi)
 
 [quickstart]: https://plaid.com/docs/quickstart
@@ -20,6 +21,7 @@ Head to our [quickstart][quickstart] guide to get started with your Link integra
 [quickstart-ruby]: https://github.com/plaid/quickstart/tree/master/ruby
 [quickstart-python]: https://github.com/plaid/quickstart/tree/master/python
 [quickstart-node]: https://github.com/plaid/quickstart/tree/master/node
+[ngx-plaid-link]: https://github.com/mike-roberts/ngx-plaid-link
 [angular-plaid-link]: https://github.com/csbarnes/angular-plaid-link
 [ember-plaid]: https://github.com/jasonkriss/ember-plaid
 [plaid-link-ionic-example]: https://github.com/pbernasconi/plaid-link-ionic-example
