@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 2018-09-17 — LinkKit 1.1.12
+### Added
+- Add support for iOS 12 security code auto-fill
+
+### Changed
+- Fix issue where customizing the copy of button on the consent pane did not update the copy of the text below accordingly
+- The metadata in the `linkViewController:didHandleEvent:metadata` callback method now includes data of the selected institution in every event if present
+- Allow the `dismissViewControllerAnimated:completion:` to be called on the `PLKPlaidLinkViewController` object (addresses [#254](https://github.com/plaid/link/issues/254)). Yet we recommend calling `dismissViewControllerAnimated:completion:` on the object that presented the `PLKPlaidLinkViewController` or on the `presentingViewController` property of the `linkViewController` object passed to the `PLKPlaidLinkViewDelegate` methods.
+
+### Removed
+
+
+
+
 ## 2018-08-15 — LinkKit 1.1.11
 ### Added
 - Add support for customization of the headline, submit button, and highlight color on the initial consentPane
@@ -8,9 +22,13 @@
 - Remove sensitive information from views before moving to the background
 
 ### Changed
-- Fix issue where the `Restart` action on the result pane exited the flow instead of going back to the institution select pane.
+- Fix issue where the `Restart` action on the result pane exited the flow instead of going back to the institution select pane. (addresses [#256](https://github.com/plaid/link/issues/256)).
 - Fix issue where LinkKit can crash during device based mfa (addresses [#252](https://github.com/plaid/link/issues/252)).
 - Improve animation of blur effect during application suspend / resume
+
+### Known issues
+The following issues currently exist in LinkKit and will be addressed with the next release planned for the middle of September 2018.
+- When customizing the copy of button on the consent pane the copy of the text below is not updated accordingly
 
 
 
@@ -24,7 +42,7 @@
 - Present institution website after "Unlock account" is tapped on the result pane for a locked item
 
 ### Known issues
-The following issues currently exist in LinkKit and will be addressed with the next release planned for the middle of August 2018.
+The following issues currently exist in LinkKit 1.1.10 and older and are fixed in LinkKit [1.1.11](https://github.com/plaid/link/releases/ios%2F1.1.11)
 - LinkKit can crash during device based mfa. For further details see [#252](https://github.com/plaid/link/issues/252).
 
 
