@@ -1,0 +1,7 @@
+"BOF","U2519271","POSITIONS","1","20180102","20180625","20180626;192229","100","100"
+"BOA","U2519271"
+"BOS","CONF","Trade Confirms"
+"HEADER","CONF","CurrencyPrimary","AssetClass","Symbol","Description","CUSIP","ISIN","BrokerageOrderID","ClearingFirmID","OrigTradePrice","OrigTradeDate","OrigTradeID","SettleDate","TradeDate","Exchange","Buy/Sell","Quantity","Price","Amount","Proceeds","BrokerExecutionCommission","BrokerClearingCommission","Code","LevelOfDetail","IsAPIOrder","AllocatedTo"
+"EOS","CONF","0","0"
+"EOA","U2519271"
+"EOF"
