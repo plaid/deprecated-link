@@ -86,6 +86,9 @@ public class MainActivity extends AppCompatActivity {
                         // Reload Link in the Webview
                         // You will likely want to transition the view at this point.
                         plaidLinkWebview.loadUrl(linkInitializationUrl.toString());
+                    } else if (action.equals("event")) {
+                        // The event action is fired as the user moves through the Link flow
+                        Log.d("Event name: ", linkData.get("event_name"));
                     } else {
                         Log.d("Link action detected: ", action);
                     }
