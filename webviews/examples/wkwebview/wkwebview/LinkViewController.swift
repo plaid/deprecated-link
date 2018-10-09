@@ -110,6 +110,10 @@ class LinkViewController: UIViewController, WKNavigationDelegate {
                 print("Plaid API request ID: \(queryParams["link_request_id"])");
                 break
 
+            case "event"?:
+                 // The event action is fired as the user moves through the Link flow
+                print("Event name: \(queryParams["event_name"])");
+                break
             default:
                 print("Link action detected: \(actionType)")
                 break
