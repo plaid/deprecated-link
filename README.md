@@ -1,6 +1,6 @@
 ## [Link iOS](ios)
 
-[![Examples of Plaid Link iOS](/ios/docs/images/link-ios-citi.jpg)](ios)
+[![Examples of Plaid Link iOS](/assets/link-ios-screenshot.png)](ios)
 
 ## [Link WebView](webviews)
 
