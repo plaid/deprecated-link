@@ -25,13 +25,13 @@
 		<key>clientName</key>
 		<string>$(PRODUCT_NAME)</string>
 		<key>env</key>
-		<string>Sandbox</string>
+		<string>$(LINK_ENV)</string>
 		<key>key</key>
-		<string>e8ff5d870a27323f10b1b0eb09dffe</string>
+		<string>$(LINK_KEY)</string>
 		<key>product</key>
 		<string>auth</string>
 		<key>selectAccount</key>
-		<true/>
+		<false/>
 	</dict>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
