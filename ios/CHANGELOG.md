@@ -1,9 +1,13 @@
 # CHANGELOG
 
+## 2018-12-17 — LinkKit 1.1.14
+### Changed
+- Fix access for optional `webhook` and `clientName` configuration properties ([#284](https://github.com/plaid/link/issues/284))
+- Improve compatability with iOS 8
+
+
+
 ## 2018-10-30 — LinkKit 1.1.13
-### Added
-
-
 ### Changed
 - Improve VoiceOver accessibility by focussing on primary element when views appear, setting more specific accessibility labels, hints, and traits for existing elements, and hiding irrelevant elements.
 - Improve handling of blur effect on application suspend / resume when other modal view controllers as for the Reset password flow are presented / dismissed.
