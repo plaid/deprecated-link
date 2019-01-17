@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## 2018-12-17 — LinkKit 1.1.14
+### Changed
+- Fix access for optional `webhook` and `clientName` configuration properties ([#284](https://github.com/plaid/link/issues/284))
+- Improve compatability with iOS 8
+
+
+
+## 2018-10-30 — LinkKit 1.1.13
+### Changed
+- Improve VoiceOver accessibility by focussing on primary element when views appear, setting more specific accessibility labels, hints, and traits for existing elements, and hiding irrelevant elements.
+- Improve handling of blur effect on application suspend / resume when other modal view controllers as for the Reset password flow are presented / dismissed.
+- Include all available accounts metadata in the `linkViewController:didSucceedWithPublicToken:metadata` delegate calls ([#239](https://github.com/plaid/link/issues/239))
+
+
+
 ## 2018-09-17 — LinkKit 1.1.12
 ### Added
 - Add support for iOS 12 security code auto-fill
@@ -9,8 +24,9 @@
 - The metadata in the `linkViewController:didHandleEvent:metadata` callback method now includes data of the selected institution in every event if present
 - Allow the `dismissViewControllerAnimated:completion:` to be called on the `PLKPlaidLinkViewController` object (addresses [#254](https://github.com/plaid/link/issues/254)). Yet we recommend calling `dismissViewControllerAnimated:completion:` on the object that presented the `PLKPlaidLinkViewController` or on the `presentingViewController` property of the `linkViewController` object passed to the `PLKPlaidLinkViewDelegate` methods.
 
-### Removed
-
+### Known issues
+The following issues currently exist in LinkKit and will be addressed with the next release planned for the middle of October 2018.
+- If the Reset password button on the credentials pane is tapped at the same time that the application goes into the background, the blur effect, which hides sensitive information from views, is not removed once the application becomes active again.
 
 
 

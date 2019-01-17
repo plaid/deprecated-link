@@ -113,14 +113,14 @@ PLK_EXTERN NSString* const kPLKCustomizationExitButtonKey;
 @property (readonly) PLKProduct product;
 
 /// Displayed once a user has successfully linked their account.
-@property (copy,nonatomic) NSString* clientName;
+@property (copy,nonatomic) NSString* _Nullable clientName;
 
 #pragma mark Optional configuration properties
 /**
  The webhook to receive notifications once a user's transactions have been processed and are ready for use.
  For details consult https://plaid.com/docs/api/#webhook.
  */
-@property (copy,nonatomic) NSURL* webhook;
+@property (copy,nonatomic) NSURL* _Nullable webhook;
 
 /// Whether support for longtailAuth institutions should be enabled.
 @property (readonly) BOOL longtailAuth;
