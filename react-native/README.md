@@ -37,7 +37,7 @@ To follow the steps in this example the following software is needed
 
 ## When using Xcode:
 1. Under "Libraries", make sure RNLinkkit.xcodeproject is included (you can find this in /link/react-native/linkkit/ios/ which is the Plaid Link repository you cloned from Plaid's GitHub at https://github.com/plaid/link)
-2. If it's not already there n your main project's  "General" settings tab, make sure LinkKit.framework (found in the Plaid Link repo you cloned at /link/ios/ ) is included in both "Embedded Binaries" and "Linked Frameworks and Libraries" by dragging and dropping it in.
+2. If it's not already there in your main project's  "General" settings tab, make sure LinkKit.framework (found in the Plaid Link repo you cloned at /link/ios/ ) is included in both "Embedded Binaries" and "Linked Frameworks and Libraries" by dragging and dropping it in.
 3. On your main project's "Build Phases" tab, make sure LinkKit.framework is included in "Link Binaries with Libraries" and "Embed Frameworks"
 
 ## About the linkdemo_reactnative Xcode project
