@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name              = 'Plaid'
   s.module_name       = 'LinkKit'
-  s.version           = '1.1.12'
+  s.version           = '1.1.14'
 
   s.summary           = 'The official Plaid Link SDK for iOS.'
 
@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
                         that Plaid supports — all while keeping credentials from
                         ever hitting your infrastructure.
                         DESC
-  s.screenshot        = 'https://raw.githubusercontent.com/plaid/link/master/ios/docs/images/link-ios-citi.jpg'
+  s.screenshot        = 'https://plaid.com/assets/img/docs/link-ios.jpg'
 
   s.homepage          = 'https://plaid.com/docs/api/#ios-bindings'
   s.license           = { :type => 'MIT', :file => 'ios/LICENSE' }
