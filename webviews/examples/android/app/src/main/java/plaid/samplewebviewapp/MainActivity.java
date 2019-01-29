@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                         Log.d("Public token: ", linkData.get("public_token"));
                         Log.d("Account ID: ", linkData.get("account_id"));
                         Log.d("Account name: ", linkData.get("account_name"));
-                        Log.d("Institution type: ", linkData.get("institution_type"));
+                        Log.d("Institution id: ", linkData.get("institution_id"));
                         Log.d("Institution name: ", linkData.get("institution_name"));
 
                         // Reload Link in the Webview
