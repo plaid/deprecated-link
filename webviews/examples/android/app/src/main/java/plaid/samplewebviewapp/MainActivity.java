@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         final Uri linkInitializationUrl = generateLinkInitializationUrl(linkInitializeOptions);
 
         // Modify Webview settings - all of these settings may not be applicable
-        // or necesscary for your integration.
+        // or necessary for your integration.
         final WebView plaidLinkWebview = (WebView) findViewById(R.id.webview);
         WebSettings webSettings = plaidLinkWebview.getSettings();
         webSettings.setJavaScriptEnabled(true);
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
         WebView.setWebContentsDebuggingEnabled(true);
 
-        // Initialize Link by loading the Link initiaization URL in the Webview
+        // Initialize Link by loading the Link initialization URL in the Webview
         plaidLinkWebview.loadUrl(linkInitializationUrl.toString());
 
         // Override the Webview's handler for redirects
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                         // the institution selected, information about any error encountered,
                         // and relevant API request IDs.
                         Log.d("User status in flow: ", linkData.get("status"));
-                        // The requet ID keys may or may not exist depending on when the user exited
+                        // The request ID keys may or may not exist depending on when the user exited
                         // the Link flow.
                         Log.d("Link request ID: ", linkData.get("link_request_id"));
                         Log.d("API request ID: ", linkData.get("plaid_api_request_id"));
