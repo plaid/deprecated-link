@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                         // the institution selected, information about any error encountered,
                         // and relevant API request IDs.
                         Log.d("User status in flow: ", linkData.get("status"));
-                        // The requet ID keys may or may not exist depending on when the user exited
+                        // The request ID keys may or may not exist depending on when the user exited
                         // the Link flow.
                         Log.d("Link request ID: ", linkData.get("link_request_id"));
                         Log.d("API request ID: ", linkData.get("plaid_api_request_id"));
