@@ -23,10 +23,10 @@
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
-		91C608AE20FD6027009392B8 /* libRNLinkkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 91C608AD20FD5CAE009392B8 /* libRNLinkkit.a */; };
-		91C608B020FD6069009392B8 /* LinkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91C608AF20FD6069009392B8 /* LinkKit.framework */; };
-		91C608B120FD6069009392B8 /* LinkKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 91C608AF20FD6069009392B8 /* LinkKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		91C608EB20FD631C009392B8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91C608E920FD631C009392B8 /* LaunchScreen.xib */; };
+		91EC780422046028000AFF6B /* LinkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91EC780322046028000AFF6B /* LinkKit.framework */; };
+		91EC780522046028000AFF6B /* LinkKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 91EC780322046028000AFF6B /* LinkKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		91EC780722046197000AFF6B /* libRNLinkkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 91EC780222045D64000AFF6B /* libRNLinkkit.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 /* End PBXBuildFile section */
 
@@ -290,9 +290,9 @@
 			remoteGlobalIDString = 58B5119B1A9E6C1200147676;
 			remoteInfo = RCTText;
 		};
-		91C608AC20FD5CAE009392B8 /* PBXContainerItemProxy */ = {
+		91EC780122045D64000AFF6B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 99163DFA917A425D84909316 /* RNLinkkit.xcodeproj */;
+			containerPortal = 91EC77FD22045D63000AFF6B /* RNLinkkit.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RNLinkkit;
@@ -307,13 +307,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		91C608B220FD6069009392B8 /* Embed Frameworks */ = {
+		91EC780622046028000AFF6B /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				91C608B120FD6069009392B8 /* LinkKit.framework in Embed Frameworks */,
+				91EC780522046028000AFF6B /* LinkKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,9 +344,9 @@
 		780D3E0B067E4C918086F25A /* libRNLinkkit.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNLinkkit.a; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
-		91C608AF20FD6069009392B8 /* LinkKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LinkKit.framework; sourceTree = "<group>"; };
 		91C608EA20FD631C009392B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = linkdemo_reactnative/Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		99163DFA917A425D84909316 /* RNLinkkit.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNLinkkit.xcodeproj; path = "../node_modules/react-native-plaid-link/ios/RNLinkkit.xcodeproj"; sourceTree = "<group>"; };
+		91EC77FD22045D63000AFF6B /* RNLinkkit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNLinkkit.xcodeproj; path = ../../linkkit/ios/RNLinkkit.xcodeproj; sourceTree = "<group>"; };
+		91EC780322046028000AFF6B /* LinkKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LinkKit.framework; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -363,7 +363,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				91C608AE20FD6027009392B8 /* libRNLinkkit.a in Frameworks */,
+				91EC780422046028000AFF6B /* LinkKit.framework in Frameworks */,
+				91EC780722046197000AFF6B /* libRNLinkkit.a in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
@@ -377,7 +378,6 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
-				91C608B020FD6069009392B8 /* LinkKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,7 +541,7 @@
 				832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */,
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
-				99163DFA917A425D84909316 /* RNLinkkit.xcodeproj */,
+				91EC77FD22045D63000AFF6B /* RNLinkkit.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -558,7 +558,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				91C608AF20FD6069009392B8 /* LinkKit.framework */,
+				91EC780322046028000AFF6B /* LinkKit.framework */,
 				13B07FAE1A68108700A75B9A /* linkdemo_reactnative */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* linkdemo_reactnativeTests */,
@@ -588,10 +588,10 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
-		91C608A920FD5CAE009392B8 /* Products */ = {
+		91EC77FE22045D63000AFF6B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				91C608AD20FD5CAE009392B8 /* libRNLinkkit.a */,
+				91EC780222045D64000AFF6B /* libRNLinkkit.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -634,7 +634,7 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				91C608B220FD6069009392B8 /* Embed Frameworks */,
+				91EC780622046028000AFF6B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -725,8 +725,8 @@
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
 				{
-					ProductGroup = 91C608A920FD5CAE009392B8 /* Products */;
-					ProjectRef = 99163DFA917A425D84909316 /* RNLinkkit.xcodeproj */;
+					ProductGroup = 91EC77FE22045D63000AFF6B /* Products */;
+					ProjectRef = 91EC77FD22045D63000AFF6B /* RNLinkkit.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -990,11 +990,11 @@
 			remoteRef = 832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		91C608AD20FD5CAE009392B8 /* libRNLinkkit.a */ = {
+		91EC780222045D64000AFF6B /* libRNLinkkit.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRNLinkkit.a;
-			remoteRef = 91C608AC20FD5CAE009392B8 /* PBXContainerItemProxy */;
+			remoteRef = 91EC780122045D64000AFF6B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */ = {
@@ -1038,7 +1038,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

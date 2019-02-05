@@ -45,6 +45,8 @@ export default class App extends Component<Props> {
       env: '<#ENVIRONMENT#>',
       product: ['<#PRODUCT#>'],
       clientName: '<#CLIENT NAME#>',
+      //userLegalName: '<#USER_LEGAL_NAME#>',
+      //userEmailAddress: '<#USER_EMAIL_ADDRESS#>',
       //publicToken: '<#PUBLIC_TOKEN#>,
       //selectAccount': true,
       onSuccess: this.onSuccess,

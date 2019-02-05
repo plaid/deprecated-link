@@ -1,9 +1,25 @@
 # CHANGELOG
 
+## 2019-02-05 — LinkKit 1.1.15
+### Added
+- Add support for the latest [Auth features](https://blog.plaid.com/new-auth). Read the [blog post](https://blog.plaid.com/new-auth), and reach out to integrations@plaid.com to enable your account and begin testing
+- Add haptic feedback for selection changes and validation errors
+- Add account number confirmation step when asking the end-user to enter their account and routing number
+- Add retry for account routing number entry
+
+### Changed
+- Improve account routing number messaging on validation errors
+- Improve VoiceOver support
+- Fix unknown account subtype in metadata in the `PLKPlaidLinkViewDelegate` calls ([#294](https://github.com/plaid/link/issues/294))
+- Fix multiple account selection indicator
+- Fix grammar and spelling mistakes in header comments
+
+
+
 ## 2018-12-17 — LinkKit 1.1.14
 ### Changed
 - Fix access for optional `webhook` and `clientName` configuration properties ([#284](https://github.com/plaid/link/issues/284))
-- Improve compatability with iOS 8
+- Improve compatibility with iOS 8
 
 
 

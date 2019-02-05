@@ -28,8 +28,10 @@ const PlaidLink = {
    * - `webhook` (string)           - webhook to receive transaction and error updates
    * - `selectAccount` (boolean)    - enables the select account flow when set to true
    *
-   * - `publicToken` (string) - the public_token to invoke the patch flow for (see …)
-   * - `institution` (string) - institution identifier for which to invoke the custom initializer flow
+   * - `userLegalName` (string)     - the legal name of the end-user, necessary for microdeposit support
+   * - `userEmailAddress` (string)  - The email address of the end-user, necessary for microdeposit support
+   * - `publicToken` (string)       - the public_token to invoke update mode (see https://plaid.com/docs/quickstart/#use-link-to-resolve-error)
+   * - `institution` (string)       - institution identifier for which to invoke the custom initializer flow
    *
    * The are deprecated configuration options for the legacy API
    * - `longtailAuth` (boolean) - enable longtail auth institutions
@@ -48,8 +50,10 @@ const PlaidLink = {
       +webhook?: ?string,
       +selectAccount?: ?boolean,
 
-      +publicToken?: ?string,   // specify for patch flow
-      +institutionId?: ?string, // specify for custom initializer
+      +userLegalName?: ?string,    // specify for microdeposit support
+      +userEmailAddress?: ?string, // specify for microdeposit support
+      +publicToken?: ?string,      // specify for patch flow
+      +institutionId?: ?string,    // specify for custom initializer
 
       +longtailAuth?: ?boolean, // enable only if you are absolutely sure you are entitled for and need longtailAuth
       +apiVersion?: ?string,    // specify only if you are absolutely sure you need to use the legacy API

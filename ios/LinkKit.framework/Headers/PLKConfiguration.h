@@ -44,7 +44,7 @@ static PLKAPIVersion kPLKAPIVersionDefault = PLKAPIv2;
 /// Returns PLKAPIVersion corresponding to the data in the given string or -1 if the string contained invalid api version data.
 PLK_EXTERN PLKAPIVersion PLKAPIVersionFromString(NSString* apiVersion);
 
-/// Returns PLKPorduct corresponding to the data in the given string or -1 contained invalid product data.
+/// Returns PLKProduct corresponding to the data in the given string or -1 contained invalid product data.
 PLK_EXTERN PLKProduct PLKProductFromArray(NSArray<NSString*>* array);
 
 /// Returns PLKEnvironment corresponding to the data in the given string or -1 contained invalid environment data.
@@ -121,6 +121,12 @@ PLK_EXTERN NSString* const kPLKCustomizationExitButtonKey;
  For details consult https://plaid.com/docs/api/#webhook.
  */
 @property (copy,nonatomic) NSURL* _Nullable webhook;
+
+/// The legal name of the end-user, necessary for microdeposit support.
+@property (copy,nonatomic) NSString* _Nullable userLegalName;
+
+/// The email address of the end-user, necessary for microdeposit support.
+@property (copy,nonatomic) NSString* _Nullable userEmailAddress;
 
 /// Whether support for longtailAuth institutions should be enabled.
 @property (readonly) BOOL longtailAuth;

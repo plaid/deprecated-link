@@ -49,19 +49,19 @@ typedef NS_OPTIONS(NSInteger, PLKProduct) {
 /// User completed the Link flow.
 PLK_EXTERN NSString* const kPLKStatusConnected;
 
-/// User prompted to answer security question(s).
+/// User was prompted to answer security question(s).
 PLK_EXTERN NSString* const kPLKStatusRequiresQuestions;
 
-/// User prompted to answer multiple choice question(s).
+/// User was prompted to answer multiple choice question(s).
 PLK_EXTERN NSString* const kPLKStatusRequiresSelections;
 
-/// User prompted to provide a one-time passcode.
+/// User was prompted to provide a one-time passcode.
 PLK_EXTERN NSString* const kPLKStatusRequiresCode;
 
-/// User prompted to select a device on which to receive a one-time passcode.
+/// User was prompted to select a device on which to receive a one-time passcode.
 PLK_EXTERN NSString* const kPLKStatusChooseDevice;
 
-/// User prompted to provide credentials for the selected financial institution or
+/// User was prompted to provide credentials for the selected financial institution or
 /// has not yet selected a financial institution.
 PLK_EXTERN NSString* const kPLKStatusRequiresCredentials;
 
@@ -71,6 +71,12 @@ PLK_EXTERN NSString* const kPLKStatusRequiresRecaptcha;
 /// User exited the Link flow after unsuccessfully (no results returned) searching for
 /// a financial institution.
 PLK_EXTERN NSString* const kPLKStatusInstitutionNotFound;
+
+/// User was prompted to verify micro-deposits.
+PLK_EXTERN NSString* const kPLKStatusRequiresMicrodepositsVerification;
+
+/// User was prompted to verify account and routing number.
+PLK_EXTERN NSString* const kPLKStatusRequiresNumbersVerification;
 
 /// Use this key to obtain the identifier of a Link internal error
 /// from the NSError's userInfo passed to the PLKPlaidLinkViewDelegate

@@ -35,6 +35,21 @@ PLK_EXTERN NSString* const kPLKMetadataAccountsKey;
 /// The corresponding value contains the identifier for the account.
 PLK_EXTERN NSString* const kPLKMetadataAccountIdKey;
 
+/// The corresponding value contains the verification status of the account when using micro-deposit based verification.
+PLK_EXTERN NSString* const kPLKMetadataAccountVerificationStatusKey;
+
+/// The value indicates that the account is pending manual verification via micro-deposits.
+PLK_EXTERN NSString* const kPLKMetadataAccountVerificationStatusPendingManualVerification;
+
+/// The value indicates that the account is pending automatic verification via micro-deposits.
+PLK_EXTERN NSString* const kPLKMetadataAccountVerificationStatusPendingAutomaticVerification;
+
+/// The value indicates that the account has been verified using manual verification via micro-deposits.
+PLK_EXTERN NSString* const kPLKMetadataAccountVerificationStatusManuallyVerified;
+
+/// The value indicates that the account has been verified using automatic verification via micro-deposits.
+PLK_EXTERN NSString* const kPLKMetadataAccountVerificationStatusAutomaticallyVerified;
+
 /// The corresponding value contains a NSDictionary with the name and identifier of the institution.
 PLK_EXTERN NSString* const kPLKMetadataInstitutionKey;
 

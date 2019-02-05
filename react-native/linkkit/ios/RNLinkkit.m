@@ -18,6 +18,8 @@ static NSString* const kRLinkKitConfigClientNameKey = @"clientName";
 static NSString* const kRLinkKitConfigWebhookKey = @"webhook";
 static NSString* const kRLinkKitConfigPublicTokenKey = @"publicToken";
 static NSString* const kRLinkKitConfigSelectAccountKey = @"selectAccount";
+static NSString* const kRLinkKitConfigUserLegalNameKey = @"userLegalName";
+static NSString* const kRLinkKitConfigUserEmailAddressKey = @"userEmailAddress";
 static NSString* const kRLinkKitConfigInstitutionKey = @"institution";
 static NSString* const kRLinkKitConfigLongtailAuthKey = @"longtailAuth";
 static NSString* const kRLinkKitConfigApiVersionKey = @"apiVersion";
@@ -68,6 +70,8 @@ RCT_EXPORT_METHOD(_create:(NSDictionary*)configuration) {
     NSString *clientName = [RCTConvert NSString:configuration[kRLinkKitConfigClientNameKey]];
     NSString *webhook = [RCTConvert NSString:configuration[kRLinkKitConfigWebhookKey]];
     NSString *publicToken = [RCTConvert NSString:configuration[kRLinkKitConfigPublicTokenKey]];
+    NSString *userLegalName = [RCTConvert NSString:configuration[kRLinkKitConfigUserLegalNameKey]];
+    NSString *userEmailAddress = [RCTConvert NSString:configuration[kRLinkKitConfigUserEmailAddressKey]];
     BOOL selectAccount = [RCTConvert BOOL:configuration[kRLinkKitConfigSelectAccountKey]];
 
     NSString *institution = [RCTConvert NSString:configuration[kRLinkKitConfigInstitutionKey]];
@@ -90,6 +94,12 @@ RCT_EXPORT_METHOD(_create:(NSDictionary*)configuration) {
     }
     if ([webhook length] > 0) {
         linkConfiguration.webhook = [NSURL URLWithString:webhook];
+    }
+    if ([userLegalName length] > 0) {
+        linkConfiguration.userLegalName = userLegalName;
+    }
+    if ([userEmailAddress length] > 0) {
+        linkConfiguration.userEmailAddress = userEmailAddress;
     }
 
     // Link Delegate

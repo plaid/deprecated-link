@@ -1,22 +1,24 @@
 # React Native for Plaid Link (iOS)
 
-⚛︎📱 This repository contains sample code that demonstrate integration and use of Plaid Link using React Native.
-Currently only iOS supported.
+⚛︎📱 This repository contains sample code that demonstrates integration and use of Plaid Link using React Native.
+Currently only iOS is supported.
+
+:warning: Note that this is the React Native bridge for Link officially supported by Plaid, but is very different
+from the module with the same name available on [npmjs](https://www.npmjs.com/package/react-native-plaid-link);
+we strongly recommend favoring this React Native bridge.
 
 ## Prerequisites
 
-To follow the steps in this example the following software is needed
+To complete the steps in this example the following software is needed:
 
 * [Xcode](https://developer.apple.com/xcode/)
-* [yarn](https://yarnpkg.com/) (to install yarn on macOS we suggest using nvm: `brew install nvm; nvm install 8; nvm use 8; npm -g install yarn`)
+* [yarn](https://yarnpkg.com/) (we recomment using nvm to install yarn on macOS: `brew install nvm; nvm install 8; nvm use 8; npm -g install yarn`)
 
 ## Using React Native for Plaid Link
 
 * Clone the [Plaid Link](https://github.com/plaid/link) repository
-* Register the `react-native-plaid-link` component with yarn:
-	`(cd link/react-native/linkkit; yarn link)`
-* Link the newly registered `react-native-plaid-link` component with your react-native project and install the needed dependencies:
-	`(cd $PATH_TO_YOUR_REACT_NATIVE_PROJECT;yarn link react-native-plaid-link; yarn install)`
+* Add this `react-native-plaid-link` component to your react-native project and install the necessary dependencies:
+	`(cd $PATH_TO_YOUR_REACT_NATIVE_PROJECT;yarn add file:$PATH_TO_YOUR_CLONE_OF_THIS_REPO/react-native-plaid-link; yarn install)`
 * In your `App.js` import Plaid Link using:
 	`import PlaidLink from 'react-native-plaid-link';`
 * Create a `linkHandler` object (we recommend doing so in `componentDidMount()`) and replace any of the placeholder `<#VARIABLE#>`s in the example below according to your setup (for details see the [Plaid Link documentation](https://plaid.com/docs/quickstart/#client-side-link-configuration)):
