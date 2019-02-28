@@ -31,7 +31,7 @@ typedef NS_OPTIONS(NSInteger, PLKProduct) {
     /// Account and transaction data to better serve users.
     PLKProductTransactions = 1 << 2,
     /// Legacy API equivalent of PLKProductTransactions.
-    PLKProductConnect = 1 << 2,
+    PLKProductConnect      = 1 << 2,
 
     /// Verify user identities with bank account data to reduce fraud.
     PLKProductIdentity     = 1 << 3,

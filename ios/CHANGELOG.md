@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 2019-02-27 — LinkKit 1.1.16
+### Added
+
+
+### Changed
+- Fix issue with account verification via manual microdeposits
+- Fix issue with multiple institution logos displayed when blurring views with sensitive information once the app switcher is activated
+
+### Removed
+
+
+
+
 ## 2019-02-05 — LinkKit 1.1.15
 ### Added
 - Add support for the latest [Auth features](https://blog.plaid.com/new-auth). Read the [blog post](https://blog.plaid.com/new-auth), and reach out to integrations@plaid.com to enable your account and begin testing
@@ -13,6 +26,10 @@
 - Fix unknown account subtype in metadata in the `PLKPlaidLinkViewDelegate` calls ([#294](https://github.com/plaid/link/issues/294))
 - Fix multiple account selection indicator
 - Fix grammar and spelling mistakes in header comments
+
+### Known issues
+The following issues currently exist in LinkKit and will be addressed with the next release planned for the end of February 2019
+- When verifying an account via manual microdeposits Plaid Link for iOS stalls after confirming the account number
 
 
 

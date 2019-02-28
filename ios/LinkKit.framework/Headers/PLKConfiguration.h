@@ -98,7 +98,7 @@ PLK_EXTERN NSString* const kPLKCustomizationExitButtonKey;
  */
 @interface PLKConfiguration : NSObject
 
-#pragma mark Required configuration properties
+// MARK: Required configuration properties
 /// The public_key associated with your account. Available from https://dashboard.plaid.com/account/keys.
 @property (readonly) NSString* key;
 
@@ -115,7 +115,7 @@ PLK_EXTERN NSString* const kPLKCustomizationExitButtonKey;
 /// Displayed once a user has successfully linked their account.
 @property (copy,nonatomic) NSString* _Nullable clientName;
 
-#pragma mark Optional configuration properties
+// MARK: Optional configuration properties
 /**
  The webhook to receive notifications once a user's transactions have been processed and are ready for use.
  For details consult https://plaid.com/docs/api/#webhook.
