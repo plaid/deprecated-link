@@ -107,7 +107,6 @@ PLK_EXTERN NSString* const kPLKCustomizationExitButtonKey;
 
 /**
  The Plaid requested products.
-
  @see PLKProduct
  */
 @property (readonly) PLKProduct product;
@@ -128,10 +127,13 @@ PLK_EXTERN NSString* const kPLKCustomizationExitButtonKey;
 /// The email address of the end-user, necessary for microdeposit support.
 @property (copy,nonatomic) NSString* _Nullable userEmailAddress;
 
+/// A list of ISO 3166-1 alpha-2 country codes, used to select institutions available in the given countries.
+@property (copy,nonatomic) NSArray<NSString*>* _Nullable countryCodes;
+
 /// Whether support for longtailAuth institutions should be enabled.
 @property (readonly) BOOL longtailAuth;
 
-/// Whether the user should select a specific account to link
+/// Whether the user should select a specific account to link.
 @property (readonly) BOOL selectAccount;
 
 /// The Plaid API version to use.

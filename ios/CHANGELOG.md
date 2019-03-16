@@ -1,15 +1,20 @@
 # CHANGELOG
 
-## 2019-02-27 — LinkKit 1.1.16
+## 2019-03-15 — LinkKit 1.1.17
 ### Added
+- Add new optional configuration property `countryCodes` to limit selectable institutions and institution search results to institutions available in the given countries
+
+### Changed
+- Fix issue with automated microdeposits, which were only enabled when the configured product was `auth`
+- Fix issue where institutions were displayed on the institutionSelect- and institutionSearchPane that did not support the configured products
+- Allow opt-in of account linking via microdeposits by configuring `userLegalName` and `userEmailAddress`; before public keys enabled for the latest auth features were required to provide `userLegalName` and `userEmailAddress`
 
 
+
+## 2019-02-27 — LinkKit 1.1.16
 ### Changed
 - Fix issue with account verification via manual microdeposits
 - Fix issue with multiple institution logos displayed when blurring views with sensitive information once the app switcher is activated
-
-### Removed
-
 
 
 

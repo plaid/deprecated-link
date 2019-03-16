@@ -42,7 +42,10 @@ typedef NS_OPTIONS(NSInteger, PLKProduct) {
     PLKProductAssets       = 1 << 4,
 
     /// For internal use only.
-    PLKProductLongtailAuth = 1 << 5
+    PLKProductLongtailAuth = 1 << 5,
+
+    /// Investments holdings data to better serve users.
+    PLKProductHoldings = 1 << 6
 };
 
 
