@@ -116,7 +116,7 @@ RCT_EXPORT_METHOD(_create:(NSDictionary*)configuration) {
     };
     self.linkViewDelegate.onExit = ^(NSError* error, NSDictionary<NSString*,id>*metadata) {
         [controller dismissViewControllerAnimated:YES completion:nil];
-        [weakSelf sendEventWithName:kRLinkKitOnExitEvent body:@{kRLinkKitEventErrorKey: RCTNullIfNil(error), kRLinkKitEventMetadataKey: metadata}];
+        [weakSelf sendEventWithName:kRLinkKitOnExitEvent body:@{kRLinkKitEventErrorKey: RCTNullIfNil(error.localizedFailureReason), kRLinkKitEventMetadataKey: metadata}];
     };
     self.linkViewDelegate.onEvent = ^(NSString* event, NSDictionary<NSString*,id>*metadata) {
         [weakSelf sendEventWithName:kRLinkKitOnEventEvent body:@{kRLinkKitEventNameKey: event, kRLinkKitEventMetadataKey: metadata}];
