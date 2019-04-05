@@ -2,7 +2,7 @@
 //  ViewController.m
 //  LinkDemo-ObjC
 //
-//  Copyright © 2017 Plaid Inc. All rights reserved.
+//  Copyright © 2019 Plaid Inc. All rights reserved.
 //
 
 // <!-- SMARTDOWN_IMPORT_LINKKIT -->

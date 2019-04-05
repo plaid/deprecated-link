@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1000"
+   LastUpgradeVersion = "1020"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "91035E4E1E3CA7C000A97B26"
-               BuildableName = "LinkDemo-Swift2.app"
-               BlueprintName = "LinkDemo-Swift2"
-               ReferencedContainer = "container:LinkDemo-Swift2.xcodeproj">
+               BuildableName = "LinkDemo-Swift.app"
+               BlueprintName = "LinkDemo-Swift"
+               ReferencedContainer = "container:LinkDemo-Swift.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,6 +29,15 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "91035E4E1E3CA7C000A97B26"
+            BuildableName = "LinkDemo-Swift.app"
+            BlueprintName = "LinkDemo-Swift"
+            ReferencedContainer = "container:LinkDemo-Swift.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -47,23 +56,11 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "91035E4E1E3CA7C000A97B26"
-            BuildableName = "LinkDemo-Swift2.app"
-            BlueprintName = "LinkDemo-Swift2"
-            ReferencedContainer = "container:LinkDemo-Swift2.xcodeproj">
+            BuildableName = "LinkDemo-Swift.app"
+            BlueprintName = "LinkDemo-Swift"
+            ReferencedContainer = "container:LinkDemo-Swift.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "PLKPLAIDLINK_DIAGNOSTICS"
-            value = "1"
-            isEnabled = "NO">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "OS_ACTIVITY_MODE"
-            value = "disable"
-            isEnabled = "NO">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -73,15 +70,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "91035E4E1E3CA7C000A97B26"
-            BuildableName = "LinkDemo-Swift2.app"
-            BlueprintName = "LinkDemo-Swift2"
-            ReferencedContainer = "container:LinkDemo-Swift2.xcodeproj">
+            BuildableName = "LinkDemo-Swift.app"
+            BlueprintName = "LinkDemo-Swift"
+            ReferencedContainer = "container:LinkDemo-Swift.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

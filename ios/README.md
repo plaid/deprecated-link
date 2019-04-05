@@ -2,7 +2,7 @@
 
 📚 Detailed instructions on how to integrate with Plaid Link for iOS can be found in our main documentation at [plaid.com/docs/link/ios][link-ios-docs].
 
-📱 This repository contains sample applications in [Objective-C](LinkDemo-ObjC), [Swift4](LinkDemo-Swift4), [Swift3](LinkDemo-Swift3), and [Swift 2](LinkDemo-Swift2) (requires Xcode 7) that demonstrate integration and use of Plaid Link for iOS.
+📱 This repository contains sample applications in [Objective-C](LinkDemo-ObjC) and [Swift](LinkDemo-Swift) (requires Xcode 10.2) that demonstrate integration and use of Plaid Link for iOS.
 
 ## About the LinkDemo Xcode projects
 
@@ -93,6 +93,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
 ### SimulatorStatusMagiciOS
 
 The MIT License (MIT)
@@ -116,4 +117,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-

@@ -31,7 +31,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		91035E4F1E3CA7C000A97B26 /* LinkDemo-Swift2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LinkDemo-Swift2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		91035E4F1E3CA7C000A97B26 /* LinkDemo-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LinkDemo-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		91035E521E3CA7C000A97B26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91035E541E3CA7C000A97B26 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		91035E571E3CA7C000A97B26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -57,7 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				91035E641E3CA93500A97B26 /* LinkKit.framework */,
-				91035E511E3CA7C000A97B26 /* LinkDemo-Swift2 */,
+				91035E511E3CA7C000A97B26 /* LinkDemo-Swift */,
 				91035E501E3CA7C000A97B26 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -65,12 +65,12 @@
 		91035E501E3CA7C000A97B26 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				91035E4F1E3CA7C000A97B26 /* LinkDemo-Swift2.app */,
+				91035E4F1E3CA7C000A97B26 /* LinkDemo-Swift.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		91035E511E3CA7C000A97B26 /* LinkDemo-Swift2 */ = {
+		91035E511E3CA7C000A97B26 /* LinkDemo-Swift */ = {
 			isa = PBXGroup;
 			children = (
 				91035E521E3CA7C000A97B26 /* AppDelegate.swift */,
@@ -80,29 +80,29 @@
 				91035E591E3CA7C000A97B26 /* Assets.xcassets */,
 				91035E5E1E3CA7C000A97B26 /* Info.plist */,
 			);
-			path = "LinkDemo-Swift2";
+			path = "LinkDemo-Swift";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		91035E4E1E3CA7C000A97B26 /* LinkDemo-Swift2 */ = {
+		91035E4E1E3CA7C000A97B26 /* LinkDemo-Swift */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 91035E611E3CA7C000A97B26 /* Build configuration list for PBXNativeTarget "LinkDemo-Swift2" */;
+			buildConfigurationList = 91035E611E3CA7C000A97B26 /* Build configuration list for PBXNativeTarget "LinkDemo-Swift" */;
 			buildPhases = (
 				91035E4B1E3CA7C000A97B26 /* Sources */,
 				91035E4C1E3CA7C000A97B26 /* Frameworks */,
 				91035E4D1E3CA7C000A97B26 /* Resources */,
 				91035E671E3CA93500A97B26 /* Embed Frameworks */,
-				910BFE4D1E9398EB0089E87E /* Prepare for Distribution */,
+				910BFE4C1E9398D10089E87E /* Prepare for Distribution */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "LinkDemo-Swift2";
-			productName = "LinkDemo-Swift2";
-			productReference = 91035E4F1E3CA7C000A97B26 /* LinkDemo-Swift2.app */;
+			name = "LinkDemo-Swift";
+			productName = "LinkDemo-Swift";
+			productReference = 91035E4F1E3CA7C000A97B26 /* LinkDemo-Swift.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -112,18 +112,19 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 1000;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Plaid Inc.";
 				TargetAttributes = {
 					91035E4E1E3CA7C000A97B26 = {
 						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = 91035E4A1E3CA7C000A97B26 /* Build configuration list for PBXProject "LinkDemo-Swift2" */;
+			buildConfigurationList = 91035E4A1E3CA7C000A97B26 /* Build configuration list for PBXProject "LinkDemo-Swift" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -134,7 +135,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				91035E4E1E3CA7C000A97B26 /* LinkDemo-Swift2 */,
+				91035E4E1E3CA7C000A97B26 /* LinkDemo-Swift */,
 			);
 		};
 /* End PBXProject section */
@@ -153,7 +154,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		910BFE4D1E9398EB0089E87E /* Prepare for Distribution */ = {
+		910BFE4C1E9398D10089E87E /* Prepare for Distribution */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -318,14 +319,14 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../";
-				INFOPLIST_FILE = "LinkDemo-Swift2/Info.plist";
+				INFOPLIST_FILE = "LinkDemo-Swift/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LINK_ENV = Sandbox;
 				LINK_KEY = YOUR_PLAID_PUBLIC_KEY;
-				PRODUCT_BUNDLE_IDENTIFIER = com.plaid.linkdemo.swift2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.plaid.linkdemo.swift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -336,21 +337,21 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../";
-				INFOPLIST_FILE = "LinkDemo-Swift2/Info.plist";
+				INFOPLIST_FILE = "LinkDemo-Swift/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LINK_ENV = Production;
 				LINK_KEY = YOUR_PLAID_PUBLIC_KEY;
-				PRODUCT_BUNDLE_IDENTIFIER = com.plaid.linkdemo.swift2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.plaid.linkdemo.swift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		91035E4A1E3CA7C000A97B26 /* Build configuration list for PBXProject "LinkDemo-Swift2" */ = {
+		91035E4A1E3CA7C000A97B26 /* Build configuration list for PBXProject "LinkDemo-Swift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				91035E5F1E3CA7C000A97B26 /* Debug */,
@@ -359,7 +360,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		91035E611E3CA7C000A97B26 /* Build configuration list for PBXNativeTarget "LinkDemo-Swift2" */ = {
+		91035E611E3CA7C000A97B26 /* Build configuration list for PBXNativeTarget "LinkDemo-Swift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				91035E621E3CA7C000A97B26 /* Debug */,

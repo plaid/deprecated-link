@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  LinkDemo-Swift
 //
-//  Copyright © 2017 Plaid Inc. All rights reserved.
+//  Copyright © 2019 Plaid Inc. All rights reserved.
 //
 
 import UIKit
@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         let linkKitVersion = linkKitBundle.object(forInfoDictionaryKey: "CFBundleShortVersionString")!
         let linkKitBuild   = linkKitBundle.object(forInfoDictionaryKey: kCFBundleVersionKey as String)!
         let linkKitName    = linkKitBundle.object(forInfoDictionaryKey: kCFBundleNameKey as String)!
-        label.text         = "Swift 4 — \(linkKitName) \(linkKitVersion)+\(linkKitBuild)"
+        label.text         = "Swift 5 — \(linkKitName) \(linkKitVersion)+\(linkKitBuild)"
 
         let shadowColor    = #colorLiteral(red: 0.01176470588, green: 0.1921568627, blue: 0.337254902, alpha: 0.1)
         buttonContainerView.layer.shadowColor   = shadowColor.cgColor
@@ -79,7 +79,7 @@ class ViewController: UIViewController {
         let linkViewDelegate = self
         let linkViewController = PLKPlaidLinkViewController(delegate: linkViewDelegate)
         if (UI_USER_INTERFACE_IDIOM() == .pad) {
-            linkViewController.modalPresentationStyle = .formSheet;
+            linkViewController.modalPresentationStyle = .formSheet
         }
         present(linkViewController, animated: true)
         // <!-- SMARTDOWN_PRESENT_SHARED -->
@@ -94,7 +94,7 @@ class ViewController: UIViewController {
         let linkViewDelegate = self
         let linkViewController = PLKPlaidLinkViewController(configuration: linkConfiguration, delegate: linkViewDelegate)
         if (UI_USER_INTERFACE_IDIOM() == .pad) {
-            linkViewController.modalPresentationStyle = .formSheet;
+            linkViewController.modalPresentationStyle = .formSheet
         }
         present(linkViewController, animated: true)
         // <!-- SMARTDOWN_PRESENT_CUSTOM -->
@@ -106,7 +106,7 @@ class ViewController: UIViewController {
         let linkViewDelegate = self
         let linkViewController = PLKPlaidLinkViewController(publicToken: "<#GENERATED_PUBLIC_TOKEN#>", delegate: linkViewDelegate)
         if (UI_USER_INTERFACE_IDIOM() == .pad) {
-            linkViewController.modalPresentationStyle = .formSheet;
+            linkViewController.modalPresentationStyle = .formSheet
         }
         present(linkViewController, animated: true)
         // <!-- SMARTDOWN_UPDATE_MODE -->
