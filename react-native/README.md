@@ -18,7 +18,13 @@ To complete the steps in this example the following software is needed:
 
 * Clone the [Plaid Link](https://github.com/plaid/link) repository
 * Add this `react-native-plaid-link` component to your react-native project and install the necessary dependencies:
-	`(cd $PATH_TO_YOUR_REACT_NATIVE_PROJECT;yarn add file:$PATH_TO_YOUR_CLONE_OF_THIS_REPO/react-native-plaid-link; yarn install)`
+```sh
+  % cd $PATH_TO_YOUR_REACT_NATIVE_PROJECT
+  % yarn add file:$PATH_TO_YOUR_CLONE_OF_THIS_REPO/react-native/linkkit
+  % yarn install
+  % react-native link react-native-plaid-link
+```
+* Integrate the native Plaid Link for iOS SDK (LinkKit.framework) into the iOS part of your react-native project, see the [documentation](https://plaid.com/docs/link/ios/) for details.
 * In your `App.js` import Plaid Link using:
 	`import PlaidLink from 'react-native-plaid-link';`
 * Create a `linkHandler` object (we recommend doing so in `componentDidMount()`) and replace any of the placeholder `<#VARIABLE#>`s in the example below according to your setup (for details see the [Plaid Link documentation](https://plaid.com/docs/quickstart/#client-side-link-configuration)):
@@ -37,14 +43,12 @@ To complete the steps in this example the following software is needed:
 * Once the user has completed, exited, or errored out of the flow the appropriate callback method is invoked
 * A detailed working example can be found in [`react-native/demo/lib/App.js`](/tree/master/react-native/demo/lib/App.js)
 
-## When using Xcode:
-1. Under "Libraries", make sure RNLinkkit.xcodeproject is included (you can find this in /link/react-native/linkkit/ios/ which is the Plaid Link repository you cloned from Plaid's GitHub at https://github.com/plaid/link)
-2. If it's not already there in your main project's  "General" settings tab, make sure LinkKit.framework (found in the Plaid Link repo you cloned at /link/ios/ ) is included in both "Embedded Binaries" and "Linked Frameworks and Libraries" by dragging and dropping it in.
-3. On your main project's "Build Phases" tab, make sure LinkKit.framework is included in "Link Binaries with Libraries" and "Embed Frameworks"
-
 ## About the linkdemo_reactnative Xcode project
 
 ℹ️  In order build and run the `linkdemo_reactnative` iOS demo application the `react-native-plaid-link` component must be registered and linked to the Xcode project as mentioned above, e.g.:
-	`(cd link/react-native/demo; yarn link react-native-plaid-link; yarn install)`
-	
-	
+```sh
+  % cd link/react-native/demo
+  % yarn add file:../linkkit
+  % yarn install
+  % react-native link react-native-plaid-link
+```
