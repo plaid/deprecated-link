@@ -21,8 +21,8 @@ typedef NS_ENUM(NSInteger, PLKEnvironment) {
     /// For APIv2 testing use.
     PLKEnvironmentSandbox,
 
-    /// For APIv1 testing use.
-    PLKEnvironmentTartan,
+    /// For legacy API testing use.
+    PLKEnvironmentTartan DEPRECATED_MSG_ATTRIBUTE("the legacy API is no longer supported. Use APIv2 and PLKEnvironmentSandbox instead"),
    
     /// For production use only (APIv1 and APIv2). @remark Requests are billed.
     PLKEnvironmentProduction,
@@ -32,10 +32,12 @@ typedef NS_ENUM(NSInteger, PLKEnvironment) {
  The Plaid API version
  */
 typedef NS_ENUM(NSInteger, PLKAPIVersion) {
-    PLKAPIv1 = 0,
-    PLKAPIv2,
+    /// APIv2 is the current version of the Plaid API.
+    PLKAPIv2 = 1,
     /// The latest version of the Plaid API; currently PLKAPIv2. *Note:* This may change with future releases.
     PLKAPILatest,
+    /// APIv1 is deprecated and LinkKit will return an error when configured with APIv1.
+    PLKAPIv1 DEPRECATED_MSG_ATTRIBUTE("transition to APIv2 instead") = 0,
 };
 /// The default API version to use. *Note:* This may change with future releases
 static PLKAPIVersion kPLKAPIVersionDefault = PLKAPIv2;
@@ -51,11 +53,11 @@ PLK_EXTERN PLKProduct PLKProductFromArray(NSArray<NSString*>* array);
 PLK_EXTERN PLKEnvironment PLKEnvironmentFromString(NSString* environment);
 
 
-/// A Plaid public_key that can be used for testing when using PLKEnvironmentTartan.
-PLK_EXTERN NSString* const kPLKTestKey;
+/// A Plaid public_key that can be used for testing when using the legacy API and PLKEnvironmentTartan.
+PLK_EXTERN NSString* const kPLKTestKey DEPRECATED_MSG_ATTRIBUTE("the legacy API is no longer supported. Use APIv2 and PLKEnvironmentSandbox with your own public key instead");
 
-/// A Plaid public_key that can be used for testing longtail when using PLKEnvironmentTartan.
-PLK_EXTERN NSString* const kPLKTestKeyLongtailAuth;
+/// A Plaid public_key that can be used for testing longtail when using the legacy API and PLKEnvironmentTartan.
+PLK_EXTERN NSString* const kPLKTestKeyLongtailAuth DEPRECATED_MSG_ATTRIBUTE("the legacy API is no longer supported. Use APIv2 and PLKEnvironmentSandbox with your own public key instead");
 
 // Keys customizing panes, see customizeWithDictionary:
 /// This pane is shown at the end of an successful update flow.

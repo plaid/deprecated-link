@@ -60,7 +60,7 @@ PLK_EXTERN NSString* const kPLKMetadataInstitutionIdKey;
 PLK_EXTERN NSString* const kPLKMetadataInstitutionNameKey;
 
 /// The corresponding value contains the institution type when using the legacy API.
-PLK_EXTERN NSString* const kPLKAPIv1MetadataInstitutionTypeKey;
+PLK_EXTERN NSString* const kPLKAPIv1MetadataInstitutionTypeKey DEPRECATED_MSG_ATTRIBUTE("the legacy API is no longer supported. Use APIv2 and kPLKMetadataStatusKey instead");
 
 /// The corresponding value contains the institution type.
 PLK_EXTERN NSString* const kPLKMetadataInstitution_TypeKey DEPRECATED_MSG_ATTRIBUTE("use kPLKAPIv1MetadataInstitutionTypeKey instead.");
@@ -74,11 +74,11 @@ PLK_EXTERN NSString* const kPLKMetadataStatusKey;
 /// The corresponding value contains a unique APIv2 request ID, which can be shared with Plaid Support to expedite investigation.
 PLK_EXTERN NSString* const kPLKMetadataRequestIdKey;
 
-/// The corresponding value contains a unique Link APIv1 request ID, which can be shared with Plaid Support to expedite investigation.
-PLK_EXTERN NSString* const kPLKMetadataLinkRequestIdKey;
+/// The corresponding value contains a unique Link legacy API request ID, which can be shared with Plaid Support to expedite investigation.
+PLK_EXTERN NSString* const kPLKMetadataLinkRequestIdKey  DEPRECATED_MSG_ATTRIBUTE("the legacy API is no longer supported. Use APIv2 and kPLKMetadataRequestIdKey instead");
 
-/// The corresponding value contains a unique Plaid APIv1 request ID, which can be shared with Plaid Support to expedite investigation.
-PLK_EXTERN NSString* const kPLKMetadataPlaidApiRequestIdKey;
+/// The corresponding value contains a unique Plaid legacy API request ID, which can be shared with Plaid Support to expedite investigation.
+PLK_EXTERN NSString* const kPLKMetadataPlaidApiRequestIdKey  DEPRECATED_MSG_ATTRIBUTE("the legacy API is no longer supported. Use APIv2 and kPLKMetadataRequestIdKey instead");
 
 /// The corresponding value represents a unique and omnipresent identifier for all actions and events throughout a user's session in Link.
 PLK_EXTERN NSString* const kPLKMetadataLinkSessionIdKey;
@@ -232,7 +232,6 @@ PLK_EMPTY_INIT_UNAVAILABLE;
 - (instancetype)initWithPublicToken:(NSString*)publicToken
                       configuration:(PLKConfiguration*)configuration
                            delegate:(id<PLKPlaidLinkViewDelegate>)delegate;
-
 
 @end
 

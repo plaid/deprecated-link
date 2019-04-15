@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 2019-04-15 — LinkKit 1.1.18
+### Changed
+- Fix issue where the end-user was not taken back to enter their credentials when providing an invalid username during the patch flow.
+- Disable pinch to zoom when viewing the privacy policy.
+
+### Removed
+- Support for APIv1 is now officially deprecated and unavailable. When Linkkit is configured with APIv1 it returns an error.
+
+
+
 ## 2019-03-15 — LinkKit 1.1.17
 ### Added
 - Add new optional configuration property `countryCodes` to limit selectable institutions and institution search results to institutions available in the given countries
