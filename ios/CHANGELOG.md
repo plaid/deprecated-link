@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 2019-05-29 — LinkKit 1.1.19
+### Added
+- Add new optional configuration property `language`, to specify the language in which the UI will be displayed.
+
+### Changed
+- Fix issue with `countryCodes` when using shared configuration via Info.plist
+- Improve institution search results when searching for institutions supporting transactions
+
+
+
 ## 2019-04-15 — LinkKit 1.1.18
 ### Changed
 - Fix issue where the end-user was not taken back to enter their credentials when providing an invalid username during the patch flow.

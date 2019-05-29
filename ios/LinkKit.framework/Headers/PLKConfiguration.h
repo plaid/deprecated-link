@@ -132,6 +132,12 @@ PLK_EXTERN NSString* const kPLKCustomizationExitButtonKey;
 /// A list of ISO 3166-1 alpha-2 country codes, used to select institutions available in the given countries.
 @property (copy,nonatomic) NSArray<NSString*>* _Nullable countryCodes;
 
+/**
+ Specify a Plaid-supported language to localize Link. English ('en') will be used by default.
+ For details consult https://plaid.com/docs/#parameter-reference.
+ */
+@property (copy,nonatomic) NSString* _Nullable language;
+
 /// Whether support for longtailAuth institutions should be enabled.
 @property (readonly) BOOL longtailAuth;
 
