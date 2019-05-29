@@ -48,6 +48,7 @@ export default class App extends Component<Props> {
       //userLegalName: '<#USER_LEGAL_NAME#>',
       //userEmailAddress: '<#USER_EMAIL_ADDRESS#>',
       //countryCodes: ['<#COUNTRY_CODE#>'],
+      //language: '<#LANGUAGE#>',
       //publicToken: '<#PUBLIC_TOKEN#>,
       //selectAccount': true,
       onSuccess: this.onSuccess,

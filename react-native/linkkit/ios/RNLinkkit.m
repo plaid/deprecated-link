@@ -21,6 +21,7 @@ static NSString* const kRLinkKitConfigSelectAccountKey = @"selectAccount";
 static NSString* const kRLinkKitConfigUserLegalNameKey = @"userLegalName";
 static NSString* const kRLinkKitConfigUserEmailAddressKey = @"userEmailAddress";
 static NSString* const kRLinkKitConfigCountryCodesKey = @"countryCodes";
+static NSString* const kRLinkKitConfigLanguageKey = @"language";
 static NSString* const kRLinkKitConfigInstitutionKey = @"institution";
 static NSString* const kRLinkKitConfigLongtailAuthKey = @"longtailAuth";
 static NSString* const kRLinkKitConfigApiVersionKey = @"apiVersion";
@@ -74,6 +75,7 @@ RCT_EXPORT_METHOD(_create:(NSDictionary*)configuration) {
     NSString *userLegalName = [RCTConvert NSString:configuration[kRLinkKitConfigUserLegalNameKey]];
     NSString *userEmailAddress = [RCTConvert NSString:configuration[kRLinkKitConfigUserEmailAddressKey]];
     NSArray<NSString*> *countryCodes = [RCTConvert NSStringArray:configuration[kRLinkKitConfigCountryCodesKey]];
+    NSString *language = [RCTConvert NSString:configuration[kRLinkKitConfigLanguageKey]];
     BOOL selectAccount = [RCTConvert BOOL:configuration[kRLinkKitConfigSelectAccountKey]];
 
     NSString *institution = [RCTConvert NSString:configuration[kRLinkKitConfigInstitutionKey]];
@@ -105,6 +107,9 @@ RCT_EXPORT_METHOD(_create:(NSDictionary*)configuration) {
     }
     if ([countryCodes count] > 0) {
         linkConfiguration.countryCodes = countryCodes;
+    }
+    if ([language length] > 0) {
+        linkConfiguration.language = language;
     }
 
     // Link Delegate

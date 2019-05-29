@@ -31,6 +31,7 @@ const PlaidLink = {
    * - `userLegalName` (string)          - the legal name of the end-user, necessary for microdeposit support
    * - `userEmailAddress` (string)       - the email address of the end-user, necessary for microdeposit support
    * - `countryCodes` (array of strings) - a list of ISO 3166-1 alpha-2 country codes, used to select institutions available in the given countries
+   * - `language` (string)               - Plaid-supported language to localize Link. English ('en') will be used by default. For details consult https://plaid.com/docs/#parameter-reference.
    * - `publicToken` (string)            - the public_token to invoke update mode (see https://plaid.com/docs/quickstart/#use-link-to-resolve-error)
    * - `institution` (string)            - institution identifier for which to invoke the custom initializer flow
    *
@@ -54,6 +55,7 @@ const PlaidLink = {
       +userLegalName?: ?string,    // specify for microdeposit support
       +userEmailAddress?: ?string, // specify for microdeposit support
       +countryCodes: Array<string>,
+      +language: ?string,
       +publicToken?: ?string,      // specify for patch flow
       +institutionId?: ?string,    // specify for custom initializer
 
@@ -96,7 +98,7 @@ const PlaidLink = {
 
   /**
    * Open Plaid Link.
-   * 
+   *
    * Calling `open()` will present the Plaid Link user interface implemented by the native `PLKPlaidLinkViewController`
    */
   open() {
