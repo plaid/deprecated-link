@@ -1,3 +1,5 @@
+*NOTE: The repository is being deprecated in favor of individual iOS SDK, Android SDK, and JS SDK repositories. Issues and Pull Requests are disabled, please visit our [documentation](https://plaid.com/docs) or [contact](https://dashboard.plaid.com/support/new) our Support team.*
+
 ## [Link iOS](ios)
 
 [![Examples of Plaid Link iOS](/assets/link-ios-screenshot.png)](ios)
