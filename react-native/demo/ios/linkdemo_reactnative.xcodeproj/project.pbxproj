@@ -1093,7 +1093,7 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-plaid-link/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-plaid-linkkit/ios/**",
 				);
 				INFOPLIST_FILE = linkdemo_reactnativeTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1119,7 +1119,7 @@
 				DEVELOPMENT_TEAM = Z2P2MSMY87;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-plaid-link/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-plaid-linkkit/ios/**",
 				);
 				INFOPLIST_FILE = linkdemo_reactnativeTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1150,7 +1150,7 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-plaid-link/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-plaid-linkkit/ios/**",
 				);
 				INFOPLIST_FILE = linkdemo_reactnative/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1178,7 +1178,7 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-plaid-link/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-plaid-linkkit/ios/**",
 				);
 				INFOPLIST_FILE = linkdemo_reactnative/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

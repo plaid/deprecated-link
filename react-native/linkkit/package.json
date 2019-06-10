@@ -1,5 +1,5 @@
 {
-  "name": "react-native-plaid-link",
+  "name": "react-native-plaid-linkkit",
   "version": "0.1.0",
   "description": "A React Native bridge to the Plaid Link for iOS SDK",
   "main": "index.js",

@@ -15,7 +15,7 @@ import {
   TouchableOpacity,
   View
 } from 'react-native';
-import PlaidLink from 'react-native-plaid-link';
+import PlaidLink from 'react-native-plaid-linkkit';
 
 const title = Platform.select({
   ios: 'Plaid Link\nSDK Example',
