@@ -22,7 +22,7 @@
   "peerDependencies": {
     "react-native": "^0.41.2"
   },
-  "dependencies": {
+  "devDependencies": {
     "react-native-cli": "^2.0.1",
     "react-native-git-upgrade": "^0.2.7"
   }
