@@ -4416,7 +4416,7 @@ react-native-git-upgrade@^0.2.7:
     shelljs "^0.7.5"
     yeoman-environment "1.5.3"
 
-"react-native-plaid-link@file:../linkkit":
+"react-native-plaid-linkkit@file:../linkkit":
   version "0.1.0"
   dependencies:
     react-native-cli "^2.0.1"

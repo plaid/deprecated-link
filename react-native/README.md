@@ -4,7 +4,7 @@
 Currently only iOS is supported.
 
 :warning: Note that this is the React Native bridge for Link officially supported by Plaid, but is very different
-from the module with the same name available on [npmjs](https://www.npmjs.com/package/react-native-plaid-link);
+from the module with a similar name available on [npmjs](https://www.npmjs.com/package/react-native-plaid-link);
 we strongly recommend favoring this React Native bridge.
 
 ## Prerequisites
@@ -17,16 +17,16 @@ To complete the steps in this example the following software is needed:
 ## Using React Native for Plaid Link
 
 * Clone the [Plaid Link](https://github.com/plaid/link) repository
-* Add this `react-native-plaid-link` component to your react-native project and install the necessary dependencies:
+* Add this `react-native-plaid-linkkit` component to your react-native project and install the necessary dependencies:
 ```sh
   % cd $PATH_TO_YOUR_REACT_NATIVE_PROJECT
   % yarn add file:$PATH_TO_YOUR_CLONE_OF_THIS_REPO/react-native/linkkit
   % yarn install
-  % react-native link react-native-plaid-link
+  % react-native link react-native-plaid-linkkit
 ```
 * Integrate the native Plaid Link for iOS SDK (LinkKit.framework) into the iOS part of your react-native project, see the [documentation](https://plaid.com/docs/link/ios/) for details.
 * In your `App.js` import Plaid Link using:
-	`import PlaidLink from 'react-native-plaid-link';`
+	`import PlaidLink from 'react-native-plaid-linkkit';`
 * Create a `linkHandler` object (we recommend doing so in `componentDidMount()`) and replace any of the placeholder `<#VARIABLE#>`s in the example below according to your setup (for details see the [Plaid Link documentation](https://plaid.com/docs/quickstart/#client-side-link-configuration)):
 ```js
     this.linkHandler = PlaidLink.create({
@@ -45,10 +45,10 @@ To complete the steps in this example the following software is needed:
 
 ## About the linkdemo_reactnative Xcode project
 
-ℹ️  In order build and run the `linkdemo_reactnative` iOS demo application the `react-native-plaid-link` component must be registered and linked to the Xcode project as mentioned above, e.g.:
+ℹ️  In order build and run the `linkdemo_reactnative` iOS demo application the `react-native-plaid-linkkit` component must be registered and linked to the Xcode project as mentioned above, e.g.:
 ```sh
   % cd link/react-native/demo
   % yarn add file:../linkkit
   % yarn install
-  % react-native link react-native-plaid-link
+  % react-native link react-native-plaid-linkkit
 ```

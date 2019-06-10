@@ -20,3 +20,5 @@ xcuserdata
 
 ## requirejs ##
 /examples/requirejs/public/vendor/*
+
+*.log
