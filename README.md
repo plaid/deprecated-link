@@ -1,6 +1,6 @@
-The repository was deprecated, and split into new repositories:
+**The repository was deprecated, and split into new repositories:**
 - [Plaid Link iOS SDK](https://github.com/plaid/plaid-link-ios)
-- Plaid Link Android SDK _coming soon_
+- Plaid Link Android SDK (_coming soon_)
 - [Plaid Link Examples](https://github.com/plaid/plaid-link-examples)
 
 For any questions and support, please visit our [documentation](https://plaid.com/docs) or
